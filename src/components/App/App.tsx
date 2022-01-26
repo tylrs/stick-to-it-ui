@@ -2,18 +2,24 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 
 const App = () => {
+  const [message, setMessage] = useState('')
 
   const getMessage = async () => {
     try {
-      const message = await fetch('https://localhost:3000/')
-      console.log(message)
+      const response = await fetch('https://stick-to-it-api.herokuapp.com/')
+      const data = await response.json()
+      setMessage(data.message)
     } catch (err){
       console.log(err)
     }
   }
 
+  useEffect(() => {
+    getMessage()
+  })
+
   return (
-    <h1>Blank</h1>
+    <h1>{message}</h1>
   );
 }
 
