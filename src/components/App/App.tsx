@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { createUser, login } from '../../utils/apiCalls';
 
 const App = () => {
   const [message, setMessage] = useState('')
@@ -15,11 +16,16 @@ const App = () => {
   }
 
   useEffect(() => {
-    getMessage()
+    // getMessage()
+    // createUser()
+    login()
   })
 
   return (
-    <h1>{message}</h1>
+    <>
+      <h1>{message}</h1>
+      <p>Hello</p>
+    </>
   );
 }
 
