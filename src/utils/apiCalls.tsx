@@ -1,4 +1,5 @@
-import { storeToken } from "./miscUtils";
+import { urls } from "../dev-constants";
+import { getToken, storeCurrentUser, storeToken } from "./miscUtils";
 
 const data = {
     name: "john smith",
@@ -20,7 +21,7 @@ export const createUser = async () => {
         body: formData
     }
     try {
-        const response = await fetch("https://stick-to-it-api.herokuapp.com/users", postInfo)
+        const response = await fetch(`${urls.localUsers}`, postInfo)
         const data = await response.json()
         console.log(data)
     } catch (err){
@@ -38,10 +39,12 @@ export const login = async () => {
         body: formData
     }
     try {
-        const response = await fetch("https://stick-to-it-api.herokuapp.com/auth/login", postInfo)
+        const response = await fetch(`${urls.localLogin}`, postInfo)
         const data = await response.json()
         console.log(data)
         storeToken(data.token)
+        storeCurrentUser(data.user)
+        return data.user
     } catch (err){
         console.log(err)
     }
