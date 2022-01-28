@@ -3,5 +3,5 @@ export const storeToken = (token: string) => {
 }
 
 export const getToken = () => {
-
+    return JSON.stringify(localStorage.getItem("token"))
 }
