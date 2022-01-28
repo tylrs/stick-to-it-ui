@@ -1,3 +1,5 @@
+import { storeToken } from "./miscUtils";
+
 const data = {
     name: "john smith",
     username: "tayjohnlorsmith12",
@@ -39,6 +41,7 @@ export const login = async () => {
         const response = await fetch("https://stick-to-it-api.herokuapp.com/auth/login", postInfo)
         const data = await response.json()
         console.log(data)
+        storeToken(data.token)
     } catch (err){
         console.log(err)
     }
