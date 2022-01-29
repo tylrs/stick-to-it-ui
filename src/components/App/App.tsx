@@ -16,10 +16,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    // getMessage()
-    // createUser()
-    // login()
-    loginSequence()
   }, [])
 
   return (
