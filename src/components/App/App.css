@@ -13,3 +13,12 @@ header {
 h1 {
   font-size: 2rem;
 }
+
+.site-title {
+  color: black;
+  text-decoration: none;
+}
+
+.site-title:hover {
+  color: aqua;
+}

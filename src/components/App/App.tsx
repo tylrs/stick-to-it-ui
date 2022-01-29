@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import { createUser, login } from '../../utils/apiCalls';
 import { UserType } from '../../utils/types';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import Welcome from '../Welcome/Welcome';
 import Login from '../Login/Login';
 import AccountCreation from '../AccountCreation/AccountCreation';
@@ -25,7 +25,9 @@ const App = () => {
 
   return (
     <main>
-      <header><h1>Stick To It</h1></header>
+      <header>
+        <Link className='site-title' to='/'><h1>Stick To It</h1></Link>
+      </header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
         <Route path='/login' element={<Login />}/>
