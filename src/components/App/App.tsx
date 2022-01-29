@@ -22,9 +22,11 @@ const App = () => {
   }, [])
 
   return (
+    <main>
       <Routes>
         <Route path='/' element={<Welcome />}/>
       </Routes>
+    </main>
     )
 }
 
