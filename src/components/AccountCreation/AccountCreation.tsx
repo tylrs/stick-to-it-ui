@@ -42,6 +42,7 @@ const AccountCreation = () => {
 
     return (
         <section className='account-creation-page-container'>
+            <h2>Create An Account</h2>
             <form className='account-creation-box'>
                 <input 
                     required
