@@ -4,10 +4,12 @@ main {
 }
 
 header {
-  height: 10vh;
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
   justify-content: center;
+  margin-top: 1rem;;
 }
 
 h1 {
@@ -21,4 +23,8 @@ h1 {
 
 .site-title:hover {
   color: aqua;
+}
+
+.greeting-message {
+  text-transform: capitalize;
 }

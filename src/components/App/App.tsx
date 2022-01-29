@@ -1,6 +1,5 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { createUser, login } from '../../utils/apiCalls';
 import { UserType } from '../../utils/types';
 import { Routes, Route, Link } from 'react-router-dom';
 import Welcome from '../Welcome/Welcome';
@@ -10,24 +9,15 @@ import AccountCreation from '../AccountCreation/AccountCreation';
 const App = () => {
   const [user, setUser] = useState<UserType | null>(null)
 
-  // const loginSequence = async () => {
-  //   try {
-  //     const userData = await login()
-  //     setUser(userData)
-  //   } catch (err){
-  //     console.log(err)
-  //   }
-  // }
-
   useEffect(() => {
-    console.log("hello")
     if (user) console.log("look at the>>>", user)
   }, [user])
 
   return (
     <main>
-      <header>
+      <header className='site-header'>
         <Link className='site-title' to='/'><h1>Stick To It</h1></Link>
+        {user && <h3 className='greeting-message'>Welcome: {user.name}</h3>}
       </header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
