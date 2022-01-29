@@ -31,6 +31,7 @@ const Login = () => {
 
     return (
         <section className='login-page-container'>
+            <h2>Login</h2>
             <form className='login-box'>
                 <input 
                     required
