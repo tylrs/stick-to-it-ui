@@ -6,12 +6,12 @@ const Welcome = () => {
     return (
         <>
             <section className='welcome-page-container'>
-                 <button className='account-link-wrapper'>
-                     <Link className='account-link' to='/login'>Login</Link>
-                 </button>
-                 <button className='account-link-wrapper'>
-                     <Link className='account-link' to='/create-account'>Create Account</Link>
-                 </button>
+                    <Link className='account-link' to='/login'>
+                        <button className='account-link-wrapper'>Login</button>
+                    </Link>
+                    <Link className='account-link' to='/create-account'>
+                        <button className='account-link-wrapper'>Create Account</button>
+                    </Link>
             </section>
         </>
     )
