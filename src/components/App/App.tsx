@@ -1,26 +1,29 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { createUser, login } from '../../utils/apiCalls';
+import { UserType } from '../../utils/types';
 
 const App = () => {
-  const [message, setMessage] = useState('')
+  const [user, setUser] = useState<UserType | null>(null)
 
-  const getMessage = async () => {
+  const loginSequence = async () => {
     try {
-      const response = await fetch('https://stick-to-it-api.herokuapp.com/')
-      const data = await response.json()
-      setMessage(data.message)
+      const userData = await login()
+      setUser(userData)
     } catch (err){
       console.log(err)
     }
   }
 
   useEffect(() => {
-    getMessage()
-  })
+  }, [])
 
   return (
-    <h1>{message}</h1>
-  );
+      <>
+        <h1>Something</h1>
+        <p>Hello</p>
+      </>
+    )
 }
 
 export default App;
