@@ -4,6 +4,7 @@ import { createUser, login } from '../../utils/apiCalls';
 import { UserType } from '../../utils/types';
 import { Routes, Route } from 'react-router-dom';
 import Welcome from '../Welcome/Welcome';
+import Login from '../Login/Login';
 
 const App = () => {
   const [user, setUser] = useState<UserType | null>(null)
@@ -26,6 +27,7 @@ const App = () => {
       <header><h1>Stick To It</h1></header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
+        <Route path='/login' element={<Login />}/>
       </Routes>
     </main>
     )
