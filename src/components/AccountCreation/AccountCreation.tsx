@@ -23,7 +23,12 @@ const AccountCreation = () => {
     }
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        
+        setAccountInfo((prevState) => {
+            return ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            })
+        })
     }
       
     const submitAccountInfo = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -44,7 +49,7 @@ const AccountCreation = () => {
                     type="text" 
                     name="name" 
                     placeholder="name"
-                    value={}
+                    value={accountInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
                 <input 
@@ -53,7 +58,7 @@ const AccountCreation = () => {
                     type="text" 
                     name="username" 
                     placeholder="username"
-                    value={}
+                    value={accountInfo.username}
                     onChange={(e) => handleUserInput(e)}
                 />
                 <input 
@@ -62,7 +67,7 @@ const AccountCreation = () => {
                     type="text" 
                     name="email" 
                     placeholder="email"
-                    value={}
+                    value={accountInfo.email}
                     onChange={(e) => handleUserInput(e)}
                 />
                 <input 
@@ -71,7 +76,7 @@ const AccountCreation = () => {
                     type="text" 
                     name="password" 
                     placeholder="password"
-                    value={}
+                    value={accountInfo.password}
                     onChange={(e) => handleUserInput(e)}
                 />
                 <input 
@@ -80,7 +85,7 @@ const AccountCreation = () => {
                     type="text" 
                     name="passwordConfirmation" 
                     placeholder="password confirmation"
-                    value={}
+                    value={accountInfo.passwordConfirmation}
                     onChange={(e) => handleUserInput(e)}
                 />
                 <button 
