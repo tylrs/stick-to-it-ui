@@ -1,20 +1,14 @@
 import { urls } from "../dev-constants";
 import { getToken, storeCurrentUser, storeToken } from "./miscUtils";
+import { sampleUser } from "../dev-constants";
 
-const data = {
-    name: "john smith",
-    username: "tayjohnlorsmith12",
-    email: "taylorsmith66@example.com",
-    password: "123456",
-    password_confirmation: "123456"
-}
 export const createUser = async () => {
     const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("username", data.username);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("password_confirmation", data.password_confirmation);
+    formData.append("name", sampleUser.name);
+    formData.append("username", sampleUser.username);
+    formData.append("email", sampleUser.email);
+    formData.append("password", sampleUser.password);
+    formData.append("password_confirmation", sampleUser.password_confirmation);
     const postInfo = {
         method: "POST",
         headers: {},
@@ -29,10 +23,11 @@ export const createUser = async () => {
     }
 }
 
-export const login = async () => {
+export const login = async (credentials: { email: string; password: string; }) => {
     const formData = new FormData();
-    formData.append("email", data.email);
-    formData.append("password", data.password);
+    console.log("Credentials", credentials)
+    formData.append("email", credentials.email);
+    formData.append("password", credentials.password);
     const postInfo = {
         method: "POST",
         headers: {},
@@ -41,7 +36,7 @@ export const login = async () => {
     try {
         const response = await fetch(`${urls.localLogin}`, postInfo)
         const data = await response.json()
-        console.log(data)
+        console.log("Should be user", data)
         storeToken(data.token)
         storeCurrentUser(data.user)
         return data.user

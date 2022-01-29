@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { login } from '../../utils/apiCalls';
 import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const clearInputs = () => {
+        setEmail("")
+        setPassword("")
+    }
+
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.value === 'email') {
+        if (e.target.name === 'email') {
             setEmail(e.target.value)
         } else {
             setPassword(e.target.value)
@@ -17,14 +23,12 @@ const Login = () => {
     const submitCredentials = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         try {
-        } catch {
+            await login({email, password})
+        } catch (err){
+            console.log(err)
         }
     }
     
-    const clearInputs = () => {
-        setEmail("")
-        setPassword("")
-    }
 
     return (
         <section className='login-page-container'>

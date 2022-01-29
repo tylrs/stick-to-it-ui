@@ -9,14 +9,14 @@ import Login from '../Login/Login';
 const App = () => {
   const [user, setUser] = useState<UserType | null>(null)
 
-  const loginSequence = async () => {
-    try {
-      const userData = await login()
-      setUser(userData)
-    } catch (err){
-      console.log(err)
-    }
-  }
+  // const loginSequence = async () => {
+  //   try {
+  //     const userData = await login()
+  //     setUser(userData)
+  //   } catch (err){
+  //     console.log(err)
+  //   }
+  // }
 
   useEffect(() => {
     console.log("hello")
