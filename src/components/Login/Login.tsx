@@ -29,29 +29,29 @@ const Login = () => {
     return (
         <section className='login-page-container'>
             <form className='login-box'>
-            <input 
-                required
-                className="login-input"
-                type="text" 
-                name="email" 
-                placeholder="email"
-                value={email}
-                onChange={(e) => handleUserInput(e)}
-              />
-              <input 
-                required
-                className="login-input"
-                type="text" 
-                name="password" 
-                placeholder="password"
-                value={password}
-                onChange={(e) => handleUserInput(e)}
-              />
-              <button 
-                className="submit-login"
-                onClick={e => submitCredentials(e)}>
-                  Login
-              </button>
+                <input 
+                    required
+                    className="login-input"
+                    type="text" 
+                    name="email" 
+                    placeholder="email"
+                    value={email}
+                    onChange={(e) => handleUserInput(e)}
+                />
+                <input 
+                    required
+                    className="login-input"
+                    type="text" 
+                    name="password" 
+                    placeholder="password"
+                    value={password}
+                    onChange={(e) => handleUserInput(e)}
+                />
+                <button 
+                    className="submit-login"
+                    onClick={e => submitCredentials(e)}>
+                    Login
+                </button>
             </form>
         </section>
     )
