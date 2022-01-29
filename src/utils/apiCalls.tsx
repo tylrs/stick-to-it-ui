@@ -7,15 +7,14 @@ export const createUser = async (accountInfo: {
         username: any; 
         email: any; 
         password: any; 
-        passwordConfirmation?: string; 
-        password_confirmation?: any; 
+        passwordConfirmation: string
     }) => {
         const formData = new FormData();
         formData.append("name", accountInfo.name);
         formData.append("username", accountInfo.username);
         formData.append("email", accountInfo.email);
         formData.append("password", accountInfo.password);
-        formData.append("password_confirmation", accountInfo.password_confirmation);
+        formData.append("password_confirmation", accountInfo.passwordConfirmation);
         const postInfo = {
             method: "POST",
             headers: {},
