@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Welcome.css';
 
 const Welcome = () => {
     return (
         <>
-            <h1>Stick To It</h1>
-            <section>
-                <Link to='/login'/>
-                <Link to='/create-account'/>
+            <section className='welcome-page-container'>
+                 <button><Link className='account-link' to='/login'>Login</Link></button>
+                 <button><Link className='account-link' to='/create-account'>Create Account</Link></button>
             </section>
         </>
     )

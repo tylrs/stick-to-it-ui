@@ -23,6 +23,7 @@ const App = () => {
 
   return (
     <main>
+      <header><h1>Stick To It</h1></header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
       </Routes>
