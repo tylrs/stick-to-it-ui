@@ -2,17 +2,24 @@ import { urls } from "../dev-constants";
 import { getToken, storeCurrentUser, storeToken } from "./miscUtils";
 import { sampleUser } from "../dev-constants";
 
-export const createUser = async (accountInfo) => {
-    const formData = new FormData();
-    formData.append("name", sampleUser.name);
-    formData.append("username", sampleUser.username);
-    formData.append("email", sampleUser.email);
-    formData.append("password", sampleUser.password);
-    formData.append("password_confirmation", sampleUser.password_confirmation);
-    const postInfo = {
-        method: "POST",
-        headers: {},
-        body: formData
+export const createUser = async (accountInfo: { 
+        name: any; 
+        username: any; 
+        email: any; 
+        password: any; 
+        passwordConfirmation?: string; 
+        password_confirmation?: any; 
+    }) => {
+        const formData = new FormData();
+        formData.append("name", accountInfo.name);
+        formData.append("username", accountInfo.username);
+        formData.append("email", accountInfo.email);
+        formData.append("password", accountInfo.password);
+        formData.append("password_confirmation", accountInfo.password_confirmation);
+        const postInfo = {
+            method: "POST",
+            headers: {},
+            body: formData
     }
     try {
         const response = await fetch(`${urls.localUsers}`, postInfo)
