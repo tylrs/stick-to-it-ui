@@ -21,7 +21,8 @@ const App = () => {
 
   useEffect(() => {
     console.log("hello")
-  }, [])
+    if (user) console.log("look at the>>>", user)
+  }, [user])
 
   return (
     <main>
@@ -30,7 +31,7 @@ const App = () => {
       </header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
-        <Route path='/login' element={<Login />}/>
+        <Route path='/login' element={<Login setUser={setUser}/>}/>
         <Route path='/create-account' element={<AccountCreation />}/>
       </Routes>
     </main>

@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { login } from '../../utils/apiCalls';
 import './Login.css';
 
-const Login = () => {
+interface LoginProps {
+    setUser: any
+}
+
+const Login = ({ setUser }: LoginProps) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -23,7 +27,8 @@ const Login = () => {
     const submitCredentials = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         try {
-            await login({email, password})
+            const user = await login({email, password})
+            setUser(user)
         } catch (err){
             console.log(err)
         }
