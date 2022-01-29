@@ -16,6 +16,7 @@ const App = () => {
   }
 
   useEffect(() => {
+    console.log("hello")
   }, [])
 
   return (
