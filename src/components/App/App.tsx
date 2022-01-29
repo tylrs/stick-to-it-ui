@@ -2,6 +2,8 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import { createUser, login } from '../../utils/apiCalls';
 import { UserType } from '../../utils/types';
+import { Routes, Route } from 'react-router-dom';
+import Welcome from '../Welcome/Welcome';
 
 const App = () => {
   const [user, setUser] = useState<UserType | null>(null)
@@ -20,10 +22,9 @@ const App = () => {
   }, [])
 
   return (
-      <>
-        <h1>Something</h1>
-        <p>Hello</p>
-      </>
+      <Routes>
+        <Route path='/' element={<Welcome />}/>
+      </Routes>
     )
 }
 
