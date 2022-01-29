@@ -28,7 +28,6 @@ const Login = () => {
             console.log(err)
         }
     }
-    
 
     return (
         <section className='login-page-container'>

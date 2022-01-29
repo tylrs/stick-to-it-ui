@@ -1,0 +1,32 @@
+.login-page-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90vh;
+}
+
+.login-box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.account-link {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+.account-link-wrapper {
+    background-color: white;
+    height: 4rem;
+    padding: 0% 2% 0% 2%;
+    width: 6rem;
+}
+
+.account-link-wrapper:hover {
+    cursor: pointer;
+    background-color: aqua;
+}
