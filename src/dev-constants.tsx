@@ -12,3 +12,11 @@ export const sampleUser = {
     password: "123456",
     password_confirmation: "123456"
 }
+
+export const sampleUser2 = {
+    name: "sample smith",
+    username: "samplesmith12",
+    email: "samplesmith@example.com",
+    password: "123456",
+    password_confirmation: "123456"
+}
