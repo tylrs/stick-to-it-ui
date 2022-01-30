@@ -5,7 +5,7 @@ export const storeToken = (token: string) => {
 }
 
 export const getToken = () => {
-    return JSON.stringify(localStorage.getItem("token"))
+    return JSON.parse(localStorage.getItem("token") || "{}")
 }
 
 export const storeCurrentUser = (user: UserType) => {
@@ -13,5 +13,5 @@ export const storeCurrentUser = (user: UserType) => {
 }
 
 export const getCurrentUser = () => {
-    return JSON.stringify(localStorage.getItem("currentUser"))
+    return JSON.parse(localStorage.getItem("currentUser") || "{}")
 }
