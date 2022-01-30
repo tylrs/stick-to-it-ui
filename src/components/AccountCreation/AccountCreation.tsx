@@ -74,7 +74,7 @@ const AccountCreation = () => {
                 <input 
                     required
                     className="account-creation-input"
-                    type="text" 
+                    type="password" 
                     name="password" 
                     placeholder="password"
                     value={accountInfo.password}
@@ -83,7 +83,7 @@ const AccountCreation = () => {
                 <input 
                     required
                     className="account-creation-input"
-                    type="text" 
+                    type="password" 
                     name="passwordConfirmation" 
                     placeholder="password confirmation"
                     value={accountInfo.passwordConfirmation}

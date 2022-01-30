@@ -50,7 +50,7 @@ const Login = ({ setUser }: LoginProps) => {
                 <input 
                     required
                     className="login-input"
-                    type="text" 
+                    type="password" 
                     name="password" 
                     placeholder="password"
                     value={password}
