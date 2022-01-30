@@ -1,14 +1,9 @@
 import { urls } from "../dev-constants";
 import { getToken, storeCurrentUser, storeToken } from "./miscUtils";
 import { sampleUser } from "../dev-constants";
+import { AccountType } from "./types";
 
-export const createUser = async (accountInfo: { 
-        name: any; 
-        username: any; 
-        email: any; 
-        password: any; 
-        passwordConfirmation: string
-    }) => {
+export const createUser = async (accountInfo: AccountType) => {
         const formData = new FormData();
         formData.append("name", accountInfo.name);
         formData.append("username", accountInfo.username);
