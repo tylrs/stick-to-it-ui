@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../../utils/apiCalls';
 import './Login.css';
+import { UserType } from '../../utils/types';
 
 interface LoginProps {
-    setUser: any
+    setUser: React.Dispatch<React.SetStateAction<UserType | null>>
 }
 
-const Login = ({ setUser }: LoginProps) => {
+const Login: React.FC<LoginProps> = ({ setUser }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
