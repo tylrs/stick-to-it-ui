@@ -20,6 +20,7 @@ const App = () => {
       <header className='site-header'>
         <Link className='site-title' to='/'><h1>Stick To It</h1></Link>
         {user && <h3 className='greeting-message'>Welcome: {user.name}</h3>}
+        {user && <button className="logout">Log Out</button>}
       </header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
