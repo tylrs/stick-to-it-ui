@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../../utils/apiCalls';
 import './Login.css';
 import { UserType } from '../../utils/types';
@@ -11,6 +11,8 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ setUser }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    let navigate = useNavigate();
 
     const clearInputs = () => {
         setEmail("")
@@ -30,6 +32,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
         try {
             const user = await login({email, password})
             setUser(user)
+            navigate("/all-habits")
         } catch (err){
             console.log(err)
         }
