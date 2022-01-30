@@ -5,12 +5,14 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Welcome from '../Welcome/Welcome';
 import Login from '../Login/Login';
 import AccountCreation from '../AccountCreation/AccountCreation';
+import { getCurrentUser } from '../../utils/miscUtils';
 
 const App = () => {
   const [user, setUser] = useState<UserType | null>(null)
 
   useEffect(() => {
     if (user) console.log("look at the>>>", user)
+    if (!user) setUser(getCurrentUser())
   }, [user])
 
   return (
