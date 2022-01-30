@@ -6,6 +6,7 @@ import Welcome from '../Welcome/Welcome';
 import Login from '../Login/Login';
 import AccountCreation from '../AccountCreation/AccountCreation';
 import { getCurrentUser } from '../../utils/miscUtils';
+import HabitsList from '../HabitsList/HabitsList';
 
 const App = () => {
   const [user, setUser] = useState<UserType | null>(null)
@@ -24,6 +25,7 @@ const App = () => {
       </header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
+        <Route path='/all-habits' element={<HabitsList />}/>
         <Route path='/login' element={<Login setUser={setUser}/>}/>
         <Route path='/create-account' element={<AccountCreation />}/>
       </Routes>
