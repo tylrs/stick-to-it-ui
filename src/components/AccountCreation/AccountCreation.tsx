@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createUser } from '../../utils/apiCalls';
+import { blankAccount } from '../../utils/miscConstants';
 import { AccountType } from '../../utils/types';
 import './AccountCreation.css';
-
-const blankAccount = {
-    name: "", 
-    username: "", 
-    email: "", 
-    password: "", 
-    passwordConfirmation: ""
-}
 
 const AccountCreation = () => {
     const [accountInfo, setAccountInfo] = useState<AccountType>(blankAccount)
