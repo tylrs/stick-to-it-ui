@@ -5,13 +5,12 @@ import './Login.css';
 import { UserType } from '../../utils/types';
 
 interface LoginProps {
-    setUser: React.Dispatch<React.SetStateAction<UserType | null>>
+    setUser: React.Dispatch<React.SetStateAction<UserType>>
 }
 
 const Login: React.FC<LoginProps> = ({ setUser }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
     const navigate = useNavigate();
 
     const clearInputs = () => {
