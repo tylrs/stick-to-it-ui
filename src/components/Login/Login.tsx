@@ -12,7 +12,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const clearInputs = () => {
         setEmail("")

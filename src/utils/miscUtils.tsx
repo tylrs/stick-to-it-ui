@@ -8,10 +8,6 @@ export const getToken = () => {
     return JSON.parse(localStorage.getItem("token") || "{}")
 }
 
-export const clearToken = () => {
-    localStorage.setItem("token", "{}")
-}
-
 export const storeCurrentUser = (user: UserType) => {
     localStorage.setItem("currentUser", JSON.stringify(user))
 }

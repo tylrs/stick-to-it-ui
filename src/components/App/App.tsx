@@ -1,19 +1,28 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { UserType } from '../../utils/types';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Welcome from '../Welcome/Welcome';
 import Login from '../Login/Login';
 import AccountCreation from '../AccountCreation/AccountCreation';
-import { getCurrentUser } from '../../utils/miscUtils';
+import { clearStorage, getCurrentUser } from '../../utils/miscUtils';
 import HabitsList from '../HabitsList/HabitsList';
 
 const App = () => {
-  const [user, setUser] = useState<UserType | null>(null)
+  const [user, setUser] = useState<UserType | null>(null);
+
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    // clearStorage()
+    localStorage.clear()
+    setUser(null)
+    navigate("/login")
+  }
 
   useEffect(() => {
     if (user) console.log("look at the>>>", user)
-    if (!user) setUser(getCurrentUser())
+    // if (!user) setUser(getCurrentUser())
   }, [user])
 
   return (
@@ -21,7 +30,7 @@ const App = () => {
       <header className='site-header'>
         <Link className='site-title' to='/'><h1>Stick To It</h1></Link>
         {user && <h3 className='greeting-message'>Welcome: {user.name}</h3>}
-        {user && <button className="logOut">Log Out</button>}
+        {user && <button className="logOut" onClick={() => logOut()}>Log Out</button>}
       </header>
       <Routes>
         <Route path='/' element={<Welcome />}/>
@@ -30,7 +39,7 @@ const App = () => {
         <Route path='/create-account' element={<AccountCreation />}/>
       </Routes>
     </main>
-    )
+  )
 }
 
 export default App;
