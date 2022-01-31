@@ -8,6 +8,8 @@ import AccountCreation from "../AccountCreation/AccountCreation";
 import { getCurrentUser } from "../../utils/miscUtils";
 import HabitsList from "../HabitsList/HabitsList";
 import { emptyUser } from "../../utils/miscConstants";
+import HabitForm from "../HabitCreation/HabitCreation";
+import HabitCreation from "../HabitCreation/HabitCreation";
 
 const App = () => {
   const [user, setUser] = useState<UserType>(emptyUser);
@@ -37,6 +39,7 @@ const App = () => {
         <Route path="/all-habits" element={<HabitsList />}/>
         <Route path="/login" element={<Login setUser={setUser}/>}/>
         <Route path="/create-account" element={<AccountCreation />}/>
+        <Route path="/create-habit" element={<HabitCreation />}/>
       </Routes>
     </main>
   )
