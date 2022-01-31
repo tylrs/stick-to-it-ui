@@ -1,27 +1,22 @@
 import { urls } from "../dev-constants";
 import { getToken, storeCurrentUser, storeToken } from "./miscUtils";
+import { sampleUser } from "../dev-constants";
+import { AccountType } from "./types";
 
-const data = {
-    name: "john smith",
-    username: "tayjohnlorsmith12",
-    email: "taylorsmith66@example.com",
-    password: "123456",
-    password_confirmation: "123456"
-}
-export const createUser = async () => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("username", data.username);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("password_confirmation", data.password_confirmation);
-    const postInfo = {
-        method: "POST",
-        headers: {},
-        body: formData
+export const createUser = async (accountInfo: AccountType) => {
+        const formData = new FormData();
+        formData.append("name", accountInfo.name);
+        formData.append("username", accountInfo.username);
+        formData.append("email", accountInfo.email);
+        formData.append("password", accountInfo.password);
+        formData.append("password_confirmation", accountInfo.passwordConfirmation);
+        const postInfo = {
+            method: "POST",
+            headers: {},
+            body: formData
     }
     try {
-        const response = await fetch(`${urls.localUsers}`, postInfo)
+        const response = await fetch(`${urls.productionUsers}`, postInfo)
         const data = await response.json()
         console.log(data)
     } catch (err){
@@ -29,22 +24,27 @@ export const createUser = async () => {
     }
 }
 
-export const login = async () => {
+export const login = async (credentials: { email: string; password: string; }) => {
     const formData = new FormData();
-    formData.append("email", data.email);
-    formData.append("password", data.password);
+    console.log("Credentials", credentials)
+    formData.append("email", credentials.email);
+    formData.append("password", credentials.password);
     const postInfo = {
         method: "POST",
         headers: {},
         body: formData
     }
     try {
-        const response = await fetch(`${urls.localLogin}`, postInfo)
+        const response = await fetch(`${urls.productionLogin}`, postInfo)
         const data = await response.json()
-        console.log(data)
-        storeToken(data.token)
-        storeCurrentUser(data.user)
-        return data.user
+        console.log("Should be user", data)
+        if (!("error" in data)) {
+            storeToken(data.token)
+            storeCurrentUser(data.user)
+            return data.user
+        } else {
+            throw Error(data.error)
+        }
     } catch (err){
         console.log(err)
     }

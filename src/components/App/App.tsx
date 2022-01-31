@@ -1,29 +1,45 @@
-import './App.css';
-import React, { useEffect, useState } from 'react';
-import { createUser, login } from '../../utils/apiCalls';
-import { UserType } from '../../utils/types';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import { UserType } from "../../utils/types";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import Welcome from "../Welcome/Welcome";
+import Login from "../Login/Login";
+import AccountCreation from "../AccountCreation/AccountCreation";
+import { getCurrentUser } from "../../utils/miscUtils";
+import HabitsList from "../HabitsList/HabitsList";
+import { emptyUser } from "../../utils/miscConstants";
 
 const App = () => {
-  const [user, setUser] = useState<UserType | null>(null)
+  const [user, setUser] = useState<UserType>(emptyUser);
+  const navigate = useNavigate();
 
-  const loginSequence = async () => {
-    try {
-      const userData = await login()
-      setUser(userData)
-    } catch (err){
-      console.log(err)
-    }
+  const logOut = async () => {
+    localStorage.clear()
+    setUser(emptyUser)
+    navigate("/login")
   }
 
   useEffect(() => {
-  }, [])
+    if (!user.id && localStorage.getItem("currentUser")) {
+      setUser(getCurrentUser())
+    }
+  }, [user])
 
   return (
-      <>
-        <h1>Something</h1>
-        <p>Hello</p>
-      </>
-    )
+    <main>
+      <header className="site-header">
+        <Link className="site-title" to="/"><h1>Stick To It</h1></Link>
+        {!!user.id && <h3 className="greeting-message">Welcome: {user.name}</h3>}
+        {!!user.id && <button className="logOut" onClick={() => logOut()}>Log Out</button>}
+      </header>
+      <Routes>
+        <Route path="/" element={<Welcome />}/>
+        <Route path="/all-habits" element={<HabitsList />}/>
+        <Route path="/login" element={<Login setUser={setUser}/>}/>
+        <Route path="/create-account" element={<AccountCreation />}/>
+      </Routes>
+    </main>
+  )
 }
 
 export default App;

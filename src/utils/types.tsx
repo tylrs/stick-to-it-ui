@@ -4,3 +4,11 @@ export interface UserType {
     username: string,
     email: string, 
 }
+
+export interface AccountType {
+    name: string, 
+    username: string, 
+    email: string, 
+    password: string, 
+    passwordConfirmation: string
+}
