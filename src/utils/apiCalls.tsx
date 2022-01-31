@@ -16,7 +16,7 @@ export const createUser = async (accountInfo: AccountType) => {
             body: formData
     }
     try {
-        const response = await fetch(`${urls.localUsers}`, postInfo)
+        const response = await fetch(`${urls.productionUsers}`, postInfo)
         const data = await response.json()
         console.log(data)
     } catch (err){
@@ -35,12 +35,16 @@ export const login = async (credentials: { email: string; password: string; }) =
         body: formData
     }
     try {
-        const response = await fetch(`${urls.localLogin}`, postInfo)
+        const response = await fetch(`${urls.productionLogin}`, postInfo)
         const data = await response.json()
         console.log("Should be user", data)
-        storeToken(data.token)
-        storeCurrentUser(data.user)
-        return data.user
+        if (!("error" in data)) {
+            storeToken(data.token)
+            storeCurrentUser(data.user)
+            return data.user
+        } else {
+            throw Error(data.error)
+        }
     } catch (err){
         console.log(err)
     }
