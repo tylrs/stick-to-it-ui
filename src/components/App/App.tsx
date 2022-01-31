@@ -35,10 +35,9 @@ const App = () => {
           <Link className="header-link" to="/">Today</Link>
           <Link className="header-link" to="/">All Habits</Link>
           <Link className="header-link" to="/">Account</Link>
-          {!!user.id && <button className="log-out-button" onClick={() => logOut()}>Log Out</button>}
-        </div>
+          {!!user.id && <button className="log-out-button" onClick={() => logOut()}>Log Out</button>}</div>
       </header>
-      {!!user.id && <h3 className="greeting-message">Welcome: {user.name}</h3>}
+      <div className="greeting-wrapper">{!!user.id && <h3 className="greeting-message">Welcome: {user.name}</h3>}</div>
       <Routes>
         <Route path="/" element={<Welcome />}/>
         <Route path="/all-habits" element={<HabitsList />}/>

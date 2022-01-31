@@ -39,6 +39,13 @@ h1 {
   color: aqua;
 }
 
+.greeting-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+}
+
 .greeting-message {
   text-transform: capitalize;
 }
