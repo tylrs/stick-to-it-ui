@@ -20,7 +20,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    if (user) console.log("look at the>>>", user)
     if (!user.id && localStorage.getItem("currentUser")) {
       setUser(getCurrentUser())
     }
