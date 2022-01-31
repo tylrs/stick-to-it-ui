@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { blankHabit } from "../../utils/miscConstants";
 import { HabitType } from "../../utils/types";
-import "./HabitForm.css";
+import "./HabitCreation.css";
 
-const AccountCreation = () => {
+const HabitCreation = () => {
     const [habitInfo, setHabitInfo] = useState<HabitType>(blankHabit)
 
     const clearInputs = () => {
@@ -70,4 +70,4 @@ const AccountCreation = () => {
     )
 }
 
-export default AccountCreation
+export default HabitCreation
