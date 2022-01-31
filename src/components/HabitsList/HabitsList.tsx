@@ -8,7 +8,8 @@ const HabitsList = () => {
 
     return (
         <section className="habits-list-page-container">
-            <h2>HabitsList</h2>
+            <h2>Habits List</h2>
+            <Link to="/create-habit"><button>Create New Habit</button></Link>
         </section>
     )
 }

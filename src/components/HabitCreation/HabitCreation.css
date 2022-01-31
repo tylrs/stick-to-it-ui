@@ -1,4 +1,4 @@
-.login-page-container {
+.habit-creation-page-container {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -6,7 +6,7 @@
     height: 90vh;
 }
 
-.login-box {
+.habit-creation-box {
     align-items: center;
     display: flex;
     flex-direction: column;

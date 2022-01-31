@@ -3,13 +3,26 @@ main {
   width: 100vw;
 }
 
-header {
+.site-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 10vh;
+  margin-left: 1rem;;
+  margin-top: 1.5rem;
+}
+
+.link-container {
   align-items: center;
   display: flex;
-  flex-direction: column;
-  height: 10vh;
-  justify-content: center;
-  margin-top: 1rem;;
+  justify-content: space-evenly;
+}
+
+.header-link {
+  color: black;
+}
+
+.header-link:hover {
+  background-color: aqua;
 }
 
 h1 {
@@ -17,6 +30,8 @@ h1 {
 }
 
 .site-title {
+  align-items: center;
+  display: flex;
   color: black;
   text-decoration: none;
 }
@@ -25,6 +40,25 @@ h1 {
   color: aqua;
 }
 
+.greeting-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+}
+
 .greeting-message {
   text-transform: capitalize;
+}
+
+.log-out-button {
+  background-color: white;
+  height: 1.5rem;
+  padding: 0% 2% 0% 2%;
+  width: 5rem;
+}
+
+.log-out-button:hover {
+  cursor: pointer;
+  background-color: aqua;
 }

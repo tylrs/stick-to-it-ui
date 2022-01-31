@@ -12,3 +12,9 @@ export const blankAccount = {
     password: "", 
     passwordConfirmation: ""
 }
+
+export const blankHabit = {
+    name: "", 
+    description: "", 
+    startDate: ""
+  }

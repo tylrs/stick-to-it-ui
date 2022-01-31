@@ -8,6 +8,8 @@ import AccountCreation from "../AccountCreation/AccountCreation";
 import { getCurrentUser } from "../../utils/miscUtils";
 import HabitsList from "../HabitsList/HabitsList";
 import { emptyUser } from "../../utils/miscConstants";
+import HabitForm from "../HabitCreation/HabitCreation";
+import HabitCreation from "../HabitCreation/HabitCreation";
 
 const App = () => {
   const [user, setUser] = useState<UserType>(emptyUser);
@@ -29,14 +31,19 @@ const App = () => {
     <main>
       <header className="site-header">
         <Link className="site-title" to="/"><h1>Stick To It</h1></Link>
-        {!!user.id && <h3 className="greeting-message">Welcome: {user.name}</h3>}
-        {!!user.id && <button className="logOut" onClick={() => logOut()}>Log Out</button>}
+        <div className="link-container">
+        <Link className="header-link" to="/">Today</Link>
+        <Link className="header-link" to="/all-habits">All Habits</Link>
+        <Link className="header-link" to="/">Account</Link>
+        {!!user.id && <button className="log-out-button" onClick={() => logOut()}>Log Out</button>}</div>
       </header>
+      {!!user.id && <div className="greeting-wrapper"><h3 className="greeting-message">Welcome: {user.name}</h3></div>}
       <Routes>
         <Route path="/" element={<Welcome />}/>
         <Route path="/all-habits" element={<HabitsList />}/>
         <Route path="/login" element={<Login setUser={setUser}/>}/>
         <Route path="/create-account" element={<AccountCreation />}/>
+        <Route path="/create-habit" element={<HabitCreation />}/>
       </Routes>
     </main>
   )

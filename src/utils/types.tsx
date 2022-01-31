@@ -12,3 +12,9 @@ export interface AccountType {
     password: string, 
     passwordConfirmation: string
 }
+
+export interface HabitType {
+    name: string, 
+    description: string, 
+    startDate: string
+}
