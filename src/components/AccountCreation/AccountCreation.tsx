@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { createUser } from '../../utils/apiCalls';
-import { blankAccount } from '../../utils/miscConstants';
-import { AccountType } from '../../utils/types';
-import './AccountCreation.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { createUser } from "../../utils/apiCalls";
+import { blankAccount } from "../../utils/miscConstants";
+import { AccountType } from "../../utils/types";
+import "./AccountCreation.css";
 
 const AccountCreation = () => {
     const [accountInfo, setAccountInfo] = useState<AccountType>(blankAccount)
@@ -31,9 +31,9 @@ const AccountCreation = () => {
     }
 
     return (
-        <section className='account-creation-page-container'>
+        <section className="account-creation-page-container">
             <h2>Create An Account</h2>
-            <form className='account-creation-box'>
+            <form className="account-creation-box">
                 <input 
                     required
                     className="account-creation-input"

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login } from '../../utils/apiCalls';
-import './Login.css';
-import { UserType } from '../../utils/types';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../utils/apiCalls";
+import "./Login.css";
+import { UserType } from "../../utils/types";
 
 interface LoginProps {
     setUser: React.Dispatch<React.SetStateAction<UserType>>
@@ -19,7 +19,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
     }
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.name === 'email') {
+        if (e.target.name === "email") {
             setEmail(e.target.value)
         } else {
             setPassword(e.target.value)
@@ -38,9 +38,9 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
     }
 
     return (
-        <section className='login-page-container'>
+        <section className="login-page-container">
             <h2>Login</h2>
-            <form className='login-box'>
+            <form className="login-box">
                 <input 
                     required
                     className="login-input"

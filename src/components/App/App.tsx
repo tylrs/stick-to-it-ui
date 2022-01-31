@@ -1,13 +1,13 @@
-import './App.css';
-import React, { useEffect, useState } from 'react';
-import { UserType } from '../../utils/types';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import Welcome from '../Welcome/Welcome';
-import Login from '../Login/Login';
-import AccountCreation from '../AccountCreation/AccountCreation';
-import { getCurrentUser } from '../../utils/miscUtils';
-import HabitsList from '../HabitsList/HabitsList';
-import { emptyUser } from '../../utils/miscConstants';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import { UserType } from "../../utils/types";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import Welcome from "../Welcome/Welcome";
+import Login from "../Login/Login";
+import AccountCreation from "../AccountCreation/AccountCreation";
+import { getCurrentUser } from "../../utils/miscUtils";
+import HabitsList from "../HabitsList/HabitsList";
+import { emptyUser } from "../../utils/miscConstants";
 
 const App = () => {
   const [user, setUser] = useState<UserType>(emptyUser);
@@ -27,16 +27,16 @@ const App = () => {
 
   return (
     <main>
-      <header className='site-header'>
-        <Link className='site-title' to='/'><h1>Stick To It</h1></Link>
-        {!!user.id && <h3 className='greeting-message'>Welcome: {user.name}</h3>}
+      <header className="site-header">
+        <Link className="site-title" to="/"><h1>Stick To It</h1></Link>
+        {!!user.id && <h3 className="greeting-message">Welcome: {user.name}</h3>}
         {!!user.id && <button className="logOut" onClick={() => logOut()}>Log Out</button>}
       </header>
       <Routes>
-        <Route path='/' element={<Welcome />}/>
-        <Route path='/all-habits' element={<HabitsList />}/>
-        <Route path='/login' element={<Login setUser={setUser}/>}/>
-        <Route path='/create-account' element={<AccountCreation />}/>
+        <Route path="/" element={<Welcome />}/>
+        <Route path="/all-habits" element={<HabitsList />}/>
+        <Route path="/login" element={<Login setUser={setUser}/>}/>
+        <Route path="/create-account" element={<AccountCreation />}/>
       </Routes>
     </main>
   )
