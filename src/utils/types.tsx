@@ -14,6 +14,7 @@ export interface AccountType {
 }
 
 export interface HabitType {
+    id?: number,
     name: string, 
     description: string, 
     startDate: string,
