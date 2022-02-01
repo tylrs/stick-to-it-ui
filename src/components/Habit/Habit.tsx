@@ -8,8 +8,8 @@ const Habit: React.FC<{habit: HabitType}> = ({ habit }) => {
 
     return (
         <article className="habit-container">
-            <h3>{habit.name}</h3>
-            <p>{habit.description}</p>
+            <h3>Habit: {habit.name}</h3>
+            <p>Description: {habit.description}</p>
         </article>
     )
 }
