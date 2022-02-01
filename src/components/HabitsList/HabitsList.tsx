@@ -8,24 +8,26 @@ import Habit from "../Habit/Habit";
 const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     const [allHabits, setAllHabits] = useState<HabitsType>([]);
 
-    const formattedHabits = allHabits
-        ? allHabits.map(habit => <Habit habit={habit} key={habit.id}/>)
-        : []
+    const formattedHabits = allHabits.map(habit => <Habit habit={habit} key={habit.id}/>)
 
     const fetchHabits = async () => {
         try {
             const data = await getAllHabits(userId)
-            setAllHabits(data)
+            if (data.length) {
+                setAllHabits(data)
+            } else {
+                throw Error("")
+            }
         } catch (err) {
             console.log(err)
         }
     }
 
     useEffect(() => {
-        if (userId) {
+        if (!allHabits.length && userId) {
             fetchHabits()
         }
-    }, [])
+    })
 
     return (
         <section className="habits-list-page-container">

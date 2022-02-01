@@ -81,10 +81,7 @@ export const getAllHabits = async (userId: number) => {
             }
         })
         const data = await response.json()
-        if (data.length) {
-            console.log("Should be habits", data)
-            return data
-        }
+        return data
     } catch (err){
         console.log(err)
     }
