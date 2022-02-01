@@ -16,7 +16,7 @@ export const createUser = async (accountInfo: AccountType) => {
         body: formData
     }
     try {
-        const response = await fetch(`${urls.productionUsers}`, postInfo)
+        const response = await fetch(`${urls.localUsers}`, postInfo)
         const data = await response.json()
         console.log(data)
     } catch (err){
@@ -35,7 +35,7 @@ export const login = async (credentials: { email: string; password: string; }) =
         body: formData
     }
     try {
-        const response = await fetch(`${urls.productionLogin}`, postInfo)
+        const response = await fetch(`${urls.localLogin}`, postInfo)
         const data = await response.json()
         console.log("Should be user", data)
         if (!("error" in data)) {
@@ -51,17 +51,20 @@ export const login = async (credentials: { email: string; password: string; }) =
 }
 
 export const createHabit = async (habitInfo: HabitType) => {
+    const token = getToken()
     const formData = new FormData();
     formData.append("name", habitInfo.name);
     formData.append("description", habitInfo.description);
     formData.append("start_datetime", habitInfo.startDate);
     const postInfo = {
         method: "POST",
-        headers: {},
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
         body: formData
     }
     try {
-        const response = await fetch(`${urls.productionUsers}/${habitInfo.userId}/habits`, postInfo)
+        const response = await fetch(`${urls.localUsers}/${habitInfo.userId}/habits`, postInfo)
         const data = await response.json()
         console.log(data)
     } catch (err){
