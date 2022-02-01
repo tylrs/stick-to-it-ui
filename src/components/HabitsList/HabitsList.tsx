@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { getAllHabits, login } from "../../utils/apiCalls";
 import "./HabitsList.css";
 import { HabitsType, UserType } from "../../utils/types";
-import { json } from "stream/consumers";
+import Habit from "../Habit/Habit";
 
 const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     const [allHabits, setAllHabits] = useState<HabitsType>([]);
+
+    const formattedHabits = allHabits.map(habit => <Habit habit={habit}/>)
 
     const fetchHabits = async () => {
         try {
@@ -26,7 +28,7 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     return (
         <section className="habits-list-page-container">
             <h2>Habits List</h2>
-            <Link to="/create-habit"><button>Create New Habit</button></Link>
+            {formattedHabits}
         </section>
     )
 }
