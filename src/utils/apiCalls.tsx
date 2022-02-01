@@ -71,3 +71,18 @@ export const createHabit = async (habitInfo: HabitType) => {
         console.log(err)
     }
 }
+
+export const getAllHabits = async (userId: number) => {
+    const token = getToken()
+    try {
+        const response = await fetch(`${urls.localUsers}/${userId}/habits`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        const data = await response.json()
+        console.log("Should be habits", data)
+    } catch (err){
+        console.log(err)
+    }
+}
