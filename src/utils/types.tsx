@@ -16,5 +16,6 @@ export interface AccountType {
 export interface HabitType {
     name: string, 
     description: string, 
-    startDate: string
+    startDate: string,
+    userId?: number
 }
