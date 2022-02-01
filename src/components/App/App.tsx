@@ -43,7 +43,7 @@ const App = () => {
         <Route path="/all-habits" element={<HabitsList />}/>
         <Route path="/login" element={<Login setUser={setUser}/>}/>
         <Route path="/create-account" element={<AccountCreation />}/>
-        <Route path="/create-habit" element={<HabitCreation />}/>
+        <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
       </Routes>
     </main>
   )
