@@ -19,3 +19,5 @@ export interface HabitType {
     startDate: string,
     userId?: number
 }
+
+export interface HabitsType extends Array<HabitType>{}
