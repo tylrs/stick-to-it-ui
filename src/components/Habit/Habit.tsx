@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import "./Habit.css";
 import { HabitType } from "../../utils/types";
 
-const Habit: React.FC<HabitType> = ({ name, description, startDate }) => {
+const Habit: React.FC<{habit: HabitType}> = ({ habit }) => {
 
 
     return (
-        <section className="habit-container">
-            <h2>{name}</h2>
-            <p>{description}</p>
-        </section>
+        <article className="habit-container">
+            <h3>{habit.name}</h3>
+            <p>{habit.description}</p>
+        </article>
     )
 }
 
