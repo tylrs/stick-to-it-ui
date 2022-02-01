@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { login } from "../../utils/apiCalls";
+import { getAllHabits, login } from "../../utils/apiCalls";
 import "./HabitsList.css";
 import { UserType } from "../../utils/types";
 
-const HabitsList = () => {
+const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
+
+    useEffect(() => {
+        getAllHabits(userId)
+    })
 
     return (
         <section className="habits-list-page-container">
