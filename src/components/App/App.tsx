@@ -40,7 +40,7 @@ const App = () => {
       {!!user.id && <div className="greeting-wrapper"><h3 className="greeting-message">Welcome: {user.name}</h3></div>}
       <Routes>
         <Route path="/" element={<Welcome />}/>
-        <Route path="/all-habits" element={<HabitsList />}/>
+        <Route path="/all-habits" element={<HabitsList userId={user.id}/>}/>
         <Route path="/login" element={<Login setUser={setUser}/>}/>
         <Route path="/create-account" element={<AccountCreation />}/>
         <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
