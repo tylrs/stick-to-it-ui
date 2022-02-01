@@ -8,7 +8,9 @@ import Habit from "../Habit/Habit";
 const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     const [allHabits, setAllHabits] = useState<HabitsType>([]);
 
-    const formattedHabits = allHabits.map(habit => <Habit habit={habit}/>)
+    const formattedHabits = allHabits
+        ? allHabits.map(habit => <Habit habit={habit} key={habit.id}/>)
+        : []
 
     const fetchHabits = async () => {
         try {
@@ -20,15 +22,16 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     }
 
     useEffect(() => {
-        if (!allHabits.length && userId) {
+        if (userId) {
             fetchHabits()
         }
-    }, [allHabits])
+    }, [])
 
     return (
         <section className="habits-list-page-container">
             <h2>Habits List</h2>
-            {formattedHabits}
+            {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>}
+            <Link to="/create-habit"><button>Create New Habit</button></Link>
         </section>
     )
 }
