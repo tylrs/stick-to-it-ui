@@ -39,13 +39,21 @@ const App = () => {
         </div>
       </header>
       {!!user.id && <div className="greeting-wrapper"><h3 className="greeting-message">Welcome: {user.name}</h3></div>}
-      <Routes>
-        <Route path="/" element={<Welcome />}/>
-        <Route path="/all-habits" element={<HabitsList userId={user.id}/>}/>
-        <Route path="/login" element={<Login setUser={setUser}/>}/>
-        <Route path="/create-account" element={<AccountCreation />}/>
-        <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
-      </Routes>
+      {!user.id 
+        ? <Routes>
+            <Route path="/" element={<Welcome />}/>
+            <Route path="/login" element={<Login setUser={setUser}/>}/>
+            <Route path="/create-account" element={<AccountCreation />}/>
+            <Route path="*" element={<Welcome />}/>
+          </Routes>
+        : <Routes>
+            <Route path="/" element={<HabitsList userId={user.id}/>}/>
+            <Route path="/all-habits" element={<HabitsList userId={user.id}/>}/>
+            <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
+            <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
+            <Route path="*" element={<Welcome />}/>
+          </Routes>
+      }
     </main>
   )
 }
