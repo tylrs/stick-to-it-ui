@@ -1,7 +1,12 @@
-.habits-list-page-container {
+.habit-container {
     align-items: center;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
+    height: 11rem;
+    width: 15rem;
     justify-content: center;
     margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
