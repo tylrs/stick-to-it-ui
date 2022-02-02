@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { createUser } from "../../utils/apiCalls";
+import { Link, useNavigate } from "react-router-dom";
+import { createUser, login } from "../../utils/apiCalls";
 import { blankAccount } from "../../utils/miscConstants";
-import { AccountType } from "../../utils/types";
+import { AccountType, UserType } from "../../utils/types";
 import "./AccountCreation.css";
 
-const AccountCreation = () => {
+interface AccountCreationProps {
+    setUser: React.Dispatch<React.SetStateAction<UserType>>
+}
+
+const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
     const [accountInfo, setAccountInfo] = useState<AccountType>(blankAccount)
+    const navigate = useNavigate()
 
     const clearInputs = () => {
         setAccountInfo(blankAccount)
@@ -25,6 +30,9 @@ const AccountCreation = () => {
         e.preventDefault()
         try {
             await createUser(accountInfo)
+            const user = await login({email: accountInfo.email, password: accountInfo.password})
+            setUser(user)
+            navigate("all-habits")
         } catch (err){
             console.log(err)
         }

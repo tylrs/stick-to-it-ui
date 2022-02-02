@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { createHabit } from "../../utils/apiCalls";
 import { blankHabit } from "../../utils/miscConstants";
 import { HabitType } from "../../utils/types";
 import "./HabitCreation.css";
 
-const HabitCreation = () => {
+const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
     const [habitInfo, setHabitInfo] = useState<HabitType>(blankHabit)
+    const navigate = useNavigate();
 
     const clearInputs = () => {
         setHabitInfo(blankHabit)
@@ -22,8 +24,11 @@ const HabitCreation = () => {
       
     const submitHabitInfo = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        const habitData = habitInfo
+        habitData.userId = userId
         try {
-            
+            await createHabit(habitData)
+            navigate("/all-habits")
         } catch (err){
             console.log(err)
         }

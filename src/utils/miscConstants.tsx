@@ -3,7 +3,7 @@ export const emptyUser = {
     name: "",
     username: "",
     email: ""
-  }
+}
 
 export const blankAccount = {
     name: "", 
@@ -17,4 +17,4 @@ export const blankHabit = {
     name: "", 
     description: "", 
     startDate: ""
-  }
+}

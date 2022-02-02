@@ -14,7 +14,11 @@ export interface AccountType {
 }
 
 export interface HabitType {
+    id?: number,
     name: string, 
     description: string, 
-    startDate: string
+    startDate: string,
+    userId?: number
 }
+
+export interface HabitsType extends Array<HabitType>{}
