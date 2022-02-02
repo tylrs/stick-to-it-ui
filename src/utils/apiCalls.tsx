@@ -86,3 +86,18 @@ export const getAllHabits = async (userId: number) => {
         console.log(err)
     }
 }
+
+export const deleteHabit = async (userId: number, habitId: number | undefined) => {
+    const token = getToken()
+    try {
+        const response = await fetch(`${urls.localUsers}/${userId}/habits/${habitId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        console.log(response)
+    } catch (err){
+        console.log(err)
+    }
+}

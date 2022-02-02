@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllHabits, login } from "../../utils/apiCalls";
+import { deleteHabit, getAllHabits, login } from "../../utils/apiCalls";
 import "./HabitsList.css";
 import { HabitsType, UserType } from "../../utils/types";
 import Habit from "../Habit/Habit";
@@ -8,7 +8,13 @@ import Habit from "../Habit/Habit";
 const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     const [allHabits, setAllHabits] = useState<HabitsType>([]);
 
-    const formattedHabits = allHabits.map(habit => <Habit habit={habit} key={habit.id}/>)
+    const handleDelete = async (habitId: number) => {
+        await deleteHabit(userId, habitId)
+        let updatedHabits = allHabits.filter((habit) => habit.id !== habitId)
+        setAllHabits(updatedHabits)
+    }
+
+    const formattedHabits = allHabits.map(habit => <Habit habit={habit} key={habit.id} handleDelete={handleDelete}/>)
 
     const fetchHabits = async () => {
         try {
