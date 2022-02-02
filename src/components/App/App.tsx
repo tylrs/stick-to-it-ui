@@ -8,7 +8,6 @@ import AccountCreation from "../AccountCreation/AccountCreation";
 import { getCurrentUser } from "../../utils/miscUtils";
 import HabitsList from "../HabitsList/HabitsList";
 import { emptyUser } from "../../utils/miscConstants";
-import HabitForm from "../HabitCreation/HabitCreation";
 import HabitCreation from "../HabitCreation/HabitCreation";
 
 const App = () => {
@@ -43,15 +42,14 @@ const App = () => {
         ? <Routes>
             <Route path="/" element={<Welcome />}/>
             <Route path="/login" element={<Login setUser={setUser}/>}/>
-            <Route path="/create-account" element={<AccountCreation />}/>
+            <Route path="/create-account" element={<AccountCreation setUser={setUser}/>}/>
             <Route path="*" element={<Welcome />}/>
           </Routes>
         : <Routes>
             <Route path="/" element={<HabitsList userId={user.id}/>}/>
             <Route path="/all-habits" element={<HabitsList userId={user.id}/>}/>
             <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
-            <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
-            <Route path="*" element={<Welcome />}/>
+            <Route path="*" element={<HabitsList userId={user.id}/>}/>
           </Routes>
       }
     </main>
