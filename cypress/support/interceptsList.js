@@ -37,4 +37,4 @@ cy.intercept("GET", "https://stick-to-it-api.herokuapp.com/users/**/habits", {
 cy.intercept("DELETE", "https://stick-to-it-api.herokuapp.com/users", {
     ok: true,
     statusCode: 204
-}).as("Create Account")
+}).as("Delete Habit")
