@@ -1,0 +1,26 @@
+[
+    {
+        "id": 7,
+        "name": "Meditation",
+        "description": "Meditate at night for 15 minutes",
+        "start_datetime": "2022-03-05T00:00:00.000Z",
+        "created_at": "2022-02-01T15:23:52.078Z",
+        "updated_at": "2022-02-01T15:23:52.078Z"
+    },
+    {
+        "id": 6,
+        "name": "Running",
+        "description": "Run 3 hours every day",
+        "start_datetime": "2022-02-05T00:00:00.000Z",
+        "created_at": "2022-02-01T14:47:20.061Z",
+        "updated_at": "2022-02-01T15:56:36.867Z"
+    },
+    {
+        "id": 10,
+        "name": "Floss",
+        "description": "Every night",
+        "start_datetime": "2022-03-05T00:00:00.000Z",
+        "created_at": "2022-02-01T17:37:29.574Z",
+        "updated_at": "2022-02-01T17:37:29.574Z"
+    }
+]

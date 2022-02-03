@@ -32,7 +32,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
             await createUser(accountInfo)
             const user = await login({email: accountInfo.email, password: accountInfo.password})
             setUser(user)
-            navigate("all-habits")
+            navigate("/all-habits")
         } catch (err){
             console.log(err)
         }
@@ -40,7 +40,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
 
     return (
         <section className="account-creation-page-container">
-            <h2>Create An Account</h2>
+            <h2 className="account-page-header">Create An Account</h2>
             <form className="account-creation-box">
                 <input 
                     required
