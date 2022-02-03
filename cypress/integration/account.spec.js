@@ -32,8 +32,7 @@ describe("Account User Flow", () => {
             .get("[name=passwordConfirmation]")
             .type("123456")
             .get(".submit-account-creation")
-            .click()
-            .wait("@Log In")  
+            .click() 
             .url()
             .should("include", "/all-habits")
             .get(".greeting-message")
@@ -42,8 +41,7 @@ describe("Account User Flow", () => {
 
     it("Should be able to log in ", () => {
         cy
-            .logIn()
-            .wait("@Log In")  
+            .logIn() 
             .url()
             .should("include", "/all-habits")
             .get(".greeting-message")
@@ -53,7 +51,6 @@ describe("Account User Flow", () => {
     it("Should be able to log out", () => {
         cy
             .logIn()
-            .wait("@Log In")
             .get(".log-out-button")
             .click()
             .url()
