@@ -39,7 +39,7 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
         <section className="habits-list-page-container">
             <h2 className="habits-list-title">Habits List</h2>
             {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>}
-            <Link to="/create-habit"><button>Create New Habit</button></Link>
+            <Link className="create-new-habit-button" to="/create-habit"><button>Create New Habit</button></Link>
         </section>
     )
 }
