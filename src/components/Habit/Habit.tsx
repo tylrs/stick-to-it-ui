@@ -9,7 +9,7 @@ const Habit: React.FC<{habit: HabitType, handleDelete: any}> = ({ habit, handleD
         <article className="habit-container">
             <h3 className="habit-name">Habit: {habit.name}</h3>
             <p>Description: {habit.description}</p>
-            <button onClick={() => {handleDelete(habit.id)}}>Delete</button>
+            <button className="habit-delete-button"onClick={() => {handleDelete(habit.id)}}>Delete</button>
         </article>
     )
 }
