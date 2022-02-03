@@ -8,4 +8,5 @@ Cypress.Commands.add("logIn", () => {
         .type("123456")
         .get(".submit-login")
         .click()
+        .wait("@Log In")
 })
