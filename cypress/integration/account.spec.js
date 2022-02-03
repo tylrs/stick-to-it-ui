@@ -15,21 +15,21 @@ describe("Account User Flow", () => {
         cy.visit("http://localhost:2000/")
     })
 
-    it("Should be able to create an account ", () => {
+    it("Should be able to create an account and auto log in with that account", () => {
         cy
-            .get('[href="/create-account"] > .account-link-wrapper')
+            .get("[href='/create-account'] > .account-link-wrapper")
             .click()
             .get(".account-page-header")
             .should("be.visible")
-            .get('[name="name"]')
+            .get("[name=name]")
             .type("Sample Bob")
-            .get('[name="username"]')
+            .get("[name=username]")
             .type("samplebob1")
-            .get('[name="email"]')
+            .get("[name=email]")
             .type("samplebob1@sample.com")
-            .get('[name="password"]')
+            .get("[name=password]")
             .type("123456")
-            .get('[name="passwordConfirmation"]')
+            .get("[name=passwordConfirmation]")
             .type("123456")
             .get(".submit-account-creation")
             .click()
@@ -39,4 +39,28 @@ describe("Account User Flow", () => {
             .get(".greeting-message")
             .should("have.text", "Welcome: Sample Bob")       
     })
-})
+
+    it("Should be able to log in ", () => {
+        cy
+            .logIn()
+            .wait("@Log In")  
+            .url()
+            .should("include", "/all-habits")
+            .get(".greeting-message")
+            .should("have.text", "Welcome: Sample Bob")  
+    })
+
+    it("Should be able to log out", () => {
+        cy
+            .logIn()
+            .wait("@Log In")
+            .get(".log-out-button")
+            .click()
+            .url()
+            .should("include", "/login")
+            .get("[name=email]")
+            .should("be.visible")
+            .get("[name=password]")
+            .should("be.visible")
+    })
+})    
