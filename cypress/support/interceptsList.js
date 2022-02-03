@@ -13,21 +13,21 @@ cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/auth/login", {
 }).as("Log In")
 
 //Create New Habit
-cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/users/:id/habits", {
+cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/users/**/habits", {
     ok: true,
     statusCode: 201, 
     fixture: "newHabitResponse"
 }).as("Create New Habit")
 
 //Get Habits From One User
-cy.intercept("GET", "https://stick-to-it-api.herokuapp.com/users/:id/habits", {
+cy.intercept("GET", "https://stick-to-it-api.herokuapp.com/users/**/habits", {
     ok: true,
     statusCode: 200, 
     fixture: "allHabitsResponse"
 }).as("Get User Habits")
 
 //Get Habits After Adding One Habit
-cy.intercept("GET", "https://stick-to-it-api.herokuapp.com/users/:id/habits", {
+cy.intercept("GET", "https://stick-to-it-api.herokuapp.com/users/**/habits", {
     ok: true,
     statusCode: 200, 
     fixture: "newAllHabitsResponse"
