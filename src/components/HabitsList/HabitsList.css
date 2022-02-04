@@ -5,3 +5,16 @@
     justify-content: center;
     padding-bottom: 4rem;
 }
+
+.habits-list-title {
+    align-items: center;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    height: 4rem;
+    justify-content: center;
+    width: 12rem;
+    text-align: center;
+}
