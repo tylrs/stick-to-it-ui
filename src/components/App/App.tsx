@@ -9,12 +9,13 @@ import { getCurrentUser } from "../../utils/miscUtils";
 import HabitsList from "../HabitsList/HabitsList";
 import { emptyUser } from "../../utils/miscConstants";
 import HabitCreation from "../HabitCreation/HabitCreation";
+import Header from "../Header/Header";
 
 const App = () => {
   const [user, setUser] = useState<UserType>(emptyUser);
   const navigate = useNavigate();
 
-  const logOut = async () => {
+  const logOut = () => {
     localStorage.clear()
     setUser(emptyUser)
     navigate("/login")
@@ -28,15 +29,10 @@ const App = () => {
 
   return (
     <main>
-      <header className="site-header">
-        <Link className="site-title" to="/"><h1>Stick To It</h1></Link>
-        <div className="link-container">
-          <Link className="header-link" to="/">Today</Link>
-          <Link className="header-link" to="/all-habits">All Habits</Link>
-          <Link className="header-link" to="/">Account</Link>
-          {!!user.id && <button className="log-out-button" onClick={() => logOut()}>Log Out</button>}
-        </div>
-      </header>
+      {!!user.id 
+        ? <Header headerType={"loggedIn"} logOut={logOut}/>
+        : <Header headerType={"loggedOut"} logOut={logOut}/> 
+      }
       {!!user.id && <div className="greeting-wrapper"><h3 className="greeting-message">Welcome: {user.name}</h3></div>}
       {!user.id 
         ? <Routes>
