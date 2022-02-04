@@ -8,7 +8,22 @@
 
 .login-box {
     align-items: center;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
+    height: 10rem;
     justify-content: space-around;
+    width: 15rem;
+}
+
+.submit-login {
+    background-color: white;
+    border-radius: 10px;
+    height: 1.5rem;
+    width: 4rem;
+}
+
+.submit-login:hover {
+    background-color: aqua;
+    cursor: pointer;
 }
