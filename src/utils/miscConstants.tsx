@@ -16,5 +16,6 @@ export const blankAccount = {
 export const blankHabit = {
     name: "", 
     description: "", 
-    startDate: ""
+    startDate: "",
+    endDate: ""
 }

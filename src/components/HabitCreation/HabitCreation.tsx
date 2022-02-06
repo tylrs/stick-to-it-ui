@@ -61,8 +61,17 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
                     className="habit-creation-input"
                     type="text" 
                     name="startDate" 
-                    placeholder="startDate"
+                    placeholder="start date"
                     value={habitInfo.startDate}
+                    onChange={(e) => handleUserInput(e)}
+                />
+                <input 
+                    required
+                    className="habit-creation-input"
+                    type="text" 
+                    name="endDate" 
+                    placeholder="end date"
+                    value={habitInfo.endDate}
                     onChange={(e) => handleUserInput(e)}
                 />
                 <button 
