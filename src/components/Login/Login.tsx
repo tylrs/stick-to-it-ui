@@ -39,8 +39,8 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
 
     return (
         <section className="login-page-container">
-            <h2>Login</h2>
             <form className="login-box">
+                <h2>Login</h2>
                 <input 
                     required
                     className="login-input"

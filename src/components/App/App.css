@@ -1,43 +1,8 @@
 main {
-  height: 100vh;
+  background-color: #fffccc;
+  font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+  height: 100%;
   width: 100vw;
-}
-
-.site-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 10vh;
-  margin-left: 1rem;;
-  margin-top: 1.5rem;
-}
-
-.link-container {
-  align-items: center;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.header-link {
-  color: black;
-}
-
-.header-link:hover {
-  background-color: aqua;
-}
-
-h1 {
-  font-size: 2rem;
-}
-
-.site-title {
-  align-items: center;
-  display: flex;
-  color: black;
-  text-decoration: none;
-}
-
-.site-title:hover {
-  color: aqua;
 }
 
 .greeting-wrapper {
@@ -49,16 +14,4 @@ h1 {
 
 .greeting-message {
   text-transform: capitalize;
-}
-
-.log-out-button {
-  background-color: white;
-  height: 1.5rem;
-  padding: 0% 2% 0% 2%;
-  width: 5rem;
-}
-
-.log-out-button:hover {
-  cursor: pointer;
-  background-color: aqua;
 }

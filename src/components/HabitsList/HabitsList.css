@@ -5,3 +5,33 @@
     justify-content: center;
     padding-bottom: 4rem;
 }
+
+.habits-list-title {
+    align-items: center;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    height: 4rem;
+    justify-content: center;
+    width: 12rem;
+    text-align: center;
+}
+
+.create-new-habit-button {
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    width: 10rem;
+}
+
+.create-new-habit-button:hover {
+    background-color: aqua;
+    cursor: pointer;
+}
