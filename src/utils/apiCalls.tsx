@@ -1,6 +1,5 @@
 import { urls } from "../dev-constants";
 import { getToken, storeCurrentUser, storeToken } from "./miscUtils";
-import { sampleUser } from "../dev-constants";
 import { AccountType, HabitType } from "./types";
 
 export const createUser = async (accountInfo: AccountType) => {
@@ -52,11 +51,13 @@ export const login = async (credentials: { email: string; password: string; }) =
 
 export const createHabit = async (habitInfo: HabitType) => {
     const token = getToken()
+    const startDate = habitInfo.startDate!.toString()
+    const endDate = habitInfo.endDate!.toString()
     const formData = new FormData();
     formData.append("name", habitInfo.name);
     formData.append("description", habitInfo.description);
-    formData.append("start_datetime", habitInfo.startDate);
-    formData.append("end_datetime", habitInfo.endDate);
+    formData.append("start_datetime", startDate);
+    formData.append("end_datetime", endDate);
     const postInfo = {
         method: "POST",
         headers: {
