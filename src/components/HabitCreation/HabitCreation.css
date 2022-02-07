@@ -12,3 +12,7 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+.date-picker {
+    z-index: 1;
+}
