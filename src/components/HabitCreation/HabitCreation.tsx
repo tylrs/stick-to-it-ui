@@ -97,7 +97,7 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
                 <DatePicker
                     required
                     className="date-picker"
-                    placeholderText="end date"
+                    placeholderText="end date inclusive"
                     selected={habitInfo.endDate}
                     minDate={setMinEndDate()}
                     onChange={(date) => handleEndDateChange(date)} 
