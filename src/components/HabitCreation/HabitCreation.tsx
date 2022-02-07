@@ -1,6 +1,6 @@
 import "./HabitCreation.css";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createHabit } from "../../utils/apiCalls";
 import { blankHabit } from "../../utils/miscConstants";
 import { HabitType } from "../../utils/types";
@@ -41,6 +41,16 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
             })
         })
     }
+
+    const setMinEndDate = () => {
+        let date = new Date()
+        if (!habitInfo.startDate) {
+            date.setDate(date.getDate() + 1)
+            return date
+        }
+        date.setDate(habitInfo.startDate.getDate() + 1)
+        return date
+    }
       
     const submitHabitInfo = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
@@ -77,6 +87,7 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
                     onChange={(e) => handleUserInput(e)}
                 />
                 <DatePicker
+                    required
                     className="date-picker"
                     placeholderText="start date"
                     selected={habitInfo.startDate}
@@ -84,10 +95,11 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
                     onChange={(date) => handleStartDateChange(date)} 
                 />
                 <DatePicker
+                    required
                     className="date-picker"
                     placeholderText="end date"
                     selected={habitInfo.endDate}
-                    minDate={new Date()}
+                    minDate={setMinEndDate()}
                     onChange={(date) => handleEndDateChange(date)} 
                 />
                 <button 
