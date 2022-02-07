@@ -17,8 +17,8 @@ export interface HabitType {
     id?: number,
     name: string, 
     description: string, 
-    startDate: string,
-    endDate: string,
+    startDate: Date | null,
+    endDate: Date | null,
     userId?: number
 }
 
