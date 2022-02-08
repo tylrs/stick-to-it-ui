@@ -12,9 +12,9 @@ const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | un
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         try {
             await updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
-            e.target.checked ? setCompleted(true) : setCompleted(false)
+            e.target.checked ? setCompleted(false) : setCompleted(true)
         } catch (err) {
-            
+            console.log(err)
         }
     }
 
@@ -22,7 +22,6 @@ const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | un
         if (habitLogInfo?.completed_at) {
             setCompleted(true)
         }
-        console.log(habitLogInfo)
     }, [])
 
     return (
