@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./Habit.css";
 import { HabitLogType, HabitType } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
@@ -14,10 +13,14 @@ const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], hand
 
     return (
         <article className="habit-container">
-            <h3 className="habit-name">Habit: {habitInfo.name}</h3>
-            <p>Description: {habitInfo.description}</p>
-            {allLogs}
-            <button className="habit-delete-button"onClick={() => {handleDelete(habitInfo.id)}}>Delete</button>
+            <div className="habit-info-container">
+                <h3 className="habit-name">{habitInfo.name}</h3>
+                <p className="habit-description">{habitInfo.description}</p>
+                <button className="habit-delete-button"onClick={() => {handleDelete(habitInfo.id)}}>Delete</button>
+            </div>
+            <div className="habit-logs-container">
+                {allLogs}
+            </div>
         </article>
     )
 }
