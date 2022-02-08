@@ -1,9 +1,11 @@
+import "./HabitCreation.css";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createHabit } from "../../utils/apiCalls";
 import { blankHabit } from "../../utils/miscConstants";
 import { HabitType } from "../../utils/types";
-import "./HabitCreation.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
     const [habitInfo, setHabitInfo] = useState<HabitType>(blankHabit)
@@ -20,6 +22,34 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
                 [e.target.name]: e.target.value
             })
         })
+    }
+    
+    const handleStartDateChange = (date: Date | null) => {
+         setHabitInfo((prevState) => {
+            return ({
+                ...prevState,
+                startDate: date
+            })
+        })
+    }
+
+    const handleEndDateChange = (date: Date | null) => {
+         setHabitInfo((prevState) => {
+            return ({
+                ...prevState,
+                endDate: date
+            })
+        })
+    }
+
+    const setMinEndDate = () => {
+        let date = new Date()
+        if (!habitInfo.startDate) {
+            date.setDate(date.getDate() + 1)
+            return date
+        }
+        date.setDate(habitInfo.startDate.getDate() + 1)
+        return date
     }
       
     const submitHabitInfo = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -56,14 +86,21 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
                     value={habitInfo.description}
                     onChange={(e) => handleUserInput(e)}
                 />
-                <input 
+                <DatePicker
                     required
-                    className="habit-creation-input"
-                    type="text" 
-                    name="startDate" 
-                    placeholder="startDate"
-                    value={habitInfo.startDate}
-                    onChange={(e) => handleUserInput(e)}
+                    className="date-picker"
+                    placeholderText="start date"
+                    selected={habitInfo.startDate}
+                    minDate={new Date()}
+                    onChange={(date) => handleStartDateChange(date)} 
+                />
+                <DatePicker
+                    required
+                    className="date-picker"
+                    placeholderText="end date inclusive"
+                    selected={habitInfo.endDate}
+                    minDate={setMinEndDate()}
+                    onChange={(date) => handleEndDateChange(date)} 
                 />
                 <button 
                     className="submit-habit-creation"

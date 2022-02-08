@@ -5,7 +5,6 @@
     border-radius: 10px;
     color: white;
     display: flex;
-    flex-direction: column;
     height: 11rem;
     width: 25rem;
     justify-content: space-evenly;
