@@ -19,7 +19,7 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
         <Habit 
             habitInfo={habit.habitInfo} 
             key={habit.habitInfo.id} 
-            habitLogs={habit.logs} 
+            habitLogsInfo={habit.logs} 
             handleDelete={handleDelete}
         />)
 
