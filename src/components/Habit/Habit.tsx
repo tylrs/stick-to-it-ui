@@ -8,7 +8,7 @@ import { componentsOfWeek } from "../../utils/miscConstants";
 const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any}> = ({ habitInfo, habitLogsInfo, handleDelete }) => {
     const allLogs = habitLogsInfo.reduce((acc, currentLog) => {
         const day = new Date(currentLog.scheduled_at).getDay()
-        acc[day] = <HabitLog habitLogInfo={currentLog} dayNum={day} key={day}/>
+        acc[day] = <HabitLog habitLogInfo={currentLog} userId={habitInfo.userId} dayNum={day} key={day}/>
         return acc
     }, componentsOfWeek)
 

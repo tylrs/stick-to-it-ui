@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./HabitLog.css";
 import { HabitLogType } from "../../utils/types";
 import { daysOfWeek } from "../../utils/miscConstants";
+import { updateHabitLog } from "../../utils/apiCalls";
 
-const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, dayNum: number}> = ({ habitLogInfo, dayNum }) => {
+const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | undefined, dayNum: number}> = ({ habitLogInfo, userId, dayNum }) => {
     const [completed, setCompleted] = useState(false)
 
     const dayOfWeek = daysOfWeek[dayNum]
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.target.checked ? setCompleted(true) : setCompleted(false)
+        updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
     }
 
     useEffect(() => {
