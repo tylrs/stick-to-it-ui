@@ -4,17 +4,24 @@ import { deleteHabit, getAllHabits, login } from "../../utils/apiCalls";
 import "./HabitsList.css";
 import { HabitsType, UserType } from "../../utils/types";
 import Habit from "../Habit/Habit";
+import { blankHabits } from "../../utils/miscConstants";
 
 const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
-    const [allHabits, setAllHabits] = useState<HabitsType>([]);
+    const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
 
     const handleDelete = async (habitId: number) => {
         await deleteHabit(userId, habitId)
-        let updatedHabits = allHabits.filter((habit) => habit.id !== habitId)
+        let updatedHabits = allHabits.filter((habit) => habit.habitInfo.id !== habitId)
         setAllHabits(updatedHabits)
     }
 
-    const formattedHabits = allHabits.map(habit => <Habit habit={habit} key={habit.id} handleDelete={handleDelete}/>)
+    const formattedHabits = allHabits.map(habit => 
+        <Habit 
+            habitInfo={habit.habitInfo} 
+            key={habit.habitInfo.id} 
+            habitLogs={habit.logs} 
+            handleDelete={handleDelete}
+        />)
 
     const fetchHabits = async () => {
         try {
