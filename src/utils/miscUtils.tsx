@@ -15,3 +15,10 @@ export const storeCurrentUser = (user: UserType) => {
 export const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem("currentUser") || "{}")
 }
+
+export const getLastSunday = () => {
+    const date = new Date();
+    date.setDate(date.getDate() - date.getDay())
+    const dateString = date.toLocaleString("en-US", {month: "long", day: "numeric", year: "numeric"})
+    return dateString;
+}
