@@ -103,3 +103,18 @@ export const deleteHabit = async (userId: number, habitId: number | undefined) =
         console.log(err)
     }
 }
+
+export const updateHabitLog = async (userId: number, habitId: number, habitLogId: number) => {
+    const token = getToken()
+    try {
+        const response = await fetch(`${urls.localUsers}/${userId}/habits/${habitId}`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        console.log(response)
+    } catch (err){
+        console.log(err)
+    }
+}
