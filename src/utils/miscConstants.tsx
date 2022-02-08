@@ -1,3 +1,5 @@
+import HabitLog from "../components/HabitLog/HabitLog"
+
 export const emptyUser = {
     id: 0,
     name: "",
@@ -25,7 +27,7 @@ export const blankLogs = [
         id: 0,
         habit_id: 0,
         scheduled_at: "",
-        updated_at: ""
+        completed_at: ""
     }
 ]
 
@@ -35,3 +37,8 @@ export const blankHabits = [
         logs: blankLogs
     }
 ]
+
+export const daysOfWeek = ["s", "m", "t", "w", "th", "f", "s"]
+
+export const componentsOfWeek = [...Array(7)].map((item, index) => <HabitLog habitLogInfo={null} dayNum={index} key={index}/>)
+
