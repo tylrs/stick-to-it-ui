@@ -39,6 +39,3 @@ export const blankHabits = [
 ]
 
 export const daysOfWeek = ["s", "m", "t", "w", "th", "f", "s"]
-
-export const componentsOfWeek = [...Array(7)].map((item, index) => <HabitLog habitLogInfo={null} dayNum={index} key={index}/>)
-

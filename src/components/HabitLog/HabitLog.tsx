@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import "./HabitLog.css";
 import { HabitLogType } from "../../utils/types";
 import { daysOfWeek } from "../../utils/miscConstants";
+import { updateHabitLog } from "../../utils/apiCalls";
 
-const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, dayNum: number}> = ({ habitLogInfo, dayNum }) => {
+const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | undefined, dayNum: number}> = ({ habitLogInfo, userId, dayNum }) => {
     const [completed, setCompleted] = useState(false)
 
     const dayOfWeek = daysOfWeek[dayNum]
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.target.checked ? setCompleted(true) : setCompleted(false)
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        try {
+            await updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
+            e.target.checked ? setCompleted(false) : setCompleted(true)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     useEffect(() => {
@@ -21,7 +27,7 @@ const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, dayNum: number}> = 
     return (
         <div className="habit-log-container">
             <h4 className="day-of-week-label">{dayOfWeek}</h4>
-            <input type="checkbox" checked={completed} onChange={(e) => handleChange(e)}/>
+            <input className="log-checkbox" type="checkbox" disabled={!habitLogInfo} checked={completed} onChange={(e) => handleChange(e)}/>
         </div>
     )
 }
