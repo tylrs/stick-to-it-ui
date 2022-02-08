@@ -9,21 +9,26 @@ const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | un
 
     const dayOfWeek = daysOfWeek[dayNum]
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.target.checked ? setCompleted(true) : setCompleted(false)
-        updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        try {
+            await updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
+            e.target.checked ? setCompleted(true) : setCompleted(false)
+        } catch (err) {
+            
+        }
     }
 
     useEffect(() => {
         if (habitLogInfo?.completed_at) {
             setCompleted(true)
         }
+        console.log(habitLogInfo)
     }, [])
 
     return (
         <div className="habit-log-container">
             <h4 className="day-of-week-label">{dayOfWeek}</h4>
-            <input type="checkbox" checked={completed} onChange={(e) => handleChange(e)}/>
+            <input type="checkbox" disabled={!habitLogInfo} checked={completed} onChange={(e) => handleChange(e)}/>
         </div>
     )
 }
