@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 import "./Habit.css";
 import { HabitLogType, HabitType } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
+import { componentsOfWeek } from "../../utils/miscConstants";
 
-const Habit: React.FC<{habitInfo: HabitType, habitLogs: HabitLogType[], handleDelete: any}> = ({ habitInfo, habitLogs, handleDelete }) => {
-    const allLogs = habitLogs.map((habitLogInfo) => <HabitLog habitLogInfo={habitLogInfo} key={habitLogInfo.id}/>)
+const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any}> = ({ habitInfo, habitLogsInfo, handleDelete }) => {
+    const allLogs = habitLogsInfo.reduce((acc, currentLog) => {
+        const day = new Date(currentLog.scheduled_at).getDay()
+        acc[day] = <HabitLog habitLogInfo={currentLog} dayNum={day} key={day}/>
+        return acc
+    }, componentsOfWeek)
 
     return (
         <article className="habit-container">
