@@ -4,6 +4,7 @@ import { deleteHabit, getAllHabits } from "../../utils/apiCalls";
 import "./HabitsList.css";
 import { HabitsType } from "../../utils/types";
 import Habit from "../Habit/Habit";
+import { getLastSunday } from "../../utils/miscUtils";
 
 const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
@@ -44,7 +45,8 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
     return (
         <section className="habits-list-page-container">
             <div className="habits-list-title">
-                <h2>Habits List</h2>
+                <h2>Week Of:</h2>
+                <p>{getLastSunday()}</p>
             </div>
             {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>}
             <Link className="create-new-habit-button" to="/create-habit">Create New Habit</Link>
