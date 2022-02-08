@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import "./Habit.css";
 import { HabitLogType, HabitType } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
-import { componentsOfWeek } from "../../utils/miscConstants";
 
-const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any}> = ({ habitInfo, habitLogsInfo, handleDelete }) => {
+const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any}> = ({ habitInfo, habitLogsInfo, handleDelete }) => {    
+    const componentsOfWeek = [...Array(7)]
+                            .map((item, index) => 
+                                <HabitLog 
+                                habitLogInfo={null} 
+                                userId={0} 
+                                dayNum={index} 
+                                key={index}
+                            />)
     const allLogs = habitLogsInfo.reduce((acc, currentLog) => {
-        const day = new Date(currentLog.scheduled_at).getDay()
-        acc[day] = <HabitLog habitLogInfo={currentLog} userId={habitInfo.userId} dayNum={day} key={day}/>
+        const dayNum = new Date(currentLog.scheduled_at.replaceAll("-", "/").slice(0, 10)).getDay()
+        acc[dayNum] = <HabitLog habitLogInfo={currentLog} userId={habitInfo.userId} dayNum={dayNum} key={dayNum}/>
         return acc
     }, componentsOfWeek)
 
