@@ -27,7 +27,7 @@ const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | un
     return (
         <div className="habit-log-container">
             <h4 className="day-of-week-label">{dayOfWeek}</h4>
-            <input type="checkbox" disabled={!habitLogInfo} checked={completed} onChange={(e) => handleChange(e)}/>
+            <input className="log-checkbox" type="checkbox" disabled={!habitLogInfo} checked={completed} onChange={(e) => handleChange(e)}/>
         </div>
     )
 }
