@@ -21,9 +21,10 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
             key={habit.id} 
             habitLogsInfo={habit.habit_logs} 
             handleDelete={handleDelete}
+            type={type}
         />)
 
-    const fetchHabits = async (type: string) => {
+    const fetchHabits = async () => {
         try {
             const data = type === "all" ? await getAllHabits(userId) : await getTodayHabits(userId)
             if (data.length) {
@@ -39,7 +40,7 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
     useEffect(() => {
         if (!allHabits.length && userId) {
             console.log(type)
-            fetchHabits(type)
+            fetchHabits()
         }
     })
 
@@ -51,7 +52,7 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
                     <p>{getLastSunday()}</p>
                   </div>
                 : <div className="habits-list-title">
-                    <h2>Today:</h2>
+                    <h2>Habits Today:</h2>
                     <p>{"Today"}</p>
                   </div>  
             }
