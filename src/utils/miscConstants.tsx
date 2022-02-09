@@ -39,3 +39,5 @@ export const blankHabits = [
 ]
 
 export const daysOfWeek = ["s", "m", "t", "w", "th", "f", "s"]
+
+export const daysOfWeekLong = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
