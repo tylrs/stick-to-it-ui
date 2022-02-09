@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./HabitLog.css";
 import { HabitLogType } from "../../utils/types";
-import { daysOfWeek } from "../../utils/miscConstants";
+import { daysOfWeek, daysOfWeekLong } from "../../utils/miscConstants";
 import { updateHabitLog } from "../../utils/apiCalls";
 
-const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | undefined, dayNum: number}> = ({ habitLogInfo, userId, dayNum }) => {
+const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | undefined, dayNum: number, type: string}> = ({ habitLogInfo, userId, dayNum, type }) => {
     const [completed, setCompleted] = useState(false)
 
-    const dayOfWeek = daysOfWeek[dayNum]
+    const dayOfWeek = type === "today" ? daysOfWeekLong[dayNum] : daysOfWeek[dayNum] 
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         try {
