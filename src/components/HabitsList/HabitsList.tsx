@@ -4,7 +4,7 @@ import { deleteHabit, getAllHabits, getTodayHabits } from "../../utils/apiCalls"
 import "./HabitsList.css";
 import { HabitsType } from "../../utils/types";
 import Habit from "../Habit/Habit";
-import { getLastSunday } from "../../utils/miscUtils";
+import { getLastSunday, getToday } from "../../utils/miscUtils";
 
 const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
@@ -53,7 +53,7 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
                   </div>
                 : <div className="habits-list-title">
                     <h2>Habits Today:</h2>
-                    <p>{"Today"}</p>
+                    <p>{getToday()}</p>
                   </div>  
             }
             {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>}

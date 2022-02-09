@@ -22,3 +22,9 @@ export const getLastSunday = () => {
     const dateString = date.toLocaleString("en-US", {month: "long", day: "numeric", year: "numeric"})
     return dateString;
 }
+
+export const getToday = () => {
+    const date = new Date();
+    const dateString = date.toLocaleString("en-US", {month: "long", day: "numeric", year: "numeric"})
+    return dateString;
+}
