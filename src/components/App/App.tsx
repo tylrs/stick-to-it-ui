@@ -42,10 +42,11 @@ const App = () => {
             <Route path="*" element={<Welcome />}/>
           </Routes>
         : <Routes>
-            <Route path="/" element={<HabitsList userId={user.id}/>}/>
-            <Route path="/all-habits" element={<HabitsList userId={user.id}/>}/>
+            <Route path="/" element={<HabitsList userId={user.id} type={"all"}/>}/>
+            <Route path="/all-habits" element={<HabitsList userId={user.id} type={"all"}/>}/>
+            <Route path="/today" element={<HabitsList userId={user.id} type={"today"}/>}/>
             <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
-            <Route path="*" element={<HabitsList userId={user.id}/>}/>
+            <Route path="*" element={<HabitsList userId={user.id} type={"all"}/>}/>
           </Routes>
       }
     </main>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { deleteHabit, getAllHabits } from "../../utils/apiCalls";
+import { deleteHabit, getAllHabits, getTodayHabits } from "../../utils/apiCalls";
 import "./HabitsList.css";
 import { HabitsType } from "../../utils/types";
 import Habit from "../Habit/Habit";
 import { getLastSunday } from "../../utils/miscUtils";
 
-const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
+const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
 
     const handleDelete = async (habitId: number) => {
@@ -23,9 +23,9 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
             handleDelete={handleDelete}
         />)
 
-    const fetchHabits = async () => {
+    const fetchHabits = async (type: string) => {
         try {
-            const data = await getAllHabits(userId)
+            const data = type === "all" ? await getAllHabits(userId) : await getTodayHabits(userId)
             if (data.length) {
                 setAllHabits(data)
             } else {
@@ -38,16 +38,23 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
 
     useEffect(() => {
         if (!allHabits.length && userId) {
-            fetchHabits()
+            console.log(type)
+            fetchHabits(type)
         }
     })
 
     return (
         <section className="habits-list-page-container">
-            <div className="habits-list-title">
-                <h2>Week Of:</h2>
-                <p>{getLastSunday()}</p>
-            </div>
+            {type === "all"
+                ? <div className="habits-list-title">
+                    <h2>Week Of:</h2>
+                    <p>{getLastSunday()}</p>
+                  </div>
+                : <div className="habits-list-title">
+                    <h2>Today:</h2>
+                    <p>{"Today"}</p>
+                  </div>  
+            }
             {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>}
             <Link className="create-new-habit-button" to="/create-habit">Create New Habit</Link>
         </section>
