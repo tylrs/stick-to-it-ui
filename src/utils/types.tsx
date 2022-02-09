@@ -30,6 +30,11 @@ export interface HabitLogType {
 }
 
 export interface HabitsType {
-    habitInfo: HabitType,
-    logs: Array<HabitLogType>
+    id?: number,
+    userId?: number
+    name: string, 
+    description: string, 
+    startDate: Date | null,
+    endDate: Date | null,
+    habit_logs: Array<HabitLogType>
 }

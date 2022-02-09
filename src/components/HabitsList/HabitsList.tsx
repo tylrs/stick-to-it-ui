@@ -11,15 +11,15 @@ const HabitsList: React.FC<{userId: number}> = ({ userId }) => {
 
     const handleDelete = async (habitId: number) => {
         await deleteHabit(userId, habitId)
-        let updatedHabits = allHabits.filter((habit) => habit.habitInfo.id !== habitId)
+        let updatedHabits = allHabits.filter((habit) => habit.id !== habitId)
         setAllHabits(updatedHabits)
     }
 
     const formattedHabits = allHabits.map(habit => 
         <Habit 
-            habitInfo={habit.habitInfo} 
-            key={habit.habitInfo.id} 
-            habitLogsInfo={habit.logs} 
+            habitInfo={habit} 
+            key={habit.id} 
+            habitLogsInfo={habit.habit_logs} 
             handleDelete={handleDelete}
         />)
 
