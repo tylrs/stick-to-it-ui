@@ -7,8 +7,7 @@ const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], hand
     let allLogs, log;
 
     if (type === "all") {
-        const componentsOfWeek = [...Array(7)]
-                             .map((item, index) => 
+        const componentsOfWeek = [...Array(7)].map((item, index) => 
                                  <HabitLog 
                                     habitLogInfo={null} 
                                     userId={0} 
