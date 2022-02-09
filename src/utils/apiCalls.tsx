@@ -119,3 +119,20 @@ export const updateHabitLog = async (userId: number | undefined, habitId: number
         console.log(err)
     }
 }
+
+export const getTodayHabits = async (userId: number | undefined) => {
+    const token = getToken()
+    try {
+        const data = await fetch(`${urls.localUsers}/${userId}/habits/today`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        const response = data.json()
+        console.log(response)
+        return response
+    } catch (err){
+        console.log(err)
+    }
+}
