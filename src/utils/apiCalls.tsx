@@ -107,14 +107,14 @@ export const deleteHabit = async (userId: number, habitId: number | undefined) =
 export const updateHabitLog = async (userId: number | undefined, habitId: number | undefined, habitLogId: number | undefined) => {
     const token = getToken()
     try {
-        const data = await fetch(`${urls.localUsers}/${userId}/habits/${habitId}/habit_logs/${habitLogId}`, {
+        const response = await fetch(`${urls.localUsers}/${userId}/habits/${habitId}/habit_logs/${habitLogId}`, {
             method: "PATCH",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
-        const response = data.json()
-        return response
+        const data = await response.json()
+        return data
     } catch (err){
         console.log(err)
     }
@@ -123,15 +123,14 @@ export const updateHabitLog = async (userId: number | undefined, habitId: number
 export const getTodayHabits = async (userId: number | undefined) => {
     const token = getToken()
     try {
-        const data = await fetch(`${urls.localUsers}/${userId}/habits/today`, {
+        const response = await fetch(`${urls.localUsers}/${userId}/habits/today`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
-        const response = data.json()
-        console.log(response)
-        return response
+        const data = await response.json()
+        return data
     } catch (err){
         console.log(err)
     }
