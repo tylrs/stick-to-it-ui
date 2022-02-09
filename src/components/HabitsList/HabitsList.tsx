@@ -8,6 +8,7 @@ import { getLastSunday, getToday } from "../../utils/miscUtils";
 
 const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
+    const [listType, setListType] = useState("");
 
     const handleDelete = async (habitId: number) => {
         await deleteHabit(userId, habitId)
@@ -38,8 +39,10 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
     }
 
     useEffect(() => {
-        if (!allHabits.length && userId) {
-            console.log(type)
+        if ((!allHabits.length && userId)) {
+            fetchHabits()
+        } else if (type !== listType) {
+            setListType(type)
             fetchHabits()
         }
     })
@@ -48,7 +51,7 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
         <section className="habits-list-page-container">
             {type === "all"
                 ? <div className="habits-list-title">
-                    <h2>Week Of:</h2>
+                    <h2>Week Starting On:</h2>
                     <p>{getLastSunday()}</p>
                   </div>
                 : <div className="habits-list-title">
