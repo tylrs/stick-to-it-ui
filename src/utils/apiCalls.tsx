@@ -37,7 +37,7 @@ export const login = async (credentials: { email: string; password: string; }) =
         const response = await fetch(`${urls.productionLogin}`, postInfo)
         const data = await response.json()
         console.log("Should be user", data)
-        if (!("error" in data)) {
+        if (!("error" in data) && response.ok) {
             storeToken(data.token)
             storeCurrentUser(data.user)
             return data.user

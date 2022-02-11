@@ -11,6 +11,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ setUser }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
     const navigate = useNavigate();
 
     const clearInputs = () => {
@@ -19,6 +20,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
     }
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setError("")
         if (e.target.name === "email") {
             setEmail(e.target.value)
         } else {
@@ -28,12 +30,14 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
       
     const submitCredentials = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        setError("")
         try {
             const user = await login({email, password})
             setUser(user)
             navigate("/all-habits")
-        } catch (err){
-            console.log(err)
+        } catch (err:any){
+            clearInputs()
+            setError("Incorrect Email Or Password, Please Try Again");
         }
     }
 
@@ -41,6 +45,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
         <section className="login-page-container">
             <form className="login-box">
                 <h2>Login</h2>
+                {error && <p className="login-error">{error}</p>}
                 <input 
                     required
                     className="login-input"
