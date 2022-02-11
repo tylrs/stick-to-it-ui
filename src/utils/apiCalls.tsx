@@ -76,13 +76,11 @@ export const getAllHabits = async (userId: number) => {
                 "Authorization": `Bearer ${token}`
             }
         })
-        if (!response.ok) {
-            throw Error(response.statusText)
-        }
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
         return data
     } catch (err:any){
-      throw Error(err)
+      throw err
     }
 }
 
@@ -95,11 +93,9 @@ export const deleteHabit = async (userId: number, habitId: number | undefined) =
                 "Authorization": `Bearer ${token}`
             }
         })
-        if (!response.ok) {
-            throw Error
-        }
+        if (!response.ok) throw (await response.json())
     } catch (err:any){
-      throw Error(err)
+        throw err
     }
 }
 
