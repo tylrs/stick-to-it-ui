@@ -43,7 +43,6 @@ const App = () => {
         ? <Header headerType={"loggedIn"} logOut={logOut} message={message}/>
         : <Header headerType={"loggedOut"} logOut={logOut}/> 
       }
-      {/* <Message message={message}/> */}
       {!!user.id && <div className="greeting-wrapper"><h3 className="greeting-message">Welcome: {user.name}</h3></div>}
       {!user.id 
         ? <Routes>

@@ -1,12 +1,21 @@
-.message-text {
+.message-container {
   animation: fadeIn 2s; 
+  background-color: black;
+  border-radius: 13px;
+  padding: .5rem;
   position: absolute;
-  opacity: 0;
+  height: 3rem;
+  width: 8rem;
+  text-align: center;
+}
+
+.message-text {
+  color: white;
 }
 
 @keyframes fadeIn {
   0% {
-    transform: translate(-450px, -50px);
+    transform: translate(-450px, 50px);
     opacity: 0.25;
   }
   100% {
