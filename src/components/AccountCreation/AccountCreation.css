@@ -12,3 +12,7 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+.account-creation-error {
+    color: red;
+}

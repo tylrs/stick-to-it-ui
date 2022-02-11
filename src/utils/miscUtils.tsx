@@ -35,10 +35,10 @@ export const checkLoginCredentials = (email:string, password:string) => {
     }
 }
 
-export const checkHabitCreation = (habitInfo:any) => {
-    console.log(habitInfo)
-    Object.keys(habitInfo).forEach(habit => {
-        if (!habitInfo[habit]) {
+export const checkFormSubmission = (formData:any) => {
+    console.log(formData)
+    Object.keys(formData).forEach(input => {
+        if (!formData[input]) {
             throw Error
         }
     })
