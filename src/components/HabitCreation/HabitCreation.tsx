@@ -76,8 +76,10 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
             <h2>Create A Habit</h2>
             {error && <p className="habit-creation-error">{error}</p>}
             <form className="habit-creation-box" onSubmit={e => submitHabitInfo(e)}>
+                <label htmlFor="habit-name-input">Habit Name:</label>
                 <input 
                     required
+                    id="habit-name-input"
                     className="habit-creation-input"
                     type="text" 
                     name="name" 
@@ -86,8 +88,10 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
                     value={habitInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="description-input"> Description:</label>
                 <input 
                     required
+                    id="description-input"
                     className="habit-creation-input"
                     type="text" 
                     name="description" 
@@ -96,16 +100,20 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
                     value={habitInfo.description}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="start-date-input"> Start Date:</label>
                 <DatePicker
                     required
+                    id="start-date-input"
                     className="date-picker"
                     placeholderText="start date"
                     selected={habitInfo.startDate}
                     minDate={new Date()}
                     onChange={(date) => handleStartDateChange(date)} 
                 />
+                <label htmlFor="end-date-input"> End Date (inclusive):</label>
                 <DatePicker
                     required
+                    id="end-date-input"
                     className="date-picker"
                     placeholderText="end date inclusive"
                     selected={habitInfo.endDate}
