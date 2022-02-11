@@ -6,9 +6,11 @@ import { blankHabit } from "../../utils/miscConstants";
 import { HabitType } from "../../utils/types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { checkHabitCreation } from "../../utils/miscUtils";
 
 const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, setMessage }) => {
     const [habitInfo, setHabitInfo] = useState<HabitType>(blankHabit)
+    const [error, setError] = useState("")
     const navigate = useNavigate();
 
     const clearInputs = () => {
@@ -16,6 +18,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
     }
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setError("")
         setHabitInfo((prevState) => {
             return ({
                 ...prevState,
@@ -25,7 +28,8 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
     }
     
     const handleStartDateChange = (date: Date | null) => {
-         setHabitInfo((prevState) => {
+        setError("")
+        setHabitInfo((prevState) => {
             return ({
                 ...prevState,
                 startDate: date
@@ -34,7 +38,8 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
     }
 
     const handleEndDateChange = (date: Date | null) => {
-         setHabitInfo((prevState) => {
+        setError("")
+        setHabitInfo((prevState) => {
             return ({
                 ...prevState,
                 endDate: date
@@ -57,17 +62,19 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
         const habitData = habitInfo
         habitData.userId = userId
         try {
+            checkHabitCreation(habitData)
             await createHabit(habitData)
             navigate("/all-habits")
             setMessage("New Habit Created")
         } catch (err){
-            console.log(err)
+            setError("Please Fill Out All Form Fields")
         }
     }
 
     return (
         <section className="habit-creation-page-container">
             <h2>Create A Habit</h2>
+            {error && <p className="habit-creation-error">{error}</p>}
             <form className="habit-creation-box">
                 <input 
                     required

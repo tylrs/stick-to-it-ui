@@ -34,3 +34,12 @@ export const checkLoginCredentials = (email:string, password:string) => {
         throw Error
     }
 }
+
+export const checkHabitCreation = (habitInfo:any) => {
+    console.log(habitInfo)
+    Object.keys(habitInfo).forEach(habit => {
+        if (!habitInfo[habit]) {
+            throw Error
+        }
+    })
+}
