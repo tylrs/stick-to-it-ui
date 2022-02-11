@@ -99,7 +99,9 @@ export const deleteHabit = async (userId: number, habitId: number | undefined) =
                 "Authorization": `Bearer ${token}`
             }
         })
-        console.log(response)
+        if (!response.ok) {
+            throw Error
+        }
     } catch (err:any){
       throw Error(err)
     }

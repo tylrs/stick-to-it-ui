@@ -11,9 +11,13 @@ const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Disp
     const [listType, setListType] = useState("");
 
     const handleDelete = async (habitId: number) => {
-        await deleteHabit(userId, habitId)
-        let updatedHabits = allHabits.filter((habit) => habit.id !== habitId)
-        setAllHabits(updatedHabits)
+        try {
+            await deleteHabit(userId, habitId)
+            let updatedHabits = allHabits.filter((habit) => habit.id !== habitId)
+            setAllHabits(updatedHabits)
+        } catch (error) {
+            setMessage("Habit Could Not Be Deleted")
+        }
     }
 
     const formattedHabits = allHabits.map(habit => 
