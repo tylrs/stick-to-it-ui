@@ -24,9 +24,10 @@ const App = () => {
 
   useEffect(() => {
     if (message) {
-      setTimeout(()=>{
+      let timer1 = setTimeout(()=>{
         setMessage("")
       }, 2000)
+      return (() => {clearTimeout(timer1)})
     }
   })
 
