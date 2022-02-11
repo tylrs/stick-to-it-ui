@@ -1,5 +1,6 @@
 .habits-list-page-container {
     align-items: center;
+    background-color: #fffccc;
     display: flex;
     flex-direction: column;
     justify-content: center;
