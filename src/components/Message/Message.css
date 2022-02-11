@@ -6,11 +6,11 @@
 
 @keyframes fadeIn {
   0% {
-    transform: translate(350px, -40px);
+    transform: translate(-450px, -50px);
     opacity: 0.25;
   }
   100% {
-    transform: translate(350px, -50px);
+    transform: translate(-450px, 0px);
     opacity: 1;
   }
 }
