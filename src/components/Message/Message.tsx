@@ -5,10 +5,7 @@ const Message: React.FC<{message:string}> = ({ message }) => {
 
     return (
         <>
-            {message && 
-                <div className="message-container">
-                    {message}
-                </div>}
+            {message && <h4 className="message-text">{message}</h4>}
         </>
     )
 }

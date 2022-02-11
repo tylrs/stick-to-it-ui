@@ -18,6 +18,7 @@ const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type,
     const dayOfWeek = type === "today" ? daysOfWeekLong[dayNum] : daysOfWeek[dayNum] 
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        setMessage("")
         try {
             await updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
             if (e.target.checked) {

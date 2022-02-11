@@ -1,0 +1,16 @@
+.message-text {
+  animation: fadeIn 1s; 
+  position: absolute;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translate(350px, -40px);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(350px, -50px);
+    opacity: 1;
+  }
+}

@@ -27,7 +27,7 @@ const App = () => {
     if (message) {
       setTimeout(()=>{
         setMessage("")
-      }, 2000)
+      }, 1000)
     }
   })
 
