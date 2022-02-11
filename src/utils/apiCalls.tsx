@@ -18,8 +18,8 @@ export const createUser = async (accountInfo: AccountType) => {
         const response = await fetch(`${urls.productionUsers}`, postInfo)
         const data = await response.json()
         console.log(data)
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+      throw Error(err)
     }
 }
 
@@ -44,8 +44,8 @@ export const login = async (credentials: { email: string; password: string; }) =
         } else {
             throw Error(data.error)
         }
-    } catch (err){
-        console.log(err)
+    } catch (err: any){
+      throw Error(err)
     }
 }
 
@@ -69,8 +69,8 @@ export const createHabit = async (habitInfo: HabitType) => {
         const response = await fetch(`${urls.productionUsers}/${habitInfo.userId}/habits`, postInfo)
         const data = await response.json()
         console.log(data)
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+      throw Error(err)
     }
 }
 
@@ -85,8 +85,8 @@ export const getAllHabits = async (userId: number) => {
         const data = await response.json()
         console.log(data)
         return data
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+      throw Error(err)
     }
 }
 
@@ -100,8 +100,8 @@ export const deleteHabit = async (userId: number, habitId: number | undefined) =
             }
         })
         console.log(response)
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+      throw Error(err)
     }
 }
 
@@ -116,8 +116,8 @@ export const updateHabitLog = async (userId: number | undefined, habitId: number
         })
         const data = await response.json()
         return data
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+      throw Error(err)
     }
 }
 
@@ -132,7 +132,7 @@ export const getTodayHabits = async (userId: number | undefined) => {
         })
         const data = await response.json()
         return data
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+      throw Error(err)
     }
 }
