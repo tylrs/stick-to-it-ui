@@ -29,7 +29,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
         }
       }
       
-    const submitCredentials = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const submitCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setError("")
         try {
@@ -45,15 +45,16 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
 
     return (
         <section className="login-page-container">
-            <form className="login-box" noValidate>
+            <form className="login-box" onSubmit={e => submitCredentials(e)}>
                 <h2>Login</h2>
                 {error && <p className="login-error">{error}</p>}
                 <input 
                     required
                     className="login-input"
-                    type="text" 
+                    type="email" 
                     name="email" 
                     placeholder="email"
+                    maxLength={60}
                     value={email}
                     onChange={(e) => handleUserInput(e)}
                 />
@@ -63,12 +64,11 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
                     type="password" 
                     name="password" 
                     placeholder="password"
+                    maxLength={20}
                     value={password}
                     onChange={(e) => handleUserInput(e)}
                 />
-                <button 
-                    className="submit-login"
-                    onClick={e => submitCredentials(e)}>
+                <button className="submit-login">
                     Login
                 </button>
             </form>

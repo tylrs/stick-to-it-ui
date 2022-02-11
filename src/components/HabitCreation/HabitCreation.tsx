@@ -57,7 +57,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
         return date
     }
       
-    const submitHabitInfo = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const submitHabitInfo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const habitData = habitInfo
         habitData.userId = userId
@@ -75,13 +75,14 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
         <section className="habit-creation-page-container">
             <h2>Create A Habit</h2>
             {error && <p className="habit-creation-error">{error}</p>}
-            <form className="habit-creation-box">
+            <form className="habit-creation-box" onSubmit={e => submitHabitInfo(e)}>
                 <input 
                     required
                     className="habit-creation-input"
                     type="text" 
                     name="name" 
                     placeholder="name"
+                    maxLength={250}
                     value={habitInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
@@ -91,6 +92,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
                     type="text" 
                     name="description" 
                     placeholder="description"
+                    maxLength={250}
                     value={habitInfo.description}
                     onChange={(e) => handleUserInput(e)}
                 />
@@ -110,9 +112,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
                     minDate={setMinEndDate()}
                     onChange={(date) => handleEndDateChange(date)} 
                 />
-                <button 
-                    className="submit-habit-creation"
-                    onClick={e => submitHabitInfo(e)}>
+                <button className="submit-habit-creation">
                     Create Habit
                 </button>
             </form>

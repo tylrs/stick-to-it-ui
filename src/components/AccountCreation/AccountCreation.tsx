@@ -53,6 +53,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     type="text" 
                     name="name" 
                     placeholder="name"
+                    maxLength={60}
                     value={accountInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
@@ -62,6 +63,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     type="text" 
                     name="username" 
                     placeholder="username"
+                    maxLength={20}
                     value={accountInfo.username}
                     onChange={(e) => handleUserInput(e)}
                 />
@@ -71,6 +73,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     type="email" 
                     name="email" 
                     placeholder="email"
+                    maxLength={40}
                     value={accountInfo.email}
                     onChange={(e) => handleUserInput(e)}
                 />
@@ -80,6 +83,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     type="password" 
                     name="password" 
                     placeholder="password"
+                    maxLength={50}
                     value={accountInfo.password}
                     onChange={(e) => handleUserInput(e)}
                 />
@@ -89,6 +93,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     type="password" 
                     name="passwordConfirmation" 
                     placeholder="password confirmation"
+                    maxLength={50}
                     value={accountInfo.passwordConfirmation}
                     onChange={(e) => handleUserInput(e)}
                 />
