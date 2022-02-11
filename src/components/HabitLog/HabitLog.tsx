@@ -29,7 +29,7 @@ const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type,
                 setCompleted(true)
             }
         } catch (err) {
-            console.log(err)
+            setMessage("Habit Could Not Be Updated")
         }
     }
 
