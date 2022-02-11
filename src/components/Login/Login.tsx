@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../utils/apiCalls";
 import "./Login.css";
 import { UserType } from "../../utils/types";
+import { checkCredentials } from "../../utils/miscUtils";
 
 interface LoginProps {
     setUser: React.Dispatch<React.SetStateAction<UserType>>
@@ -32,6 +33,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
         e.preventDefault()
         setError("")
         try {
+            checkCredentials(email, password)
             const user = await login({email, password})
             setUser(user)
             navigate("/all-habits")
@@ -43,7 +45,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
 
     return (
         <section className="login-page-container">
-            <form className="login-box">
+            <form className="login-box" noValidate>
                 <h2>Login</h2>
                 {error && <p className="login-error">{error}</p>}
                 <input 
