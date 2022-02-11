@@ -1,5 +1,5 @@
 .message-text {
-  animation: fadeIn 1s; 
+  animation: fadeIn 2s; 
   position: absolute;
   opacity: 0;
 }

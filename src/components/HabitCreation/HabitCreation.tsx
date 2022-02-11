@@ -7,7 +7,7 @@ import { HabitType } from "../../utils/types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
+const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, setMessage }) => {
     const [habitInfo, setHabitInfo] = useState<HabitType>(blankHabit)
     const navigate = useNavigate();
 
@@ -59,6 +59,7 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
         try {
             await createHabit(habitData)
             navigate("/all-habits")
+            setMessage("New Habit Created")
         } catch (err){
             console.log(err)
         }

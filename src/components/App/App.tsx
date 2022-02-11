@@ -27,7 +27,7 @@ const App = () => {
     if (message) {
       setTimeout(()=>{
         setMessage("")
-      }, 1000)
+      }, 2000)
     }
   })
 
@@ -56,7 +56,7 @@ const App = () => {
             <Route path="/" element={<HabitsList userId={user.id} type={"all"} setMessage={setMessage}/>}/>
             <Route path="/all-habits" element={<HabitsList userId={user.id} type={"all"} setMessage={setMessage}/>}/>
             <Route path="/today" element={<HabitsList userId={user.id} type={"today"} setMessage={setMessage}/>}/>
-            <Route path="/create-habit" element={<HabitCreation userId={user.id}/>}/>
+            <Route path="/create-habit" element={<HabitCreation userId={user.id} setMessage={setMessage}/>}/>
             <Route path="*" element={<HabitsList userId={user.id} type={"all"} setMessage={setMessage}/>}/>
           </Routes>
       }
