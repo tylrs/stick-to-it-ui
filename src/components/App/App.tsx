@@ -10,7 +10,6 @@ import HabitsList from "../HabitsList/HabitsList";
 import { emptyUser } from "../../utils/miscConstants";
 import HabitCreation from "../HabitCreation/HabitCreation";
 import Header from "../Header/Header";
-import Message from "../Message/Message";
 
 const App = () => {
   const [user, setUser] = useState<UserType>(emptyUser);

@@ -29,7 +29,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
         })
     }
       
-    const submitAccountInfo = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const submitAccountInfo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
             checkFormSubmission(accountInfo)
@@ -46,7 +46,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
         <section className="account-creation-page-container">
             <h2 className="account-page-header">Create An Account</h2>
             {error && <p className="account-creation-error">{error}</p>}
-            <form className="account-creation-box">
+            <form className="account-creation-box" onSubmit={e => submitAccountInfo(e)}>
                 <input 
                     required
                     className="account-creation-input"
@@ -68,7 +68,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                 <input 
                     required
                     className="account-creation-input"
-                    type="text" 
+                    type="email" 
                     name="email" 
                     placeholder="email"
                     value={accountInfo.email}
@@ -93,8 +93,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     onChange={(e) => handleUserInput(e)}
                 />
                 <button 
-                    className="submit-account-creation"
-                    onClick={e => submitAccountInfo(e)}>
+                    className="submit-account-creation">
                     Create Account
                 </button>
             </form>
