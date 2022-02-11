@@ -16,10 +16,9 @@ export const createUser = async (accountInfo: AccountType) => {
     }
     try {
         const response = await fetch(`${urls.productionUsers}`, postInfo)
-        const data = await response.json()
-        console.log(data)
+        if (!response.ok) throw (await response.json())
     } catch (err:any){
-      throw Error(err)
+        throw err
     }
 }
 
@@ -35,17 +34,13 @@ export const login = async (credentials: { email: string; password: string; }) =
     }
     try {
         const response = await fetch(`${urls.productionLogin}`, postInfo)
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
-        console.log("Should be user", data)
-        if (!("error" in data) && response.ok) {
-            storeToken(data.token)
-            storeCurrentUser(data.user)
-            return data.user
-        } else {
-            throw Error(data.error)
-        }
-    } catch (err: any){
-      throw Error(err)
+        storeToken(data.token)
+        storeCurrentUser(data.user)
+        return data.user
+    } catch (err:any){
+        throw err
     }
 }
 

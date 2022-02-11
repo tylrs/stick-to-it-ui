@@ -67,7 +67,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
             navigate("/all-habits")
             setMessage("New Habit Created")
         } catch (err:any){
-            setError(err.errors[0])
+            setError(err.errors)
         }
     }
 

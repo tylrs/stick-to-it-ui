@@ -39,7 +39,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
             navigate("/all-habits")
         } catch (err:any){
             clearInputs()
-            setError("Incorrect Email Or Password, Please Try Again");
+            setError(err.error)
         }
     }
 

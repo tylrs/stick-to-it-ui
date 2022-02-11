@@ -37,8 +37,12 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
             const user = await login({email: accountInfo.email, password: accountInfo.password})
             setUser(user)
             navigate("/all-habits")
-        } catch (err){
-            setError("Please Fill Out All Form Fields")
+        } catch (err:any){
+            if (err.errors) {
+                setError(err.errors)
+            } else {
+                setError(err)
+            }
         }
     }
 
