@@ -24,6 +24,14 @@ const App = () => {
   }
 
   useEffect(() => {
+    if (message) {
+      setTimeout(()=>{
+        setMessage("")
+      }, 2000)
+    }
+  })
+
+  useEffect(() => {
     if (!user.id && localStorage.getItem("currentUser")) {
       setUser(getCurrentUser())
     }
