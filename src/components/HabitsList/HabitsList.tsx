@@ -6,7 +6,7 @@ import { HabitsType } from "../../utils/types";
 import Habit from "../Habit/Habit";
 import { getLastSunday, getToday } from "../../utils/miscUtils";
 
-const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) => {
+const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, type, setMessage }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
     const [listType, setListType] = useState("");
 
@@ -23,6 +23,7 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
             habitLogsInfo={habit.habit_logs} 
             handleDelete={handleDelete}
             type={type}
+            setMessage={setMessage}
         />)
 
     const fetchHabits = async () => {

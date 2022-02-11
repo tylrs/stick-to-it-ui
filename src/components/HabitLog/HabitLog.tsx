@@ -4,7 +4,15 @@ import { HabitLogType } from "../../utils/types";
 import { daysOfWeek, daysOfWeekLong } from "../../utils/miscConstants";
 import { updateHabitLog } from "../../utils/apiCalls";
 
-const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | undefined, dayNum: number, type: string}> = ({ habitLogInfo, userId, dayNum, type }) => {
+interface HabitLogProps {
+    habitLogInfo: HabitLogType | null, 
+    userId: number | undefined, 
+    dayNum: number, 
+    type: string
+    setMessage: React.Dispatch<React.SetStateAction<string>>
+}
+
+const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type, setMessage }) => {
     const [completed, setCompleted] = useState(false)
 
     const dayOfWeek = type === "today" ? daysOfWeekLong[dayNum] : daysOfWeek[dayNum] 
@@ -13,6 +21,7 @@ const HabitLog: React.FC<{habitLogInfo: HabitLogType | null, userId: number | un
         try {
             await updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
             e.target.checked ? setCompleted(false) : setCompleted(true)
+            setMessage("Habit Updated")
         } catch (err) {
             console.log(err)
         }
