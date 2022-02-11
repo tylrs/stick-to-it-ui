@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../utils/apiCalls";
 import "./Login.css";
 import { UserType } from "../../utils/types";
-import { checkCredentials } from "../../utils/miscUtils";
+import { checkLoginCredentials } from "../../utils/miscUtils";
 
 interface LoginProps {
     setUser: React.Dispatch<React.SetStateAction<UserType>>
@@ -33,7 +33,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
         e.preventDefault()
         setError("")
         try {
-            checkCredentials(email, password)
+            checkLoginCredentials(email, password)
             const user = await login({email, password})
             setUser(user)
             navigate("/all-habits")

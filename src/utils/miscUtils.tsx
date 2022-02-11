@@ -29,7 +29,7 @@ export const getToday = () => {
     return dateString;
 }
 
-export const checkCredentials = (email:string, password:string) => {
+export const checkLoginCredentials = (email:string, password:string) => {
     if (!email || !password) {
         throw Error
     }
