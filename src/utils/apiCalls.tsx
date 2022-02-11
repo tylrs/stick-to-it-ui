@@ -67,10 +67,9 @@ export const createHabit = async (habitInfo: HabitType) => {
     }
     try {
         const response = await fetch(`${urls.productionUsers}/${habitInfo.userId}/habits`, postInfo)
-        const data = await response.json()
-        console.log(data)
+        if (!response.ok) throw (await response.json())
     } catch (err:any){
-      throw Error(err)
+        throw err
     }
 }
 
@@ -82,8 +81,10 @@ export const getAllHabits = async (userId: number) => {
                 "Authorization": `Bearer ${token}`
             }
         })
+        if (!response.ok) {
+            throw Error(response.statusText)
+        }
         const data = await response.json()
-        console.log(data)
         return data
     } catch (err:any){
       throw Error(err)
@@ -132,9 +133,11 @@ export const getTodayHabits = async (userId: number | undefined) => {
                 "Authorization": `Bearer ${token}`
             }
         })
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
         return data
     } catch (err:any){
-      throw Error(err)
+        console.log(err)
+        throw err
     }
 }

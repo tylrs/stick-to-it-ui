@@ -9,6 +9,7 @@ import { getLastSunday, getToday } from "../../utils/miscUtils";
 const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, type, setMessage }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
     const [listType, setListType] = useState("");
+    const [error, setError] = useState("");
 
     const handleDelete = async (habitId: number) => {
         try {
@@ -36,10 +37,14 @@ const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Disp
             if (data.length) {
                 setAllHabits(data)
             } else {
-                throw Error("")
+                throw "No Data"
             }
-        } catch (err) {
-            console.log(err)
+        } catch (err:any) {
+            if (err.errors) {
+                setError(err.errors)
+            } else {
+                setError(err)
+            }
         }
     }
 
@@ -54,6 +59,7 @@ const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Disp
 
     return (
         <section className="habits-list-page-container">
+            {error && <p className="habits-list-error">{error}</p>}
             {type === "all"
                 ? <div className="habits-list-title">
                     <h2>Week Starting On:</h2>

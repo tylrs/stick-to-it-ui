@@ -66,8 +66,8 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
             await createHabit(habitData)
             navigate("/all-habits")
             setMessage("New Habit Created")
-        } catch (err){
-            setError("Please Fill Out All Form Fields")
+        } catch (err:any){
+            setError(err.errors[0])
         }
     }
 

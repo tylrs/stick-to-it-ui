@@ -37,3 +37,7 @@
     background-color: aqua;
     cursor: pointer;
 }
+
+.habits-list-error {
+    color: red;
+}
