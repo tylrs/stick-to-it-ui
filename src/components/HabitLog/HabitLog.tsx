@@ -20,8 +20,13 @@ const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type,
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         try {
             await updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id)
-            e.target.checked ? setCompleted(false) : setCompleted(true)
-            setMessage("Habit Updated")
+            if (e.target.checked) {
+                setMessage("Habit Marked Incomplete")
+                setCompleted(false)
+            } else {
+                setMessage("Habit Marked Complete")
+                setCompleted(true)
+            }
         } catch (err) {
             console.log(err)
         }
