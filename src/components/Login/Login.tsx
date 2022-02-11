@@ -48,8 +48,10 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
             <form className="login-box" onSubmit={e => submitCredentials(e)}>
                 <h2>Login</h2>
                 {error && <p className="login-error">{error}</p>}
+                <label htmlFor="login-input"> Email:</label>
                 <input 
                     required
+                    id="login-input"
                     className="login-input"
                     type="email" 
                     name="email" 
@@ -58,8 +60,10 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
                     value={email}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="login-input">Password:</label>
                 <input 
                     required
+                    id="password-input"
                     className="login-input"
                     type="password" 
                     name="password" 
