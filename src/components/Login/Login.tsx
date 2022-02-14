@@ -46,7 +46,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
     return (
         <section className="login-page-container">
             <form className="login-box" onSubmit={e => submitCredentials(e)}>
-                <h2>Login</h2>
+                <h2 className="login-title">Login</h2>
                 {error && <p className="login-error">{error}</p>}
                 <label htmlFor="login-input"> Email:</label>
                 <input 
