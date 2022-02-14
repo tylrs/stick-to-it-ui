@@ -6,7 +6,7 @@ import { HabitsType } from "../../utils/types";
 import Habit from "../Habit/Habit";
 import { getLastSunday, getToday } from "../../utils/miscUtils";
 
-const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, type, setMessage }) => {
+const HabitsList: React.FC<{userId: number, name: string, type: string, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, name, type, setMessage }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
     const [listType, setListType] = useState("");
     const [error, setError] = useState("");
@@ -58,11 +58,13 @@ const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Disp
             {error && <p className="habits-list-error">{error}</p>}
             {type === "all"
                 ? <div className="habits-list-title">
-                    <h2>Week Starting On:</h2>
+                    <div className="greeting-wrapper"><h2 className="greeting-message">Welcome: {name}</h2></div>
+                    <h3>Week Starting On:</h3>
                     <p>{getLastSunday()}</p>
                   </div>
                 : <div className="habits-list-title">
-                    <h2>Habits Today:</h2>
+                    <div className="greeting-wrapper"><h2 className="greeting-message">Welcome: {name}</h2></div>
+                    <h3>Habits Today:</h3>
                     <p>{getToday()}</p>
                   </div>  
             }

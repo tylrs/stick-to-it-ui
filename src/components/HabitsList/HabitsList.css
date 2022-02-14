@@ -15,9 +15,9 @@
     color: white;
     display: flex;
     flex-direction: column;
-    height: 4.5rem;
     justify-content: center;
-    width: 14rem;
+    margin-top: 1rem;
+    padding: 2% 4% 2% 4%;
     text-align: center;
 }
 
