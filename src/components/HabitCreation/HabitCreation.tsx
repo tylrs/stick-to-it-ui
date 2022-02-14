@@ -84,7 +84,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
                     type="text" 
                     name="name" 
                     placeholder="name"
-                    maxLength={250}
+                    maxLength={40}
                     value={habitInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
