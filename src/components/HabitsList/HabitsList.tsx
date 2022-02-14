@@ -34,9 +34,7 @@ const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Disp
     const fetchHabits = async () => {
         try {
             const data = type === "all" ? await getAllHabits(userId) : await getTodayHabits(userId)
-            if (data.length) {
-                setAllHabits(data)
-            }
+            if (data.length) {setAllHabits(data)}
         } catch (err:any) {
             if (err.errors) {
                 setError(err.errors)
