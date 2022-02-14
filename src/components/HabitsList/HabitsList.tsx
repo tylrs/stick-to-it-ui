@@ -60,12 +60,12 @@ const HabitsList: React.FC<{userId: number, name: string, type: string, setMessa
                 ? <div className="habits-list-title">
                     <div className="greeting-wrapper"><h2 className="greeting-message">Welcome: {name}</h2></div>
                     <h3>Week Starting On:</h3>
-                    <p>{getLastSunday()}</p>
+                    <p className="list-date">{getLastSunday()}</p>
                   </div>
                 : <div className="habits-list-title">
                     <div className="greeting-wrapper"><h2 className="greeting-message">Welcome: {name}</h2></div>
                     <h3>Habits Today:</h3>
-                    <p>{getToday()}</p>
+                    <p className="list-date">{getToday()}</p>
                   </div>  
             }
             {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>}

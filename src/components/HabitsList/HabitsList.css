@@ -1,6 +1,6 @@
 .habits-list-page-container {
     align-items: center;
-    background-color: #fffccc;
+    background-color: #fff994;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,7 +9,7 @@
 
 .habits-list-title {
     align-items: center;
-    background-color: black;
+    background-color: #000000de;
     border: 1px solid black;
     border-radius: 10px;
     color: white;
@@ -40,4 +40,8 @@
 
 .habits-list-error {
     color: red;
+}
+
+.list-date {
+    color: #fff994;
 }
