@@ -73,9 +73,9 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
 
     return (
         <section className="habit-creation-page-container">
-            <h2>Create A Habit</h2>
             {error && <p className="habit-creation-error">{error}</p>}
             <form className="habit-creation-box" onSubmit={e => submitHabitInfo(e)}>
+                <h2>Create A Habit</h2>
                 <label htmlFor="habit-name-input">Habit Name:</label>
                 <input 
                     required
