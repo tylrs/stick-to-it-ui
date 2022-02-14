@@ -44,7 +44,8 @@
 .habit-description {
     display: list-item; 
     list-style-type: disc;       
-    list-style-position: inside
+    list-style-position: inside;
+    text-transform: capitalize;
 }
 
 .habit-logs-container {
