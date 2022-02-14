@@ -2,17 +2,30 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 90vh;
 }
 
 .account-creation-box {
     align-items: center;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 13px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-top: 2rem;
+    padding: 4%;
+}
+
+.account-creation-box > * {
+    color: white;
+    margin-top: .3rem;
 }
 
 .account-creation-error {
     color: red;
+}
+
+.submit-account-creation {
+    color: black;
+    margin-top: 1rem;
 }
