@@ -34,12 +34,3 @@ export const checkLoginCredentials = (email:string, password:string) => {
         throw Error
     }
 }
-
-export const checkFormSubmission = (formData:any) => {
-    console.log(formData)
-    Object.keys(formData).forEach(input => {
-        if (!formData[input]) {
-            throw Error
-        }
-    })
-}

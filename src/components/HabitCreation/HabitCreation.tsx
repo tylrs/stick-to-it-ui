@@ -6,7 +6,6 @@ import { blankHabit } from "../../utils/miscConstants";
 import { HabitType } from "../../utils/types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { checkFormSubmission } from "../../utils/miscUtils";
 
 const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, setMessage }) => {
     const [habitInfo, setHabitInfo] = useState<HabitType>(blankHabit)
@@ -62,12 +61,13 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
         const habitData = habitInfo
         habitData.userId = userId
         try {
-            checkFormSubmission(habitData)
             await createHabit(habitData)
             navigate("/all-habits")
             setMessage("New Habit Created")
         } catch (err:any){
-            setError(err.errors)
+            console.log("should be catching")
+            console.log(err)
+            setError(err)
         }
     }
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUser, login } from "../../utils/apiCalls";
 import { blankAccount } from "../../utils/miscConstants";
-import { checkFormSubmission } from "../../utils/miscUtils";
 import { AccountType, UserType } from "../../utils/types";
 import "./AccountCreation.css";
 
