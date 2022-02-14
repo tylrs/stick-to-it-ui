@@ -28,15 +28,13 @@ const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type,
                 setMessage("Habit Marked Complete")
                 setCompleted(true)
             }
-        } catch (err) {
-            setMessage("Habit Could Not Be Updated")
+        } catch (err:any) {
+            setMessage(`Habit Could Not Be Updated: ${err.errors}`)
         }
     }
 
     useEffect(() => {
-        if (habitLogInfo?.completed_at) {
-            setCompleted(true)
-        }
+        if (habitLogInfo?.completed_at) {setCompleted(true)}
     }, [])
 
     return (
