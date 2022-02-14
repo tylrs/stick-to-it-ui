@@ -1,5 +1,5 @@
 .message-container {
-  animation: fadeIn 1.25s; 
+  animation: fadeIn 1.3s; 
   align-items: center;
   background-color: black;
   border: 1px solid white;
@@ -23,7 +23,7 @@
     transform: translate(300px, 95px);
     opacity: 0.25;
   }
-  70% {
+  60% {
     transform: translate(80px, 95px);
     opacity: 1;
   }

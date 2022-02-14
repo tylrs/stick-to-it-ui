@@ -26,7 +26,7 @@ const App = () => {
     if (message) {
       let timer1 = setTimeout(()=>{
         setMessage("")
-      }, 1250)
+      }, 1300)
       return (() => {clearTimeout(timer1)})
     }
   })
