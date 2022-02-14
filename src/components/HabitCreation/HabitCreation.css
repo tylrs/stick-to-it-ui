@@ -34,7 +34,7 @@
     z-index: 1;
 }
 
-.react-datepicker-wrapper {
+.react-datepicker-wrapper.react-datepicker-wrapper {
     width: auto;
 }
 
