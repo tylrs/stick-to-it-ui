@@ -62,7 +62,7 @@ export const createHabit = async (habitInfo: HabitType) => {
     }
     try {
         const response = await fetch(`${urls.productionUsers}/${habitInfo.userId}/habits`, postInfo)
-        if (!response.ok) throw (await response.json())
+        if (!response.ok) throw (response.statusText)
     } catch (err:any){
         throw err
     }
