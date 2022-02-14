@@ -31,7 +31,6 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
     const submitAccountInfo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-            checkFormSubmission(accountInfo)
             await createUser(accountInfo)
             const user = await login({email: accountInfo.email, password: accountInfo.password})
             setUser(user)
