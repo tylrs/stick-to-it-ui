@@ -15,7 +15,11 @@ interface HabitLogProps {
 const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type, setMessage }) => {
     const [completed, setCompleted] = useState(false)
 
-    const dayOfWeek = type === "today" ? daysOfWeekLong[dayNum] : daysOfWeek[dayNum] 
+    const dayOfWeek = type === "today" ? daysOfWeekLong[dayNum] : daysOfWeek[dayNum]
+    
+    let isToday;
+
+    if (dayNum === new Date().getDay()) isToday = "today-marker";
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setMessage("")
@@ -38,7 +42,7 @@ const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type,
     }, [])
 
     return (
-        <div className="habit-log-container">
+        <div className={`habit-log-container ${isToday}`}>
             <h4 className="day-of-week-label">{dayOfWeek}</h4>
             <input className="log-checkbox" type="checkbox" disabled={!habitLogInfo} checked={completed} onChange={(e) => handleChange(e)}/>
         </div>
