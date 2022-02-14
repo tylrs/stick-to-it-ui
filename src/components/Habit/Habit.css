@@ -1,6 +1,6 @@
 .habit-container-all {
     background-color: #000000de;
-    border: 6px solid #133fff;
+    border: 4px solid #133fff;
     border-radius: 20px;
     color: white;
     display: grid;
@@ -17,7 +17,7 @@
 .habit-container-today {
     align-items: center;
     background-color: black;
-    border: 6px solid #133fff;
+    border: 4px solid #133fff;
     border-radius: 20px;
     color: white;
     display: flex;
