@@ -1,5 +1,6 @@
 .habits-list-page-container {
     align-items: center;
+    background-color: #fffccc;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,4 +36,8 @@
 .create-new-habit-button:hover {
     background-color: aqua;
     cursor: pointer;
+}
+
+.habits-list-error {
+    color: red;
 }

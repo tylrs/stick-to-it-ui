@@ -28,3 +28,9 @@ export const getToday = () => {
     const dateString = date.toLocaleString("en-US", {month: "long", day: "numeric", year: "numeric"})
     return dateString;
 }
+
+export const checkLoginCredentials = (email:string, password:string) => {
+    if (!email || !password) {
+        throw Error
+    }
+}

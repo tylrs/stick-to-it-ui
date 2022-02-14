@@ -1,0 +1,29 @@
+.message-container {
+  animation: fadeIn 3s; 
+  align-items: center;
+  background-color: black;
+  border-radius: 13px;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  padding: .5rem;
+  position: absolute;
+  height: 5rem;
+  width: 10rem;
+  text-align: center;
+}
+
+.message-text {
+  color: white;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translate(-450px, 50px);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(-450px, 0px);
+    opacity: 1;
+  }
+}

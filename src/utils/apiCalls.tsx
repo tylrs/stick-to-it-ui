@@ -16,10 +16,9 @@ export const createUser = async (accountInfo: AccountType) => {
     }
     try {
         const response = await fetch(`${urls.productionUsers}`, postInfo)
-        const data = await response.json()
-        console.log(data)
-    } catch (err){
-        console.log(err)
+        if (!response.ok) throw (await response.json())
+    } catch (err:any){
+        throw err
     }
 }
 
@@ -34,18 +33,14 @@ export const login = async (credentials: { email: string; password: string; }) =
         body: formData
     }
     try {
-        const response = await fetch(`${urls.localLogin}`, postInfo)
+        const response = await fetch(`${urls.productionLogin}`, postInfo)
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
-        console.log("Should be user", data)
-        if (!("error" in data)) {
-            storeToken(data.token)
-            storeCurrentUser(data.user)
-            return data.user
-        } else {
-            throw Error(data.error)
-        }
-    } catch (err){
-        console.log(err)
+        storeToken(data.token)
+        storeCurrentUser(data.user)
+        return data.user
+    } catch (err:any){
+        throw err
     }
 }
 
@@ -66,72 +61,74 @@ export const createHabit = async (habitInfo: HabitType) => {
         body: formData
     }
     try {
-        const response = await fetch(`${urls.localUsers}/${habitInfo.userId}/habits`, postInfo)
-        const data = await response.json()
-        console.log(data)
-    } catch (err){
-        console.log(err)
+        const response = await fetch(`${urls.productionUsers}/${habitInfo.userId}/habits`, postInfo)
+        if (!response.ok) throw (response.statusText)
+    } catch (err:any){
+        throw err
     }
 }
 
 export const getAllHabits = async (userId: number) => {
     const token = getToken()
     try {
-        const response = await fetch(`${urls.localUsers}/${userId}/habits`, {
+        const response = await fetch(`${urls.productionUsers}/${userId}/habits`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
         return data
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+        throw err
     }
 }
 
 export const deleteHabit = async (userId: number, habitId: number | undefined) => {
     const token = getToken()
     try {
-        const response = await fetch(`${urls.localUsers}/${userId}/habits/${habitId}`, {
+        const response = await fetch(`${urls.productionUsers}/${userId}/habits/${habitId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
-        console.log(response)
-    } catch (err){
-        console.log(err)
+        if (!response.ok) throw (await response.json())
+    } catch (err:any){
+        throw err
     }
 }
 
 export const updateHabitLog = async (userId: number | undefined, habitId: number | undefined, habitLogId: number | undefined) => {
     const token = getToken()
     try {
-        const response = await fetch(`${urls.localUsers}/${userId}/habits/${habitId}/habit_logs/${habitLogId}`, {
+        const response = await fetch(`${urls.productionUsers}/${userId}/habits/${habitId}/habit_logs/${habitLogId}`, {
             method: "PATCH",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
         return data
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+      throw err
     }
 }
 
 export const getTodayHabits = async (userId: number | undefined) => {
     const token = getToken()
     try {
-        const response = await fetch(`${urls.localUsers}/${userId}/habits/today`, {
+        const response = await fetch(`${urls.productionUsers}/${userId}/habits/today`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
         return data
-    } catch (err){
-        console.log(err)
+    } catch (err:any){
+        throw err
     }
 }

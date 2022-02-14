@@ -6,14 +6,19 @@ import { HabitsType } from "../../utils/types";
 import Habit from "../Habit/Habit";
 import { getLastSunday, getToday } from "../../utils/miscUtils";
 
-const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) => {
+const HabitsList: React.FC<{userId: number, type: string, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, type, setMessage }) => {
     const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
     const [listType, setListType] = useState("");
+    const [error, setError] = useState("");
 
     const handleDelete = async (habitId: number) => {
-        await deleteHabit(userId, habitId)
-        let updatedHabits = allHabits.filter((habit) => habit.id !== habitId)
-        setAllHabits(updatedHabits)
+        try {
+            await deleteHabit(userId, habitId)
+            let updatedHabits = allHabits.filter((habit) => habit.id !== habitId)
+            setAllHabits(updatedHabits)
+        } catch (error) {
+            setMessage("Habit Could Not Be Deleted")
+        }
     }
 
     const formattedHabits = allHabits.map(habit => 
@@ -23,18 +28,19 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
             habitLogsInfo={habit.habit_logs} 
             handleDelete={handleDelete}
             type={type}
+            setMessage={setMessage}
         />)
 
     const fetchHabits = async () => {
         try {
             const data = type === "all" ? await getAllHabits(userId) : await getTodayHabits(userId)
-            if (data.length) {
-                setAllHabits(data)
+            if (data.length) {setAllHabits(data)}
+        } catch (err:any) {
+            if (err.errors) {
+                setError(err.errors)
             } else {
-                throw Error("")
+                setError(err)
             }
-        } catch (err) {
-            console.log(err)
         }
     }
 
@@ -49,6 +55,7 @@ const HabitsList: React.FC<{userId: number, type: string}> = ({ userId, type }) 
 
     return (
         <section className="habits-list-page-container">
+            {error && <p className="habits-list-error">{error}</p>}
             {type === "all"
                 ? <div className="habits-list-title">
                     <h2>Week Starting On:</h2>

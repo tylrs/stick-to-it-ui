@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../utils/apiCalls";
 import "./Login.css";
 import { UserType } from "../../utils/types";
+import { checkLoginCredentials } from "../../utils/miscUtils";
 
 interface LoginProps {
     setUser: React.Dispatch<React.SetStateAction<UserType>>
@@ -11,6 +12,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ setUser }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
     const navigate = useNavigate();
 
     const clearInputs = () => {
@@ -19,6 +21,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
     }
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setError("")
         if (e.target.name === "email") {
             setEmail(e.target.value)
         } else {
@@ -26,42 +29,50 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
         }
       }
       
-    const submitCredentials = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const submitCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setError("")
         try {
+            checkLoginCredentials(email, password)
             const user = await login({email, password})
             setUser(user)
             navigate("/all-habits")
-        } catch (err){
-            console.log(err)
+        } catch (err:any){
+            clearInputs()
+            setError(err.error)
         }
     }
 
     return (
         <section className="login-page-container">
-            <form className="login-box">
+            <form className="login-box" onSubmit={e => submitCredentials(e)}>
                 <h2>Login</h2>
+                {error && <p className="login-error">{error}</p>}
+                <label htmlFor="login-input"> Email:</label>
                 <input 
                     required
+                    id="login-input"
                     className="login-input"
-                    type="text" 
+                    type="email" 
                     name="email" 
                     placeholder="email"
+                    maxLength={60}
                     value={email}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="login-input">Password:</label>
                 <input 
                     required
+                    id="password-input"
                     className="login-input"
                     type="password" 
                     name="password" 
                     placeholder="password"
+                    maxLength={20}
                     value={password}
                     onChange={(e) => handleUserInput(e)}
                 />
-                <button 
-                    className="submit-login"
-                    onClick={e => submitCredentials(e)}>
+                <button className="submit-login">
                     Login
                 </button>
             </form>

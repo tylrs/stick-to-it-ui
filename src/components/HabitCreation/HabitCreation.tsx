@@ -7,8 +7,9 @@ import { HabitType } from "../../utils/types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
+const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.SetStateAction<string>>}> = ({ userId, setMessage }) => {
     const [habitInfo, setHabitInfo] = useState<HabitType>(blankHabit)
+    const [error, setError] = useState("")
     const navigate = useNavigate();
 
     const clearInputs = () => {
@@ -16,6 +17,7 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
     }
 
     const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setError("")
         setHabitInfo((prevState) => {
             return ({
                 ...prevState,
@@ -25,7 +27,8 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
     }
     
     const handleStartDateChange = (date: Date | null) => {
-         setHabitInfo((prevState) => {
+        setError("")
+        setHabitInfo((prevState) => {
             return ({
                 ...prevState,
                 startDate: date
@@ -34,7 +37,8 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
     }
 
     const handleEndDateChange = (date: Date | null) => {
-         setHabitInfo((prevState) => {
+        setError("")
+        setHabitInfo((prevState) => {
             return ({
                 ...prevState,
                 endDate: date
@@ -52,59 +56,71 @@ const HabitCreation: React.FC<{userId: number}> = ({ userId }) => {
         return date
     }
       
-    const submitHabitInfo = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const submitHabitInfo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const habitData = habitInfo
         habitData.userId = userId
         try {
             await createHabit(habitData)
             navigate("/all-habits")
-        } catch (err){
+            setMessage("New Habit Created")
+        } catch (err:any){
+            console.log("should be catching")
             console.log(err)
+            setError(err)
         }
     }
 
     return (
         <section className="habit-creation-page-container">
             <h2>Create A Habit</h2>
-            <form className="habit-creation-box">
+            {error && <p className="habit-creation-error">{error}</p>}
+            <form className="habit-creation-box" onSubmit={e => submitHabitInfo(e)}>
+                <label htmlFor="habit-name-input">Habit Name:</label>
                 <input 
                     required
+                    id="habit-name-input"
                     className="habit-creation-input"
                     type="text" 
                     name="name" 
                     placeholder="name"
+                    maxLength={250}
                     value={habitInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="description-input"> Description:</label>
                 <input 
                     required
+                    id="description-input"
                     className="habit-creation-input"
                     type="text" 
                     name="description" 
                     placeholder="description"
+                    maxLength={250}
                     value={habitInfo.description}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="start-date-input"> Start Date:</label>
                 <DatePicker
                     required
+                    id="start-date-input"
                     className="date-picker"
                     placeholderText="start date"
                     selected={habitInfo.startDate}
                     minDate={new Date()}
                     onChange={(date) => handleStartDateChange(date)} 
                 />
+                <label htmlFor="end-date-input"> End Date (inclusive):</label>
                 <DatePicker
                     required
+                    id="end-date-input"
                     className="date-picker"
                     placeholderText="end date inclusive"
                     selected={habitInfo.endDate}
                     minDate={setMinEndDate()}
                     onChange={(date) => handleEndDateChange(date)} 
                 />
-                <button 
-                    className="submit-habit-creation"
-                    onClick={e => submitHabitInfo(e)}>
+                <button className="submit-habit-creation">
                     Create Habit
                 </button>
             </form>

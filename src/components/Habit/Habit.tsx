@@ -3,7 +3,7 @@ import "./Habit.css";
 import { HabitLogType, HabitType } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
 
-const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any, type: string}> = ({ habitInfo, habitLogsInfo, handleDelete, type }) => {    
+const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any, type: string, setMessage: React.Dispatch<React.SetStateAction<string>> }> = ({ habitInfo, habitLogsInfo, handleDelete, type, setMessage }) => {    
     let allLogs, log;
 
     if (type === "all") {
@@ -14,15 +14,16 @@ const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], hand
                                     dayNum={index} 
                                     key={index}
                                     type={type}
+                                    setMessage={setMessage}
                                  />)
         allLogs = habitLogsInfo.reduce((acc, currentLog) => {
             const dayNum = new Date(currentLog.scheduled_at.replaceAll("-", "/").slice(0, 10)).getDay()
-            acc[dayNum] = <HabitLog habitLogInfo={currentLog} userId={habitInfo.userId} dayNum={dayNum} key={dayNum} type={type}/>
+            acc[dayNum] = <HabitLog habitLogInfo={currentLog} userId={habitInfo.userId} dayNum={dayNum} key={dayNum} type={type} setMessage={setMessage}/>
             return acc
         }, componentsOfWeek)
     } else {
         const dayNum = new Date(habitLogsInfo[0].scheduled_at.replaceAll("-", "/").slice(0, 10)).getDay()
-        log = <HabitLog habitLogInfo={habitLogsInfo[0]} userId={habitInfo.userId} dayNum={dayNum} key={dayNum} type={type}/>
+        log = <HabitLog habitLogInfo={habitLogsInfo[0]} userId={habitInfo.userId} dayNum={dayNum} key={dayNum} type={type} setMessage={setMessage}/>
     }
 
     return (
