@@ -80,7 +80,7 @@ export const getAllHabits = async (userId: number) => {
         const data = await response.json()
         return data
     } catch (err:any){
-      throw err
+        throw err
     }
 }
 
