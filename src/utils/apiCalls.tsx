@@ -108,10 +108,11 @@ export const updateHabitLog = async (userId: number | undefined, habitId: number
                 "Authorization": `Bearer ${token}`
             }
         })
+        if (!response.ok) throw (await response.json())
         const data = await response.json()
         return data
     } catch (err:any){
-      throw Error(err)
+      throw err
     }
 }
 
