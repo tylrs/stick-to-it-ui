@@ -19,7 +19,7 @@ const HabitLog: React.FC<HabitLogProps> = ({ habitLogInfo, userId, dayNum, type,
     
     let isToday;
 
-    if (dayNum === new Date().getDay()) isToday = "today-marker";
+    if (dayNum === new Date().getDay() && type === "all") isToday = "today-marker";
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setMessage("")
