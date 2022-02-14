@@ -26,6 +26,14 @@
 }
 
 .submit-account-creation {
+    background-color: white;
+    border-radius: 13px;
     color: black;
     margin-top: 1rem;
+    padding: 2%;
+}
+
+.submit-account-creation:hover {
+    background-color: aqua;
+    cursor: pointer;
 }
