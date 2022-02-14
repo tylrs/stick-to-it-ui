@@ -129,7 +129,6 @@ export const getTodayHabits = async (userId: number | undefined) => {
         const data = await response.json()
         return data
     } catch (err:any){
-        console.log(err)
         throw err
     }
 }
