@@ -1,7 +1,8 @@
 .message-container {
-  animation: fadeIn 3s; 
+  animation: fadeIn 1.25s; 
   align-items: center;
   background-color: black;
+  border: 1px solid white;
   border-radius: 13px;
   display: flex;
   font-size: 1rem;
@@ -19,11 +20,15 @@
 
 @keyframes fadeIn {
   0% {
-    transform: translate(-450px, 50px);
+    transform: translate(300px, 95px);
     opacity: 0.25;
   }
+  70% {
+    transform: translate(80px, 95px);
+    opacity: 1;
+  }
   100% {
-    transform: translate(-450px, 0px);
+    transform: translate(80px, 95px);
     opacity: 1;
   }
 }
