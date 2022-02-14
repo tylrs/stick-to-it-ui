@@ -1,11 +1,15 @@
 .message-container {
-  animation: fadeIn 2s; 
+  animation: fadeIn 3s; 
+  align-items: center;
   background-color: black;
   border-radius: 13px;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
   padding: .5rem;
   position: absolute;
-  height: 3rem;
-  width: 8rem;
+  height: 5rem;
+  width: 10rem;
   text-align: center;
 }
 
