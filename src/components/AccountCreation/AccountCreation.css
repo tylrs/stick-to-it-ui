@@ -21,12 +21,16 @@
     margin-top: .3rem;
 }
 
+.account-page-header {
+    color: #fff994;
+}
+
 .account-creation-error {
     color: red;
 }
 
 .submit-account-creation {
-    background-color: white;
+    background-color: #fff994;
     border-radius: 13px;
     color: black;
     margin-top: 1rem;

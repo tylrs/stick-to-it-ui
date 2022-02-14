@@ -26,6 +26,10 @@
     color:black;
 }
 
+.habit-creation-form-title {
+    color: #fff994;
+}
+
 .habit-creation-error {
     color: red;
 }
@@ -39,7 +43,7 @@
 }
 
 .submit-habit-creation {
-    background-color: white;
+    background-color: #fff994;
     border-radius: 13px;
     color: black;
     margin-top: 1rem;
