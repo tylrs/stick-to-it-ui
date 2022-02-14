@@ -49,8 +49,10 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
             <h2 className="account-page-header">Create An Account</h2>
             {error && <p className="account-creation-error">{error}</p>}
             <form className="account-creation-box" onSubmit={e => submitAccountInfo(e)}>
+                <label htmlFor="account-name-input">Account Name:</label>
                 <input 
                     required
+                    id="account-name-input"
                     className="account-creation-input"
                     type="text" 
                     name="name" 
@@ -59,8 +61,10 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     value={accountInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="account-username-input">Username:</label>
                 <input 
                     required
+                    id="account-username-input"
                     className="account-creation-input"
                     type="text" 
                     name="username" 
@@ -69,8 +73,10 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     value={accountInfo.username}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="account-email-input">Email:</label>
                 <input 
                     required
+                    id="account-email-input"
                     className="account-creation-input"
                     type="email" 
                     name="email" 
@@ -79,8 +85,10 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     value={accountInfo.email}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="account-password-input">Password:</label>
                 <input 
                     required
+                    id="account-password-input"
                     className="account-creation-input"
                     type="password" 
                     name="password" 
@@ -89,8 +97,10 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
                     value={accountInfo.password}
                     onChange={(e) => handleUserInput(e)}
                 />
+                <label htmlFor="account-password-confirmation-input">Password Confirmation:</label>
                 <input 
                     required
+                    id="account-password-confirmation-input"
                     className="account-creation-input"
                     type="password" 
                     name="passwordConfirmation" 
