@@ -16,7 +16,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
         setHabitInfo(blankHabit)
     }
 
-    const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleUserInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setError("")
         setHabitInfo((prevState) => {
             return ({
@@ -89,11 +89,10 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
                     onChange={(e) => handleUserInput(e)}
                 />
                 <label htmlFor="description-input"> Description:</label>
-                <input 
+                <textarea 
                     required
                     id="description-input"
                     className="habit-creation-input"
-                    type="text" 
                     name="description" 
                     placeholder="description"
                     maxLength={250}
