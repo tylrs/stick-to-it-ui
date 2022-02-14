@@ -2,24 +2,37 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 90vh;
 }
 
 .login-box {
     align-items: center;
+    background-color: black;
     border: 1px solid black;
+    border-radius: 13px;
     display: flex;
     flex-direction: column;
     height: 10rem;
     justify-content: space-around;
+    margin-top: 2rem;
+    padding: 4%;
     width: 20rem;
+}
+
+.login-box > * {
+    color: white;
+    margin-top: .3rem;
+}
+
+.login-input {
+    color: black;
 }
 
 .submit-login {
     background-color: white;
     border-radius: 10px;
-    height: 1.5rem;
+    color: black;
+    margin-top: 1rem;
+    padding: 2%;
     width: 4rem;
 }
 
