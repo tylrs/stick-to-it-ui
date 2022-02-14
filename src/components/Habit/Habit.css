@@ -9,8 +9,7 @@
     width: 68%;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    padding: 1rem 1rem 1rem 1rem;
-    text-align: center;
+    padding: 1rem;
 }
 
 .habit-container-today {
@@ -30,10 +29,11 @@
 }
 
 .habit-info-container {
-    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: auto;
+    word-break: break-word;
 }
 
 .habit-name {
@@ -41,9 +41,7 @@
 }
 
 .habit-description {
-    display: list-item; 
-    list-style-type: disc;       
-    list-style-position: inside;
+    padding-right: 7%;
     text-transform: capitalize;
 }
 
