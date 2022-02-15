@@ -8,7 +8,7 @@ interface HabitLogProps {
   habitLogInfo: HabitLogType | null;
   userId: number | undefined;
   dayNum: number;
-  type: "all" | "today";
+  listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -16,17 +16,17 @@ const HabitLog: React.FC<HabitLogProps> = ({
   habitLogInfo,
   userId,
   dayNum,
-  type,
+  listType,
   setMessage,
 }) => {
   const [completed, setCompleted] = useState(false);
 
   const dayOfWeek =
-    type === "today" ? daysOfWeekLong[dayNum] : daysOfWeek[dayNum];
+    listType === "today" ? daysOfWeekLong[dayNum] : daysOfWeek[dayNum];
 
   let isToday;
 
-  if (dayNum === new Date().getDay() && type === "all")
+  if (dayNum === new Date().getDay() && listType === "all")
     isToday = "today-marker";
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +59,7 @@ const HabitLog: React.FC<HabitLogProps> = ({
         type="checkbox"
         disabled={!habitLogInfo}
         checked={completed}
-        onChange={(e) => handleChange(e)}
+        onChange={e => handleChange(e)}
       />
     </div>
   );

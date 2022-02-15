@@ -6,7 +6,7 @@ interface HabitProps {
   habitInfo: HabitType;
   habitLogsInfo: HabitLogType[];
   handleDelete: any;
-  type: "all" | "today";
+  listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -14,19 +14,19 @@ const Habit: React.FC<HabitProps> = ({
   habitInfo,
   habitLogsInfo,
   handleDelete,
-  type,
+  listType,
   setMessage,
 }) => {
   let allLogs, log;
 
-  if (type === "all") {
+  if (listType === "all") {
     const componentsOfWeek = [...Array(7)].map((item, index) => (
       <HabitLog
         habitLogInfo={null}
         userId={0}
         dayNum={index}
         key={index}
-        type={type}
+        listType={listType}
         setMessage={setMessage}
       />
     ));
@@ -40,7 +40,7 @@ const Habit: React.FC<HabitProps> = ({
           userId={habitInfo.userId}
           dayNum={dayNum}
           key={dayNum}
-          type={type}
+          listType={listType}
           setMessage={setMessage}
         />
       );
@@ -56,28 +56,29 @@ const Habit: React.FC<HabitProps> = ({
         userId={habitInfo.userId}
         dayNum={dayNum}
         key={dayNum}
-        type={type}
+        listType={listType}
         setMessage={setMessage}
       />
     );
   }
 
   return (
-    <article className={`habit-container-${type}`}>
+    <article className={`habit-container-${listType}`}>
       <div className="habit-info-container">
         <h3 className="habit-name">{habitInfo.name}</h3>
         <p className="habit-description">{habitInfo.description}</p>
-        {type !== "all" && log}
+        {listType !== "all" && log}
         <button
           className="habit-delete-button"
           onClick={() => {
             handleDelete(habitInfo.id);
-          }}
-        >
+          }}>
           Delete
         </button>
       </div>
-      {type === "all" && <div className="habit-logs-container">{allLogs}</div>}
+      {listType === "all" && (
+        <div className="habit-logs-container">{allLogs}</div>
+      )}
     </article>
   );
 };

@@ -64,7 +64,7 @@ const App = () => {
               <HabitsList
                 userId={user.id}
                 name={user.name}
-                type={"all"}
+                listType={"all"}
                 setMessage={setMessage}
               />
             }
@@ -75,7 +75,7 @@ const App = () => {
               <HabitsList
                 userId={user.id}
                 name={user.name}
-                type={"all"}
+                listType={"all"}
                 setMessage={setMessage}
               />
             }
@@ -86,7 +86,7 @@ const App = () => {
               <HabitsList
                 userId={user.id}
                 name={user.name}
-                type={"today"}
+                listType={"today"}
                 setMessage={setMessage}
               />
             }
@@ -101,7 +101,7 @@ const App = () => {
               <HabitsList
                 userId={user.id}
                 name={user.name}
-                type={"all"}
+                listType={"all"}
                 setMessage={setMessage}
               />
             }

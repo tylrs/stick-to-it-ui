@@ -13,37 +13,37 @@ import { getLastSunday, getToday } from "../../utils/miscUtils";
 interface HabitsListProps {
   userId: number;
   name: string;
-  type: "all" | "today";
+  listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const HabitsList: React.FC<HabitsListProps> = ({
   userId,
   name,
-  type,
+  listType,
   setMessage,
 }) => {
   const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
-  const [listType, setListType] = useState("");
+  const [currentListType, setListType] = useState("");
   const [error, setError] = useState("");
 
   const handleDelete = async (habitId: number) => {
     try {
       await deleteHabit(userId, habitId);
-      let updatedHabits = allHabits.filter((habit) => habit.id !== habitId);
+      let updatedHabits = allHabits.filter(habit => habit.id !== habitId);
       setAllHabits(updatedHabits);
     } catch (error) {
       setMessage("Habit Could Not Be Deleted");
     }
   };
 
-  const formattedHabits = allHabits.map((habit) => (
+  const formattedHabits = allHabits.map(habit => (
     <Habit
       habitInfo={habit}
       key={habit.id}
       habitLogsInfo={habit.habit_logs}
       handleDelete={handleDelete}
-      type={type}
+      listType={listType}
       setMessage={setMessage}
     />
   ));
@@ -51,7 +51,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
   const fetchHabits = async () => {
     try {
       const data =
-        type === "all"
+        listType === "all"
           ? await getAllHabits(userId)
           : await getTodayHabits(userId);
       if (data.length) {
@@ -69,8 +69,8 @@ const HabitsList: React.FC<HabitsListProps> = ({
   useEffect(() => {
     if (!allHabits.length && userId) {
       fetchHabits();
-    } else if (type !== listType) {
-      setListType(type);
+    } else if (listType !== currentListType) {
+      setListType(listType);
       fetchHabits();
     }
   });
@@ -78,7 +78,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
   return (
     <section className="habits-list-page-container">
       {error && <p className="habits-list-error">{error}</p>}
-      {type === "all" ? (
+      {listType === "all" ? (
         <div className="habits-list-title">
           <div className="greeting-wrapper">
             <h2 className="greeting-message">Welcome: {name}</h2>
