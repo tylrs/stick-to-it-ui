@@ -27,7 +27,6 @@ export const login = async (credentials: {
   password: string;
 }) => {
   const formData = new FormData();
-  console.log("Credentials", credentials);
   formData.append("email", credentials.email);
   formData.append("password", credentials.password);
   const postInfo = {

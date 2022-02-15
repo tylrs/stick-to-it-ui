@@ -28,7 +28,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setError("");
-    setHabitInfo((prevState) => {
+    setHabitInfo(prevState => {
       return {
         ...prevState,
         [e.target.name]: e.target.value,
@@ -38,7 +38,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
 
   const handleStartDateChange = (date: Date | null) => {
     setError("");
-    setHabitInfo((prevState) => {
+    setHabitInfo(prevState => {
       return {
         ...prevState,
         startDate: date,
@@ -48,7 +48,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
 
   const handleEndDateChange = (date: Date | null) => {
     setError("");
-    setHabitInfo((prevState) => {
+    setHabitInfo(prevState => {
       return {
         ...prevState,
         endDate: date,
@@ -75,8 +75,6 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
       navigate("/all-habits");
       setMessage("New Habit Created");
     } catch (err: any) {
-      console.log("should be catching");
-      console.log(err);
       setError(err);
     }
   };
@@ -84,7 +82,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
   return (
     <section className="habit-creation-page-container">
       {error && <p className="habit-creation-error">{error}</p>}
-      <form className="habit-creation-box" onSubmit={(e) => submitHabitInfo(e)}>
+      <form className="habit-creation-box" onSubmit={e => submitHabitInfo(e)}>
         <h2 className="habit-creation-form-title">Create A Habit</h2>
         <label htmlFor="habit-name-input">Habit Name:</label>
         <input
@@ -96,7 +94,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
           placeholder="name"
           maxLength={40}
           value={habitInfo.name}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <label htmlFor="description-input"> Description:</label>
         <textarea
@@ -107,7 +105,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
           placeholder="description"
           maxLength={250}
           value={habitInfo.description}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <label htmlFor="start-date-input"> Start Date:</label>
         <DatePicker
@@ -117,7 +115,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
           placeholderText="start date"
           selected={habitInfo.startDate}
           minDate={new Date()}
-          onChange={(date) => handleStartDateChange(date)}
+          onChange={date => handleStartDateChange(date)}
         />
         <label htmlFor="end-date-input"> End Date (inclusive):</label>
         <DatePicker
@@ -127,7 +125,7 @@ const HabitCreation: React.FC<HabitCreationProps> = ({
           placeholderText="end date inclusive"
           selected={habitInfo.endDate}
           minDate={setMinEndDate()}
-          onChange={(date) => handleEndDateChange(date)}
+          onChange={date => handleEndDateChange(date)}
         />
         <button className="submit-habit-creation">Create Habit</button>
       </form>
