@@ -26,7 +26,7 @@ const App = () => {
     if (message) {
       let timer1 = setTimeout(()=>{
         setMessage("")
-      }, 3000)
+      }, 1300)
       return (() => {clearTimeout(timer1)})
     }
   })
@@ -43,7 +43,6 @@ const App = () => {
         ? <Header headerType={"loggedIn"} logOut={logOut} message={message}/>
         : <Header headerType={"loggedOut"} logOut={logOut}/> 
       }
-      {!!user.id && <div className="greeting-wrapper"><h3 className="greeting-message">Welcome: {user.name}</h3></div>}
       {!user.id 
         ? <Routes>
             <Route path="/" element={<Welcome />}/>
@@ -52,11 +51,11 @@ const App = () => {
             <Route path="*" element={<Welcome />}/>
           </Routes>
         : <Routes>
-            <Route path="/" element={<HabitsList userId={user.id} type={"all"} setMessage={setMessage}/>}/>
-            <Route path="/all-habits" element={<HabitsList userId={user.id} type={"all"} setMessage={setMessage}/>}/>
-            <Route path="/today" element={<HabitsList userId={user.id} type={"today"} setMessage={setMessage}/>}/>
+            <Route path="/" element={<HabitsList userId={user.id} name={user.name} type={"all"} setMessage={setMessage}/>}/>
+            <Route path="/all-habits" element={<HabitsList userId={user.id} name={user.name} type={"all"} setMessage={setMessage}/>}/>
+            <Route path="/today" element={<HabitsList userId={user.id} name={user.name} type={"today"} setMessage={setMessage}/>}/>
             <Route path="/create-habit" element={<HabitCreation userId={user.id} setMessage={setMessage}/>}/>
-            <Route path="*" element={<HabitsList userId={user.id} type={"all"} setMessage={setMessage}/>}/>
+            <Route path="*" element={<HabitsList userId={user.id} name={user.name} type={"all"} setMessage={setMessage}/>}/>
           </Routes>
       }
     </main>

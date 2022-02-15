@@ -1,3 +1,11 @@
+.habit-log-container {
+  padding: .5rem;
+}
+
 .day-of-week-label {
   text-transform: capitalize;
+}
+
+.today-marker {
+  border: 1px solid #fff994; 
 }

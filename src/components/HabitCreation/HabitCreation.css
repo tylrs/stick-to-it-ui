@@ -2,15 +2,32 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 90vh;
 }
 
 .habit-creation-box {
     align-items: center;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 13px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-top: 2rem;
+    padding: 4%;
+    width: 20rem;
+}
+
+.habit-creation-box > * {
+    color: white;
+    margin-top: .3rem;
+}
+
+.habit-creation-input {
+    color:black;
+}
+
+.habit-creation-form-title {
+    color: #fff994;
 }
 
 .habit-creation-error {
@@ -19,4 +36,21 @@
 
 .date-picker {
     z-index: 1;
+}
+
+.react-datepicker-wrapper.react-datepicker-wrapper {
+    width: auto;
+}
+
+.submit-habit-creation {
+    background-color: #fff994;
+    border-radius: 13px;
+    color: black;
+    margin-top: 1rem;
+    padding: 2%;
+}
+
+.submit-habit-creation:hover {
+    background-color: aqua;
+    cursor: pointer;
 }

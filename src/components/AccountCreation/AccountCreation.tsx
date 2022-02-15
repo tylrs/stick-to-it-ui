@@ -46,9 +46,9 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
 
     return (
         <section className="account-creation-page-container">
-            <h2 className="account-page-header">Create An Account</h2>
             {error && <p className="account-creation-error">{error}</p>}
             <form className="account-creation-box" onSubmit={e => submitAccountInfo(e)}>
+                <h2 className="account-page-header">Create An Account</h2>
                 <label htmlFor="account-name-input">Account Name:</label>
                 <input 
                     required

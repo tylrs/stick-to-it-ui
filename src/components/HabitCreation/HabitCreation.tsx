@@ -16,7 +16,7 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
         setHabitInfo(blankHabit)
     }
 
-    const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleUserInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setError("")
         setHabitInfo((prevState) => {
             return ({
@@ -73,9 +73,9 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
 
     return (
         <section className="habit-creation-page-container">
-            <h2>Create A Habit</h2>
             {error && <p className="habit-creation-error">{error}</p>}
             <form className="habit-creation-box" onSubmit={e => submitHabitInfo(e)}>
+                <h2 className="habit-creation-form-title">Create A Habit</h2>
                 <label htmlFor="habit-name-input">Habit Name:</label>
                 <input 
                     required
@@ -84,16 +84,15 @@ const HabitCreation: React.FC<{userId: number, setMessage: React.Dispatch<React.
                     type="text" 
                     name="name" 
                     placeholder="name"
-                    maxLength={250}
+                    maxLength={40}
                     value={habitInfo.name}
                     onChange={(e) => handleUserInput(e)}
                 />
                 <label htmlFor="description-input"> Description:</label>
-                <input 
+                <textarea 
                     required
                     id="description-input"
                     className="habit-creation-input"
-                    type="text" 
                     name="description" 
                     placeholder="description"
                     maxLength={250}
