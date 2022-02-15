@@ -3,7 +3,7 @@ import "./Habit.css";
 import { HabitLogType, HabitType } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
 
-const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any, type: string, setMessage: React.Dispatch<React.SetStateAction<string>> }> = ({ habitInfo, habitLogsInfo, handleDelete, type, setMessage }) => {    
+const Habit: React.FC<{habitInfo: HabitType, habitLogsInfo: HabitLogType[], handleDelete: any, type: "all" | "today", setMessage: React.Dispatch<React.SetStateAction<string>> }> = ({ habitInfo, habitLogsInfo, handleDelete, type, setMessage }) => {    
     let allLogs, log;
 
     if (type === "all") {

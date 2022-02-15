@@ -8,7 +8,7 @@ interface HabitLogProps {
     habitLogInfo: HabitLogType | null, 
     userId: number | undefined, 
     dayNum: number, 
-    type: string
+    type: "all" | "today",
     setMessage: React.Dispatch<React.SetStateAction<string>>
 }
 
