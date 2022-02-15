@@ -1,9 +1,9 @@
 {
-    "id": 25,
-    "name": "Sample Bob", 
-    "username": "samplebob1", 
-    "email": "samplebob1@sample.com", 
-    "password_digest": "$2a$12$JNIugG7JPGfc4GTUlPLbu.SlviG6wu0Y.7keifPPkCMZ7wYvOS7xi",
-    "created_at": "2022-02-02T18:00:29.418Z",
-    "updated_at": "2022-02-02T18:00:29.418Z"
+  "id": 25,
+  "name": "Sample Bob",
+  "username": "samplebob1",
+  "email": "samplebob1@sample.com",
+  "password_digest": "$2a$12$JNIugG7JPGfc4GTUlPLbu.SlviG6wu0Y.7keifPPkCMZ7wYvOS7xi",
+  "created_at": "2022-02-02T18:00:29.418Z",
+  "updated_at": "2022-02-02T18:00:29.418Z"
 }
