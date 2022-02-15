@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createUser, login } from "../../utils/apiCalls";
 import { blankAccount } from "../../utils/miscConstants";
 import { AccountType, UserType } from "../../utils/types";
