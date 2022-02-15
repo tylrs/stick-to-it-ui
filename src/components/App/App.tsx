@@ -41,7 +41,7 @@ const App = () => {
     <main>
       {!!user.id 
         ? <Header headerType={"loggedIn"} logOut={logOut} message={message}/>
-        : <Header headerType={"loggedOut"} logOut={logOut}/> 
+        : <Header headerType={"loggedOut"}/> 
       }
       {!user.id 
         ? <Routes>
