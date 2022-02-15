@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./Habit.css";
 import { HabitLogType, HabitType } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";

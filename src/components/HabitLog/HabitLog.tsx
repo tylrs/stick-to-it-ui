@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./HabitLog.css";
 import { HabitLogType } from "../../utils/types";
 import { daysOfWeek, daysOfWeekLong } from "../../utils/miscConstants";
