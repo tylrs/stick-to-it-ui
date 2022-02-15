@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Message from "../Message/Message";
 import "./Header.css";
 
-const Header: React.FC<{headerType: string, logOut?: any, message?: string}> = ({ headerType, logOut, message="" }) => {
+const Header: React.FC<{headerType: "loggedIn" | "loggedOut", logOut?: any, message?: string}> = ({ headerType, logOut, message="" }) => {
 
     return (
         <header className={`site-header-${headerType}`}>
