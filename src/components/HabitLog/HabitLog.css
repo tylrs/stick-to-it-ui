@@ -1,5 +1,5 @@
 .habit-log-container {
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .day-of-week-label {
@@ -7,5 +7,5 @@
 }
 
 .today-marker {
-  border: 1px solid #fff994; 
+  border: 1px solid #fff994;
 }

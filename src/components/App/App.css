@@ -1,6 +1,6 @@
 main {
-  background-color: #FFF9AD;
-  font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+  background-color: #fff9ad;
+  font-family: "IBM Plex Sans Thai Looped", sans-serif;
   height: 100vh;
   width: 100vw;
 }
@@ -9,7 +9,7 @@ main {
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .greeting-message {

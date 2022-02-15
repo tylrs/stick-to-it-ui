@@ -17,49 +17,99 @@ const App = () => {
   const navigate = useNavigate();
 
   const logOut = () => {
-    localStorage.clear()
-    setUser(emptyUser)
-    navigate("/login")
-  }
+    localStorage.clear();
+    setUser(emptyUser);
+    navigate("/login");
+  };
 
   useEffect(() => {
     if (message) {
-      let timer1 = setTimeout(()=>{
-        setMessage("")
-      }, 1300)
-      return (() => {clearTimeout(timer1)})
+      let timer1 = setTimeout(() => {
+        setMessage("");
+      }, 1300);
+      return () => {
+        clearTimeout(timer1);
+      };
     }
-  })
+  });
 
   useEffect(() => {
     if (!user.id && localStorage.getItem("currentUser")) {
-      setUser(getCurrentUser())
+      setUser(getCurrentUser());
     }
-  }, [user])
+  }, [user]);
 
   return (
     <main>
-      {!!user.id 
-        ? <Header headerType={"loggedIn"} logOut={logOut} message={message}/>
-        : <Header headerType={"loggedOut"}/> 
-      }
-      {!user.id 
-        ? <Routes>
-            <Route path="/" element={<Welcome />}/>
-            <Route path="/login" element={<Login setUser={setUser}/>}/>
-            <Route path="/create-account" element={<AccountCreation setUser={setUser}/>}/>
-            <Route path="*" element={<Welcome />}/>
-          </Routes>
-        : <Routes>
-            <Route path="/" element={<HabitsList userId={user.id} name={user.name} type={"all"} setMessage={setMessage}/>}/>
-            <Route path="/all-habits" element={<HabitsList userId={user.id} name={user.name} type={"all"} setMessage={setMessage}/>}/>
-            <Route path="/today" element={<HabitsList userId={user.id} name={user.name} type={"today"} setMessage={setMessage}/>}/>
-            <Route path="/create-habit" element={<HabitCreation userId={user.id} setMessage={setMessage}/>}/>
-            <Route path="*" element={<HabitsList userId={user.id} name={user.name} type={"all"} setMessage={setMessage}/>}/>
-          </Routes>
-      }
+      {!!user.id ? (
+        <Header headerType={"loggedIn"} logOut={logOut} message={message} />
+      ) : (
+        <Header headerType={"loggedOut"} />
+      )}
+      {!user.id ? (
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route
+            path="/create-account"
+            element={<AccountCreation setUser={setUser} />}
+          />
+          <Route path="*" element={<Welcome />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HabitsList
+                userId={user.id}
+                name={user.name}
+                type={"all"}
+                setMessage={setMessage}
+              />
+            }
+          />
+          <Route
+            path="/all-habits"
+            element={
+              <HabitsList
+                userId={user.id}
+                name={user.name}
+                type={"all"}
+                setMessage={setMessage}
+              />
+            }
+          />
+          <Route
+            path="/today"
+            element={
+              <HabitsList
+                userId={user.id}
+                name={user.name}
+                type={"today"}
+                setMessage={setMessage}
+              />
+            }
+          />
+          <Route
+            path="/create-habit"
+            element={<HabitCreation userId={user.id} setMessage={setMessage} />}
+          />
+          <Route
+            path="*"
+            element={
+              <HabitsList
+                userId={user.id}
+                name={user.name}
+                type={"all"}
+                setMessage={setMessage}
+              />
+            }
+          />
+        </Routes>
+      )}
     </main>
-  )
-}
+  );
+};
 
 export default App;

@@ -1,61 +1,61 @@
 .site-header-loggedIn {
-    background-color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 10vh;
-    padding-left: 1rem;;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    position: sticky;
-    top: 0;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 10vh;
+  padding-left: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  position: sticky;
+  top: 0;
 }
 
 .site-header-loggedOut {
-    align-items: center;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+  align-items: center;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
-  
+
 .link-container {
-    align-items: center;
-    display: flex;
-    justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .header-link {
-    color: gray;
+  color: gray;
 }
 
 .header-link:hover {
-    color: black;
+  color: black;
 }
 
 h1 {
-    font-size: 3rem;
-    font-weight: 400;
+  font-size: 3rem;
+  font-weight: 400;
 }
 
 .site-title {
-    align-items: center;
-    display: flex;
-    color: black;
-    text-decoration: none;
+  align-items: center;
+  display: flex;
+  color: black;
+  text-decoration: none;
 }
 
 .site-title:hover {
-    color: aqua;
+  color: aqua;
 }
 
 .log-out-button {
-    background-color: white;
-    height: 1.5rem;
-    padding: 0% 2% 0% 2%;
+  background-color: white;
+  height: 1.5rem;
+  padding: 0% 2% 0% 2%;
 }
 
 .log-out-button:hover {
-    cursor: pointer;
-    background-color: aqua;
+  cursor: pointer;
+  background-color: aqua;
 }
