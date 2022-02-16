@@ -15,7 +15,7 @@ export const createUser = async (accountInfo: AccountType) => {
     body: formData,
   };
   try {
-    const response = await fetch(`${urls.localUsers}`, postInfo);
+    const response = await fetch(`${urls.productionUsers}`, postInfo);
     if (!response.ok) throw await response.json();
   } catch (err: any) {
     throw err;
@@ -35,7 +35,7 @@ export const login = async (credentials: {
     body: formData,
   };
   try {
-    const response = await fetch(`${urls.localLogin}`, postInfo);
+    const response = await fetch(`${urls.productionLogin}`, postInfo);
     if (!response.ok) throw await response.json();
     const data = await response.json();
     storeToken(data.token);
@@ -64,7 +64,7 @@ export const createHabit = async (habitInfo: HabitType) => {
   };
   try {
     const response = await fetch(
-      `${urls.localUsers}/${habitInfo.userId}/habits`,
+      `${urls.productionUsers}/${habitInfo.userId}/habits`,
       postInfo
     );
     if (!response.ok) throw response.statusText;
@@ -76,7 +76,7 @@ export const createHabit = async (habitInfo: HabitType) => {
 export const getAllHabits = async (userId: number) => {
   const token = getToken();
   try {
-    const response = await fetch(`${urls.localUsers}/${userId}/habits`, {
+    const response = await fetch(`${urls.productionUsers}/${userId}/habits`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -96,7 +96,7 @@ export const deleteHabit = async (
   const token = getToken();
   try {
     const response = await fetch(
-      `${urls.localUsers}/${userId}/habits/${habitId}`,
+      `${urls.productionUsers}/${userId}/habits/${habitId}`,
       {
         method: "DELETE",
         headers: {
@@ -118,7 +118,7 @@ export const updateHabitLog = async (
   const token = getToken();
   try {
     const response = await fetch(
-      `${urls.localUsers}/${userId}/habits/${habitId}/habit_logs/${habitLogId}`,
+      `${urls.productionUsers}/${userId}/habits/${habitId}/habit_logs/${habitLogId}`,
       {
         method: "PATCH",
         headers: {
@@ -137,12 +137,15 @@ export const updateHabitLog = async (
 export const getTodayHabits = async (userId: number | undefined) => {
   const token = getToken();
   try {
-    const response = await fetch(`${urls.localUsers}/${userId}/habits/today`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `${urls.productionUsers}/${userId}/habits/today`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (!response.ok) throw await response.json();
     const data = await response.json();
     return data;
