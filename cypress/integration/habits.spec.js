@@ -34,6 +34,7 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
         statusCode: 204,
       }
     ).as("Delete Habit");
+
     const today = new Date("2022/02/13");
     cy.clock(today).visit("http://localhost:2000/").logIn();
   });
@@ -106,6 +107,50 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
       .get(".log-checkbox")
       .eq(3)
       .should("not.be.disabled")
+      .should("not.be.checked");
+  });
+
+  it("Should be able to mark a habit log as complete", () => {
+    cy.intercept(
+      "PATCH",
+      "https://stick-to-it-api.herokuapp.com/users/**/habits/**/habit_logs/**",
+      {
+        ok: true,
+        statusCode: 200,
+        fixture: "completedHabitLog",
+      }
+    ).as("Mark Habit Complete");
+
+    cy.get(".log-checkbox")
+      .eq(3)
+      .check()
+      .wait("@Mark Habit Complete")
+      .get(".message-container")
+      .should("have.text", "Habit Marked Complete")
+      .get(".log-checkbox")
+      .eq(3)
+      .should("be.checked");
+  });
+
+  it("Should be able to mark a habit log as incomplete", () => {
+    cy.intercept(
+      "PATCH",
+      "https://stick-to-it-api.herokuapp.com/users/**/habits/**/habit_logs/**",
+      {
+        ok: true,
+        statusCode: 200,
+        fixture: "incompleteHabitLog",
+      }
+    ).as("Mark Habit Incomplete");
+
+    cy.get(".log-checkbox")
+      .eq(2)
+      .uncheck()
+      .wait("@Mark Habit Incomplete")
+      .get(".message-container")
+      .should("have.text", "Habit Marked Incomplete")
+      .get(".log-checkbox")
+      .eq(2)
       .should("not.be.checked");
   });
 });
