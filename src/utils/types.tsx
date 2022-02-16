@@ -38,3 +38,11 @@ export interface HabitsType {
   endDate: Date | null;
   habit_logs: Array<HabitLogType>;
 }
+
+export interface HabitProps {
+  habitInfo: HabitType;
+  habitLogsInfo: HabitLogType[];
+  handleDelete?: any;
+  listType: "all" | "today";
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+}

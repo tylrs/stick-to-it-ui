@@ -1,4 +1,5 @@
-import { UserType } from "./types";
+import HabitLog from "../components/HabitLog/HabitLog";
+import { HabitProps, UserType } from "./types";
 
 export const storeToken = (token: string) => {
   localStorage.setItem("token", JSON.stringify(token));
@@ -45,4 +46,36 @@ export const checkLoginCredentials = (email: string, password: string) => {
 
 export const getDayOfWeek = (logTimestamp: string) => {
   return new Date(logTimestamp.replaceAll("-", "/").slice(0, 10)).getDay();
+};
+
+export const generateHabitLogList = ({
+  habitLogsInfo,
+  habitInfo,
+  listType,
+  setMessage,
+}: HabitProps) => {
+  const componentsOfWeek = [...Array(7)].map((item, index) => (
+    <HabitLog
+      habitLogInfo={null}
+      userId={0}
+      dayNum={index}
+      key={index}
+      listType={listType}
+      setMessage={setMessage}
+    />
+  ));
+  return habitLogsInfo.reduce((acc, currentLog) => {
+    const dayNum = getDayOfWeek(currentLog.scheduled_at);
+    acc[dayNum] = (
+      <HabitLog
+        habitLogInfo={currentLog}
+        userId={habitInfo.userId}
+        dayNum={dayNum}
+        key={dayNum}
+        listType={listType}
+        setMessage={setMessage}
+      />
+    );
+    return acc;
+  }, componentsOfWeek);
 };

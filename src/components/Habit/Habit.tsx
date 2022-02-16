@@ -1,15 +1,7 @@
 import "./Habit.css";
-import { HabitLogType, HabitType } from "../../utils/types";
+import { HabitLogType, HabitProps, HabitType } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
-import { getDayOfWeek } from "../../utils/miscUtils";
-
-interface HabitProps {
-  habitInfo: HabitType;
-  habitLogsInfo: HabitLogType[];
-  handleDelete: any;
-  listType: "all" | "today";
-  setMessage: React.Dispatch<React.SetStateAction<string>>;
-}
+import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
 
 const Habit: React.FC<HabitProps> = ({
   habitInfo,
@@ -21,30 +13,12 @@ const Habit: React.FC<HabitProps> = ({
   let allLogs;
 
   if (listType === "all") {
-    const componentsOfWeek = [...Array(7)].map((item, index) => (
-      <HabitLog
-        habitLogInfo={null}
-        userId={0}
-        dayNum={index}
-        key={index}
-        listType={listType}
-        setMessage={setMessage}
-      />
-    ));
-    allLogs = habitLogsInfo.reduce((acc, currentLog) => {
-      const dayNum = getDayOfWeek(currentLog.scheduled_at);
-      acc[dayNum] = (
-        <HabitLog
-          habitLogInfo={currentLog}
-          userId={habitInfo.userId}
-          dayNum={dayNum}
-          key={dayNum}
-          listType={listType}
-          setMessage={setMessage}
-        />
-      );
-      return acc;
-    }, componentsOfWeek);
+    allLogs = generateHabitLogList({
+      habitInfo,
+      habitLogsInfo,
+      listType,
+      setMessage,
+    });
   }
 
   return (
