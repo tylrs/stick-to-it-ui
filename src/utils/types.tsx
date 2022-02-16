@@ -25,8 +25,8 @@ export interface HabitType {
 export interface HabitLogType {
   id: number;
   habit_id: number;
-  scheduled_at: String;
-  completed_at: String | null;
+  scheduled_at: string;
+  completed_at: string | null;
 }
 
 export interface HabitsType {
