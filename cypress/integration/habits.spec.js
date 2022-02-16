@@ -34,12 +34,12 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
         statusCode: 204,
       }
     ).as("Delete Habit");
-
-    cy.visit("http://localhost:2000/").logIn();
+    const today = new Date("2022/02/13");
+    cy.clock(today).visit("http://localhost:2000/").logIn();
   });
 
   it("Should be able to view existing habits", () => {
-    cy.get(".habit-container").should("have.length", 3);
+    cy.get(".habit-container-all").should("have.length", 3);
   });
 
   it("Should be able to create a new habit and see it in all habits", () => {
@@ -51,8 +51,10 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       .type("Eat healthy")
       .get("[name=description]")
       .type("Weekdays")
-      .get("[name=startDate]")
-      .type("2022/02/01")
+      .get("#start-date-input")
+      .type("2022/02/16")
+      .get("#end-date-input")
+      .type("2022/02/17")
       .intercept(
         "GET",
         "https://stick-to-it-api.herokuapp.com/users/**/habits",
@@ -65,12 +67,15 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       .as("Get User Habits After Update")
       .get(".submit-habit-creation")
       .click()
+      .wait("@Create New Habit")
       .wait("@Get User Habits After Update")
-      .get(".habit-container")
+      .get(".habit-container-all")
       .should("have.length", 4)
       .get(".habit-name")
       .eq(3)
-      .should("have.text", "Habit: Eat Healthy");
+      .should("have.text", "Eat healthy")
+      .get(".message-container")
+      .should("have.text", "New Habit Created");
   });
 
   it("Should be able to delete a habit", () => {
