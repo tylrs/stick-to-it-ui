@@ -35,7 +35,7 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
       }
     ).as("Delete Habit");
 
-    const today = new Date("2022/02/13");
+    const today = new Date("2022/02/15");
     cy.clock(today).visit("http://localhost:2000/").logIn();
   });
 
@@ -152,5 +152,9 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
       .get(".log-checkbox")
       .eq(2)
       .should("not.be.checked");
+  });
+
+  it("Should style today's checkbox differently", () => {
+    cy.get(".habit-log-container").eq(2).should("have.class", "today-marker");
   });
 });
