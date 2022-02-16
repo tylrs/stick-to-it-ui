@@ -21,6 +21,10 @@
   margin-top: 0.3rem;
 }
 
+.account-creation-input {
+  color: black;
+}
+
 .account-page-header {
   color: #fff994;
 }
