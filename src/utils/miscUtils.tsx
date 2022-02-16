@@ -42,3 +42,7 @@ export const checkLoginCredentials = (email: string, password: string) => {
     throw Error;
   }
 };
+
+export const getDayOfWeek = (logTimestamp: string) => {
+  return new Date(logTimestamp.replaceAll("-", "/").slice(0, 10)).getDay();
+};
