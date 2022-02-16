@@ -64,24 +64,6 @@
         "habit_id": 26,
         "scheduled_at": "2022-02-18T00:00:00.000Z",
         "completed_at": "2022-02-18T00:00:00.000Z"
-      },
-      {
-        "id": 87,
-        "habit_id": 26,
-        "scheduled_at": "2022-02-16T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 85,
-        "habit_id": 26,
-        "scheduled_at": "2022-02-14T00:00:00.000Z",
-        "completed_at": "2022-02-14T00:00:00.000Z"
-      },
-      {
-        "id": 86,
-        "habit_id": 26,
-        "scheduled_at": "2022-02-15T00:00:00.000Z",
-        "completed_at": "2022-02-15T00:00:00.000Z"
       }
     ]
   },
@@ -98,36 +80,6 @@
         "habit_id": 29,
         "scheduled_at": "2022-02-15T00:00:00.000Z",
         "completed_at": "2022-02-15T00:00:00.000Z"
-      },
-      {
-        "id": 101,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-14T00:00:00.000Z",
-        "completed_at": "2022-02-14T00:00:00.000Z"
-      },
-      {
-        "id": 106,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-19T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 105,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-18T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 104,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-17T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 103,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-16T00:00:00.000Z",
-        "completed_at": null
       }
     ]
   }
