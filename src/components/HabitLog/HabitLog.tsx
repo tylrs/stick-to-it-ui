@@ -32,8 +32,12 @@ const HabitLog: React.FC<HabitLogProps> = ({
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage("");
     try {
-      await updateHabitLog(userId, habitLogInfo?.habit_id, habitLogInfo?.id);
-      if (e.target.checked) {
+      const habitLog = await updateHabitLog(
+        userId,
+        habitLogInfo?.habit_id,
+        habitLogInfo?.id
+      );
+      if (!habitLog.completed_at) {
         setMessage("Habit Marked Incomplete");
         setCompleted(false);
       } else {
