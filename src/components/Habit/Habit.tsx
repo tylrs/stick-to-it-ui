@@ -1,5 +1,5 @@
 import "./Habit.css";
-import { HabitLogType, HabitProps, HabitType } from "../../utils/types";
+import { HabitProps } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
 import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
 
