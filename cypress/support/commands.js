@@ -29,6 +29,7 @@ Cypress.Commands.add("interceptAllRequests", () => {
     statusCode: 200,
     fixture: "allHabitsResponse",
   }).as("Get User Habits");
+
   cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/auth/login", {
     ok: true,
     statusCode: 200,
