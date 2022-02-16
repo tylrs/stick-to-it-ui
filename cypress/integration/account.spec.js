@@ -12,7 +12,18 @@ describe("Account User Flow", () => {
       fixture: "loginResponse1",
     }).as("Log In");
 
-    cy.visit("http://localhost:2000/");
+    cy.intercept(
+      "GET",
+      "https://stick-to-it-api.herokuapp.com/users/**/habits",
+      {
+        ok: true,
+        statusCode: 200,
+        fixture: "allHabitsResponse",
+      }
+    ).as("Get User Habits");
+
+    const today = new Date("2022/02/13");
+    cy.clock(today).visit("http://localhost:2000/");
   });
 
   it("Should be able to create an account and auto log in with that account", () => {
