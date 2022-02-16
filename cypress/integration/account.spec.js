@@ -27,6 +27,42 @@ describe("Account User Flow", () => {
       .should("have.text", "Welcome: Sample Bob");
   });
 
+  it("Should show an error message if the account cannot be created", () => {
+    cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/users", {
+      ok: false,
+      statusCode: 422,
+      fixture: "accountCreationFail",
+    }).as("accountCreationFail");
+    cy.get("[href='/create-account'] > .account-link-wrapper")
+      .click()
+      .get("[name=name]")
+      .type("Sample Bob")
+      .get("[name=username]")
+      .type("samplebob1")
+      .get("[name=email]")
+      .type("samplebob1@sample.com")
+      .get("[name=password]")
+      .type("123458")
+      .get("[name=passwordConfirmation]")
+      .type("123456")
+      .get(".submit-account-creation")
+      .click()
+      .wait("@accountCreationFail")
+      .get(".account-creation-error")
+      .should("have.text", "Password confirmation doesn't match Password");
+  });
+
+  it("Should show an error if a form field isn't complete", () => {
+    cy.get("[href='/create-account'] > .account-link-wrapper")
+      .click()
+      .get("[name=name]")
+      .type("Sample Bob")
+      .get(".submit-account-creation")
+      .click()
+      .get("input:invalid")
+      .should("have.length", 4);
+  });
+
   it("Should be able to log in ", () => {
     cy.logIn()
       .url()
