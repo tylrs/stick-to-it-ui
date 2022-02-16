@@ -1,42 +1,10 @@
-describe.only("User Habit Creation, Viewing, and Deleting", () => {
+describe("User Habit Creation, Viewing, and Deleting", () => {
   beforeEach(() => {
-    cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/auth/login", {
-      ok: true,
-      statusCode: 200,
-      fixture: "loginResponse1",
-    }).as("Log In");
-
-    cy.intercept(
-      "GET",
-      "https://stick-to-it-api.herokuapp.com/users/**/habits",
-      {
-        ok: true,
-        statusCode: 200,
-        fixture: "allHabitsResponse",
-      }
-    ).as("Get User Habits");
-
-    cy.intercept(
-      "POST",
-      "https://stick-to-it-api.herokuapp.com/users/**/habits",
-      {
-        ok: true,
-        statusCode: 201,
-        fixture: "newHabitResponse",
-      }
-    ).as("Create New Habit");
-
-    cy.intercept(
-      "DELETE",
-      "https://stick-to-it-api.herokuapp.com/users/**/habits/**",
-      {
-        ok: true,
-        statusCode: 204,
-      }
-    ).as("Delete Habit");
-
     const today = new Date("2022/02/15");
-    cy.clock(today).visit("http://localhost:2000/").logIn();
+    cy.interceptAllRequests()
+      .clock(today)
+      .visit("http://localhost:2000/")
+      .logIn();
   });
 
   it("Should be able to view existing habits", () => {
