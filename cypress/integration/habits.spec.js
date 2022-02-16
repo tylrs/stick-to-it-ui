@@ -79,15 +79,15 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
   });
 
   it("Should be able to delete a habit", () => {
-    cy.get(".habit-container")
+    cy.get(".habit-container-all")
       .should("have.length", 3)
       .get(".habit-name")
       .eq(2)
-      .should("have.text", "Habit: Floss")
+      .should("have.text", "Running")
       .get(".habit-delete-button")
       .eq(2)
       .click()
-      .get(".habit-container")
+      .get(".habit-container-all")
       .should("have.length", 2);
   });
 });
