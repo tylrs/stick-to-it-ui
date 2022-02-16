@@ -1,4 +1,4 @@
-describe("User Habit Creation, Viewing, and Deleting", () => {
+describe.only("User Habit Creation, Viewing, and Deleting", () => {
   beforeEach(() => {
     cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/auth/login", {
       ok: true,
@@ -89,5 +89,23 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       .click()
       .get(".habit-container-all")
       .should("have.length", 2);
+  });
+
+  it("Should have checkboxes take different states depending on habit log info", () => {
+    cy.get(".log-checkbox")
+      .eq(0)
+      .should("be.disabled")
+      .get(".log-checkbox")
+      .eq(1)
+      .should("not.be.disabled")
+      .should("be.checked")
+      .get(".log-checkbox")
+      .eq(2)
+      .should("not.be.disabled")
+      .should("be.checked")
+      .get(".log-checkbox")
+      .eq(3)
+      .should("not.be.disabled")
+      .should("not.be.checked");
   });
 });
