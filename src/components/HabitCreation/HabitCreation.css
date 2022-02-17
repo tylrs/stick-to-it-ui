@@ -54,3 +54,10 @@
   background-color: aqua;
   cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+  .habit-creation-box {
+    height: 33rem;
+    width: 17rem;
+  }
+}
