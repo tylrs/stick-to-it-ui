@@ -20,7 +20,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
 
   const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError("");
-    setAccountInfo((prevState) => {
+    setAccountInfo(prevState => {
       return {
         ...prevState,
         [e.target.name]: e.target.value,
@@ -52,10 +52,9 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
       {error && <p className="account-creation-error">{error}</p>}
       <form
         className="account-creation-box"
-        onSubmit={(e) => submitAccountInfo(e)}
-      >
+        onSubmit={e => submitAccountInfo(e)}>
         <h2 className="account-page-header">Create An Account</h2>
-        <label htmlFor="account-name-input">Account Name:</label>
+        <label htmlFor="account-name-input">Full Name:</label>
         <input
           required
           id="account-name-input"
@@ -65,7 +64,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
           placeholder="name"
           maxLength={60}
           value={accountInfo.name}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <label htmlFor="account-username-input">Username:</label>
         <input
@@ -77,7 +76,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
           placeholder="username"
           maxLength={20}
           value={accountInfo.username}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <label htmlFor="account-email-input">Email:</label>
         <input
@@ -89,7 +88,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
           placeholder="email"
           maxLength={40}
           value={accountInfo.email}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <label htmlFor="account-password-input">Password:</label>
         <input
@@ -101,7 +100,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
           placeholder="password"
           maxLength={50}
           value={accountInfo.password}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <label htmlFor="account-password-confirmation-input">
           Password Confirmation:
@@ -115,7 +114,7 @@ const AccountCreation: React.FC<AccountCreationProps> = ({ setUser }) => {
           placeholder="password confirmation"
           maxLength={50}
           value={accountInfo.passwordConfirmation}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <button className="submit-account-creation">Create Account</button>
       </form>

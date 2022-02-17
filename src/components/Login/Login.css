@@ -11,7 +11,7 @@
   border-radius: 13px;
   display: flex;
   flex-direction: column;
-  height: 10rem;
+  height: 18rem;
   justify-content: space-around;
   margin-top: 2rem;
   padding: 4%;
@@ -48,4 +48,10 @@
 
 .login-title {
   color: #fff994;
+}
+
+@media screen and (max-width: 480px) {
+  .login-box {
+    width: 16rem;
+  }
 }

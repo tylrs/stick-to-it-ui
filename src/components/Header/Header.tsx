@@ -27,9 +27,6 @@ const Header: React.FC<HeaderProps> = ({
           <Link className="header-link" to="/all-habits">
             All Habits
           </Link>
-          <Link className="header-link" to="/">
-            Account
-          </Link>
           <button className="log-out-button" onClick={() => logOut()}>
             Log Out
           </button>

@@ -45,10 +45,10 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
 
   return (
     <section className="login-page-container">
-      <form className="login-box" onSubmit={(e) => submitCredentials(e)}>
+      <form className="login-box" onSubmit={e => submitCredentials(e)}>
         <h2 className="login-title">Login</h2>
         {error && <p className="login-error">{error}</p>}
-        <label htmlFor="login-input"> Email:</label>
+        <label htmlFor="login-input">Email:</label>
         <input
           required
           id="login-input"
@@ -58,7 +58,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
           placeholder="email"
           maxLength={60}
           value={email}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <label htmlFor="login-input">Password:</label>
         <input
@@ -70,7 +70,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
           placeholder="password"
           maxLength={20}
           value={password}
-          onChange={(e) => handleUserInput(e)}
+          onChange={e => handleUserInput(e)}
         />
         <button className="submit-login">Login</button>
       </form>

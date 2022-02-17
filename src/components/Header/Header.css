@@ -59,3 +59,17 @@ h1 {
   cursor: pointer;
   background-color: aqua;
 }
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .link-container {
+    flex-direction: column;
+  }
+
+  .header-link {
+    font-size: 1rem;
+  }
+}

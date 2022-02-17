@@ -46,6 +46,13 @@ const Habit: React.FC<HabitProps> = ({
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
       )}
+      <button
+        className="habit-delete-button-mobile"
+        onClick={() => {
+          handleDelete(habitInfo.id);
+        }}>
+        Delete
+      </button>
     </article>
   );
 };
