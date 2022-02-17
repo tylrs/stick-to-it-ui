@@ -128,7 +128,7 @@ export const updateHabitLog = async (
     );
     if (!response.ok) throw await response.json();
     const data = await response.json();
-    return data;
+    return data.habit_log;
   } catch (err: any) {
     throw err;
   }
