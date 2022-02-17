@@ -64,3 +64,10 @@
   background-color: #fffccc;
   cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+  .habit-container-today {
+    height: 13rem;
+    width: 70%;
+  }
+}
