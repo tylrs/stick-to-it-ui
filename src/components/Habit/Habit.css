@@ -65,9 +65,41 @@
   cursor: pointer;
 }
 
+.habit-delete-button-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 480px) {
   .habit-container-today {
+    display: block;
     height: 13rem;
     width: 70%;
+  }
+
+  .habit-container-all {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    height: 18rem;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+
+  .habit-description {
+    padding-right: 0%;
+    text-align: center;
+  }
+
+  .habit-delete-button {
+    display: none;
+  }
+
+  .habit-delete-button-mobile {
+    background-color: white;
+    border-radius: 10px;
+    display: inline-block;
+    height: 1.5rem;
+    width: 4rem;
   }
 }
