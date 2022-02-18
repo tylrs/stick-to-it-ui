@@ -73,6 +73,6 @@ To view this application on your local device:
 - Customizing frequency of habits
 - Have multiple levels of intensity for habits which increase on certain dates
 
-- ***
+---
 
-  **[Back to top](#table-of-contents)**
+**[Back to top](#table-of-contents)**
