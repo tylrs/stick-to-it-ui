@@ -26,7 +26,7 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       .type("2022/02/17")
       .intercept(
         "GET",
-        "https://stick-to-it-api.herokuapp.com/users/**/habits",
+        "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/week",
         {
           ok: true,
           statusCode: 200,
@@ -53,9 +53,20 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       .get(".habit-name")
       .eq(2)
       .should("have.text", "Running")
+      .intercept(
+        "GET",
+        "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/week",
+        {
+          ok: true,
+          statusCode: 200,
+          fixture: "allHabitsResponseAfterDeletion",
+        }
+      )
+      .as("Get User Habits After Delete")
       .get(".habit-delete-button")
       .eq(2)
       .click()
+      .wait("@Delete Habit")
       .get(".habit-container-all")
       .should("have.length", 2);
   });
@@ -81,7 +92,7 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
   it("Should be able to mark a habit log as complete", () => {
     cy.intercept(
       "PATCH",
-      "https://stick-to-it-api.herokuapp.com/users/**/habits/**/habit_logs/**",
+      "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/**/habit_logs/**",
       {
         ok: true,
         statusCode: 200,
@@ -103,7 +114,7 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
   it("Should be able to mark a habit log as incomplete", () => {
     cy.intercept(
       "PATCH",
-      "https://stick-to-it-api.herokuapp.com/users/**/habits/**/habit_logs/**",
+      "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/**/habit_logs/**",
       {
         ok: true,
         statusCode: 200,

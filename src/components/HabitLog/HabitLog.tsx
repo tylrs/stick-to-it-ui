@@ -34,7 +34,7 @@ const HabitLog: React.FC<HabitLogProps> = ({
     try {
       const habitLog = await updateHabitLog(
         userId,
-        habitLogInfo?.habit_id,
+        habitLogInfo?.habit_plan_id,
         habitLogInfo?.id
       );
       if (!habitLog.completed_at) {

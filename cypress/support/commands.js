@@ -12,39 +12,55 @@ Cypress.Commands.add("logIn", () => {
 });
 
 Cypress.Commands.add("interceptAllRequests", () => {
-  cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/users", {
+  cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/api/v2/users", {
     ok: true,
     statusCode: 201,
     fixture: "newAccountResponse",
   }).as("Create Account");
 
-  cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/auth/login", {
-    ok: true,
-    statusCode: 200,
-    fixture: "loginResponse1",
-  }).as("Log In");
+  cy.intercept(
+    "POST",
+    "https://stick-to-it-api.herokuapp.com/api/v2/auth/login",
+    {
+      ok: true,
+      statusCode: 200,
+      fixture: "loginResponse1",
+    }
+  ).as("Log In");
 
-  cy.intercept("GET", "https://stick-to-it-api.herokuapp.com/users/**/habits", {
-    ok: true,
-    statusCode: 200,
-    fixture: "allHabitsResponse",
-  }).as("Get User Habits");
-
-  cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/auth/login", {
-    ok: true,
-    statusCode: 200,
-    fixture: "loginResponse1",
-  }).as("Log In");
-
-  cy.intercept("GET", "https://stick-to-it-api.herokuapp.com/users/**/habits", {
-    ok: true,
-    statusCode: 200,
-    fixture: "allHabitsResponse",
-  }).as("Get User Habits");
+  cy.intercept(
+    "GET",
+    "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/week",
+    {
+      ok: true,
+      statusCode: 200,
+      fixture: "allHabitsResponse",
+    }
+  ).as("Get User Habits");
 
   cy.intercept(
     "POST",
-    "https://stick-to-it-api.herokuapp.com/users/**/habits",
+    "https://stick-to-it-api.herokuapp.com/api/v2/auth/login",
+    {
+      ok: true,
+      statusCode: 200,
+      fixture: "loginResponse1",
+    }
+  ).as("Log In");
+
+  cy.intercept(
+    "GET",
+    "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/week",
+    {
+      ok: true,
+      statusCode: 200,
+      fixture: "allHabitsResponse",
+    }
+  ).as("Get User Habits");
+
+  cy.intercept(
+    "POST",
+    "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habits",
     {
       ok: true,
       statusCode: 201,
@@ -54,7 +70,7 @@ Cypress.Commands.add("interceptAllRequests", () => {
 
   cy.intercept(
     "DELETE",
-    "https://stick-to-it-api.herokuapp.com/users/**/habits/**",
+    "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habits/**",
     {
       ok: true,
       statusCode: 204,

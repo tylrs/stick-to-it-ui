@@ -28,7 +28,7 @@ describe("Account User Flow", () => {
   });
 
   it("Should show an error message if the account cannot be created", () => {
-    cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/users", {
+    cy.intercept("POST", "https://stick-to-it-api.herokuapp.com/api/v2/users", {
       ok: false,
       statusCode: 422,
       fixture: "accountCreationFail",

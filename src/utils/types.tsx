@@ -24,7 +24,7 @@ export interface HabitType {
 
 export interface HabitLogType {
   id: number;
-  habit_id: number;
+  habit_plan_id: number;
   scheduled_at: string;
   completed_at: string | null;
 }
@@ -39,8 +39,18 @@ export interface HabitsType {
   habit_logs: Array<HabitLogType>;
 }
 
+export interface HabitPlanType {
+  id?: number;
+  habit_id: number;
+  userId?: number;
+  habit: { name: string; description: string };
+  startDate: Date;
+  endDate: Date;
+  habit_logs: Array<HabitLogType>;
+}
+
 export interface HabitProps {
-  habitInfo: HabitType;
+  habitInfo: HabitPlanType;
   habitLogsInfo: HabitLogType[];
   handleDelete?: any;
   listType: "all" | "today";
