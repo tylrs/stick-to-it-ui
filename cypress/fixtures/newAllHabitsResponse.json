@@ -2,8 +2,10 @@
   {
     "id": 25,
     "user_id": 1,
-    "name": "Working Hard",
-    "description": "every day",
+    "habit": {
+      "name": "Working Hard",
+      "description": "every day"
+    },
     "created_at": "2022-02-14T17:39:27.777Z",
     "updated_at": "2022-02-14T17:39:27.777Z",
     "habit_logs": [
@@ -48,8 +50,10 @@
   {
     "id": 26,
     "user_id": 1,
-    "name": "Dancing",
-    "description": "Daily in the morning",
+    "habit": {
+      "name": "Dancing",
+      "description": "Daily in the morning"
+    },
     "created_at": "2022-02-14T21:10:16.787Z",
     "updated_at": "2022-02-14T21:10:16.787Z",
     "habit_logs": [
@@ -88,8 +92,10 @@
   {
     "id": 29,
     "user_id": 1,
-    "name": "Running",
-    "description": "Most days",
+    "habit": {
+      "name": "Running",
+      "description": "Most days"
+    },
     "created_at": "2022-02-15T00:01:26.699Z",
     "updated_at": "2022-02-15T00:01:26.699Z",
     "habit_logs": [
@@ -134,8 +140,10 @@
   {
     "id": 30,
     "user_id": 1,
-    "name": "Eat healthy",
-    "description": "Weekdays",
+    "habit": {
+      "name": "Eat healthy",
+      "description": "Weekdays"
+    },
     "created_at": "2022-02-13T00:01:26.699Z",
     "updated_at": "2022-02-13T00:01:26.699Z",
     "habit_logs": [
