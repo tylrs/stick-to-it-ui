@@ -89,6 +89,25 @@ export const getAllHabits = async (userId: number) => {
   }
 };
 
+export const getWeekHabitPlans = async (userId: number) => {
+  const token = getToken();
+  try {
+    const response = await fetch(
+      `${urls.productionUsers}/${userId}/habit_plans/week`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) throw await response.json();
+    const data = await response.json();
+    return data;
+  } catch (err: any) {
+    throw err;
+  }
+};
+
 export const deleteHabit = async (
   userId: number,
   habitId: number | undefined
@@ -118,7 +137,7 @@ export const updateHabitLog = async (
   const token = getToken();
   try {
     const response = await fetch(
-      `${urls.productionUsers}/${userId}/habits/${habitId}/habit_logs/${habitLogId}`,
+      `${urls.productionUsers}/${userId}/habit_plans/${habitPlanId}/habit_logs/${habitLogId}`,
       {
         method: "PATCH",
         headers: {
@@ -134,11 +153,11 @@ export const updateHabitLog = async (
   }
 };
 
-export const getTodayHabits = async (userId: number | undefined) => {
+export const getTodayHabitPlans = async (userId: number | undefined) => {
   const token = getToken();
   try {
     const response = await fetch(
-      `${urls.productionUsers}/${userId}/habits/today`,
+      `${urls.productionUsers}/${userId}/habit_plans/today`,
       {
         method: "GET",
         headers: {
