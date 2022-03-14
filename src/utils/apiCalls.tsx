@@ -131,7 +131,7 @@ export const deleteHabit = async (
 
 export const updateHabitLog = async (
   userId: number | undefined,
-  habitId: number | undefined,
+  habitPlanId: number | undefined,
   habitLogId: number | undefined
 ) => {
   const token = getToken();
