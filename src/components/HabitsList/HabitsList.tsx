@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   deleteHabit,
-  getAllHabits,
-  getTodayHabits,
+  getWeekHabitPlans,
+  getTodayHabitPlans,
 } from "../../utils/apiCalls";
 import "./HabitsList.css";
-import { HabitsType } from "../../utils/types";
+import { HabitsType, HabitPlanType } from "../../utils/types";
 import Habit from "../Habit/Habit";
 import { getLastSunday, getToday } from "../../utils/miscUtils";
 
@@ -23,14 +23,14 @@ const HabitsList: React.FC<HabitsListProps> = ({
   listType,
   setMessage,
 }) => {
-  const [allHabits, setAllHabits] = useState<HabitsType[]>([]);
+  const [allHabits, setAllHabits] = useState<HabitPlanType[]>([]);
   const [currentListType, setListType] = useState("");
   const [error, setError] = useState("");
 
   const handleDelete = async (habitId: number) => {
     try {
       await deleteHabit(userId, habitId);
-      let updatedHabits = allHabits.filter(habit => habit.id !== habitId);
+      let updatedHabits = allHabits.filter(habit => habit.habit_id !== habitId);
       setAllHabits(updatedHabits);
     } catch (error) {
       setMessage("Habit Could Not Be Deleted");
@@ -52,8 +52,8 @@ const HabitsList: React.FC<HabitsListProps> = ({
     try {
       const data =
         listType === "all"
-          ? await getAllHabits(userId)
-          : await getTodayHabits(userId);
+          ? await getWeekHabitPlans(userId)
+          : await getTodayHabitPlans(userId);
       if (data.length) {
         setAllHabits(data);
       }

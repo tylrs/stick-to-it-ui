@@ -24,8 +24,8 @@ const Habit: React.FC<HabitProps> = ({
   return (
     <article className={`habit-container-${listType}`}>
       <div className="habit-info-container">
-        <h3 className="habit-name">{habitInfo.name}</h3>
-        <p className="habit-description">{habitInfo.description}</p>
+        <h3 className="habit-name">{habitInfo.habit.name}</h3>
+        <p className="habit-description">{habitInfo.habit.description}</p>
         {listType !== "all" && (
           <HabitLog
             habitLogInfo={habitLogsInfo[0]}
@@ -38,7 +38,7 @@ const Habit: React.FC<HabitProps> = ({
         <button
           className="habit-delete-button"
           onClick={() => {
-            handleDelete(habitInfo.id);
+            handleDelete(habitInfo.habit_id);
           }}>
           Delete
         </button>
@@ -49,7 +49,7 @@ const Habit: React.FC<HabitProps> = ({
       <button
         className="habit-delete-button-mobile"
         onClick={() => {
-          handleDelete(habitInfo.id);
+          handleDelete(habitInfo.habit_id);
         }}>
         Delete
       </button>
