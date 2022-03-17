@@ -44,14 +44,14 @@ export interface HabitPlanType {
   habit_id: number;
   userId?: number;
   habit: { name: string; description: string };
-  startDate: Date;
-  endDate: Date;
+  start_datetime: Date;
+  end_datetime: Date;
   habit_logs: Array<HabitLogType>;
 }
 
 export interface HabitProps {
-  habitInfo: HabitPlanType;
-  habitLogsInfo: HabitLogType[];
+  habitInfo: { name: string; description: string };
+  habitPlans: HabitPlanType[];
   handleDelete?: any;
   listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
