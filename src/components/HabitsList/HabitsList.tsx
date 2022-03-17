@@ -58,11 +58,11 @@ const HabitsList: React.FC<HabitsListProps> = ({
     return acc;
   }, {} as any);
 
-  const formattedHabitPlans = Object.keys(sortedHabitPlans).map(habitId => {
+  const formattedHabits = Object.keys(sortedHabitPlans).map(habitId => {
     const groupedHabitPlans = sortedHabitPlans[habitId];
-    console.log("all habit plans>>", allHabitPlans);
-    console.table(sortedHabitPlans);
-    console.log("grouped>>>", groupedHabitPlans);
+    // console.log("all habit plans>>", allHabitPlans);
+    // console.table(sortedHabitPlans);
+    // console.log("grouped>>>", groupedHabitPlans);
     return (
       <Habit
         habitInfo={groupedHabitPlans[0].habit}
@@ -122,7 +122,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
           <p className="list-date">{getToday()}</p>
         </div>
       )}
-      {/* {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>} */}
+      {formattedHabits.length ? formattedHabits : <p>No Habits Created Yet</p>}
       <Link className="create-new-habit-button" to="/create-habit">
         Create New Habit
       </Link>
