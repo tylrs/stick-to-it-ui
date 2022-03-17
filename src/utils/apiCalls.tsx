@@ -89,7 +89,7 @@ export const getAllHabits = async (userId: number) => {
   }
 };
 
-export const getWeekHabitPlans = async (userId: number) => {
+export const getWeekHabitAndPartnerPlans = async (userId: number) => {
   const token = getToken();
   try {
     const response = await fetch(
