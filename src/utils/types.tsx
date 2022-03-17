@@ -56,3 +56,18 @@ export interface HabitProps {
   listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export interface HabitPlanProps {
+  habitPlanInfo: HabitPlanType;
+  habitLogsInfo: HabitLogType[];
+  handleDelete: any;
+  listType: "all" | "today";
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface HabitLogListProps {
+  habitPlanInfo: HabitPlanType;
+  habitLogsInfo: HabitLogType[];
+  listType: "all" | "today";
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
