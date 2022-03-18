@@ -53,7 +53,8 @@
 }
 /* Normal unchecked but scheduled */
 .log-checkbox .checkmark {
-  background: #91c7f4;
+  background: #2196f3;
+  border: 2px solid white;
 }
 /* Normal checked */
 .actual-checkbox:checked + .checkmark {
@@ -65,9 +66,10 @@
 }
 /* Partner unchecked */
 .partner .checkmark {
-  background: rgb(215 248 215);
+  /* background: rgb(215 248 215); */
+  background: #049c04;
 }
 /* Partner checked */
 .partner .actual-checkbox:checked + .checkmark {
-  background: lightgreen;
+  background: #049c04;
 }
