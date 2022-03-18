@@ -60,6 +60,7 @@ export const formatDateTime = (dateTime: Date) => {
 export const generateHabitLogList = ({
   habitPlanInfo,
   habitLogsInfo,
+  belongsToPartner,
   listType,
   setMessage,
 }: HabitLogListProps) => {
@@ -68,6 +69,7 @@ export const generateHabitLogList = ({
       habitLogInfo={null}
       userId={0}
       dayNum={index}
+      belongsToPartner={belongsToPartner}
       key={index}
       listType={listType}
       setMessage={setMessage}
@@ -80,6 +82,7 @@ export const generateHabitLogList = ({
         habitLogInfo={currentLog}
         userId={habitPlanInfo.user_id}
         dayNum={dayNum}
+        belongsToPartner={belongsToPartner}
         key={dayNum}
         listType={listType}
         setMessage={setMessage}

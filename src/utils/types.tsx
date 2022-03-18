@@ -71,6 +71,7 @@ export interface HabitPlanProps {
 export interface HabitLogListProps {
   habitPlanInfo: HabitPlanType;
   habitLogsInfo: HabitLogType[];
+  belongsToPartner: boolean;
   listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }

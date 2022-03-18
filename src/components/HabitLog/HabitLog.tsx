@@ -8,6 +8,7 @@ interface HabitLogProps {
   habitLogInfo: HabitLogType | null;
   userId: number | undefined;
   dayNum: number;
+  belongsToPartner: boolean;
   listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -16,6 +17,7 @@ const HabitLog: React.FC<HabitLogProps> = ({
   habitLogInfo,
   userId,
   dayNum,
+  belongsToPartner,
   listType,
   setMessage,
 }) => {
@@ -55,16 +57,23 @@ const HabitLog: React.FC<HabitLogProps> = ({
     }
   }, []);
 
+  const partnerClass = belongsToPartner ? "partner" : "";
+  const noInfoClass = !habitLogInfo ? "not-scheduled" : "";
+  const classes = `log-checkbox ${partnerClass} ${noInfoClass}`;
+
   return (
     <div className={`habit-log-container ${isToday}`}>
       <h4 className="day-of-week-label">{dayOfWeek}</h4>
-      <input
-        className="log-checkbox"
-        type="checkbox"
-        disabled={!habitLogInfo}
-        checked={completed}
-        onChange={e => handleChange(e)}
-      />
+      <label className={classes}>
+        <input
+          className="actual-checkbox"
+          type="checkbox"
+          disabled={belongsToPartner || !habitLogInfo}
+          checked={completed}
+          onChange={e => handleChange(e)}
+        />
+        <span className="checkmark"></span>
+      </label>
     </div>
   );
 };
