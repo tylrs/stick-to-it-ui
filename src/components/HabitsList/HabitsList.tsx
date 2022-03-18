@@ -50,6 +50,9 @@ const HabitsList: React.FC<HabitsListProps> = ({
 
   const formattedHabits = Object.keys(sortedHabitPlans).map(habitId => {
     const groupedHabitPlans = sortedHabitPlans[habitId];
+    if (groupedHabitPlans[0].user_id !== userId) {
+      groupedHabitPlans.reverse();
+    }
     return (
       <Habit
         userId={userId}
