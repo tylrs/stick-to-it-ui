@@ -27,6 +27,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
 
   return (
     <div className="habit-plan">
+      <p>{habitPlanInfo.user.name}</p>
       <p>{`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
         habitPlanInfo.end_datetime
       )}`}</p>

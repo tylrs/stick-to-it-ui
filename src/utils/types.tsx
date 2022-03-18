@@ -43,6 +43,7 @@ export interface HabitPlanType {
   id?: number;
   habit_id: number;
   userId?: number;
+  user: { name: string };
   habit: { name: string; description: string };
   start_datetime: Date;
   end_datetime: Date;
