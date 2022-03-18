@@ -25,8 +25,6 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
     <article className={`habit-plan-container-${listType}`}>
       <div className="habit-plan-info-container">
         <p>{`${habitPlanInfo.start_datetime}-${habitPlanInfo.end_datetime}`}</p>
-        {/* <h3 className="habit-name">{habitInfo.habit.name}</h3>
-        <p className="habit-description">{habitInfo.habit.description}</p> */}
         {listType !== "all" && (
           <HabitLog
             habitLogInfo={habitLogsInfo[0]}
