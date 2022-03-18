@@ -1,7 +1,11 @@
 import "./Habit.css";
 import { HabitProps } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
-import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
+import {
+  formatDateTime,
+  generateHabitLogList,
+  getDayOfWeek,
+} from "../../utils/miscUtils";
 import HabitPlan from "../HabitPlan/HabitPlan";
 
 const Habit: React.FC<HabitProps> = ({
@@ -28,6 +32,12 @@ const Habit: React.FC<HabitProps> = ({
       <div className="habit-info-container">
         <h3 className="habit-name">{habitInfo.name}</h3>
         <p className="habit-description">{habitInfo.description}</p>
+        <p>
+          Date Range of Current Habit Plan:{" "}
+          {`${formatDateTime(habitPlans[0].start_datetime)}-${formatDateTime(
+            habitPlans[0].end_datetime
+          )}`}
+        </p>
       </div>
       <div className="habit-plan-container">{formattedHabitPlans}</div>
     </article>

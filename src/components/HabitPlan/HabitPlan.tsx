@@ -30,12 +30,9 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
     <div className="habit-plan">
       <p>
         {userId === habitPlanInfo.user_id
-          ? "Your Habit Plan:"
-          : `${habitPlanInfo.user.name} Habit Plan:`}
+          ? "Your Habit Plan Progress:"
+          : `${habitPlanInfo.user.name} Habit Plan Progress:`}
       </p>
-      <p>{`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
-        habitPlanInfo.end_datetime
-      )}`}</p>
       {listType !== "all" && (
         <HabitLog
           habitLogInfo={habitLogsInfo[0]}
