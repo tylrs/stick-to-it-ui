@@ -78,7 +78,7 @@ export const generateHabitLogList = ({
     acc[dayNum] = (
       <HabitLog
         habitLogInfo={currentLog}
-        userId={habitPlanInfo.userId}
+        userId={habitPlanInfo.user_id}
         dayNum={dayNum}
         key={dayNum}
         listType={listType}
