@@ -18,7 +18,6 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   let allLogs;
 
   if (listType === "all") {
-    console.log(habitPlanInfo);
     allLogs = generateHabitLogList({
       habitPlanInfo,
       habitLogsInfo,
@@ -29,14 +28,18 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
 
   return (
     <div className="habit-plan">
-      <p>{habitPlanInfo.user.name}</p>
+      <p>
+        {userId === habitPlanInfo.user_id
+          ? "Your Habit Plan:"
+          : `${habitPlanInfo.user.name} Habit Plan:`}
+      </p>
       <p>{`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
         habitPlanInfo.end_datetime
       )}`}</p>
       {listType !== "all" && (
         <HabitLog
           habitLogInfo={habitLogsInfo[0]}
-          userId={habitPlanInfo.userId}
+          userId={habitPlanInfo.user_id}
           dayNum={getDayOfWeek(habitLogsInfo[0].scheduled_at)}
           listType={listType}
           setMessage={setMessage}
