@@ -51,6 +51,7 @@ export interface HabitPlanType {
 }
 
 export interface HabitProps {
+  userId: number;
   habitInfo: { name: string; description: string };
   habitPlans: HabitPlanType[];
   handleDelete?: any;
@@ -59,6 +60,7 @@ export interface HabitProps {
 }
 
 export interface HabitPlanProps {
+  userId: number;
   habitPlanInfo: HabitPlanType;
   habitLogsInfo: HabitLogType[];
   handleDelete: any;
