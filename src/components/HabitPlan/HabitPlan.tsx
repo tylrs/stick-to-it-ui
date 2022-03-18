@@ -1,11 +1,7 @@
 import "./HabitPlan.css";
 import { HabitPlanProps } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
-import {
-  formatDateTime,
-  generateHabitLogList,
-  getDayOfWeek,
-} from "../../utils/miscUtils";
+import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
 
 const HabitPlan: React.FC<HabitPlanProps> = ({
   userId,
