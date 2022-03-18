@@ -19,6 +19,7 @@ const Habit: React.FC<HabitProps> = ({
   const formattedHabitPlans = habitPlans.map(habitPlan => (
     <HabitPlan
       userId={userId}
+      key={habitPlan.id}
       habitPlanInfo={habitPlan}
       habitLogsInfo={habitPlan.habit_logs}
       handleDelete={handleDelete}
