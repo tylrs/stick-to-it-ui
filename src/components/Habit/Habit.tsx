@@ -27,7 +27,7 @@ const Habit: React.FC<HabitProps> = ({
         <h3 className="habit-name">{habitInfo.name}</h3>
         <p className="habit-description">{habitInfo.description}</p>
       </div>
-      {formattedHabitPlans}
+      <div className="habit-plan-container">{formattedHabitPlans}</div>
     </article>
   );
 };

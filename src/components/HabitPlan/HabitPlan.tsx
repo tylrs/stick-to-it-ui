@@ -22,26 +22,24 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   }
 
   return (
-    <article className={`habit-plan-container-${listType}`}>
-      <div className="habit-plan-info-container">
-        <p>{`${habitPlanInfo.start_datetime}-${habitPlanInfo.end_datetime}`}</p>
-        {listType !== "all" && (
-          <HabitLog
-            habitLogInfo={habitLogsInfo[0]}
-            userId={habitPlanInfo.userId}
-            dayNum={getDayOfWeek(habitLogsInfo[0].scheduled_at)}
-            listType={listType}
-            setMessage={setMessage}
-          />
-        )}
-        {/* <button
+    <div className="habit-plan">
+      <p>{`${habitPlanInfo.start_datetime}-${habitPlanInfo.end_datetime}`}</p>
+      {listType !== "all" && (
+        <HabitLog
+          habitLogInfo={habitLogsInfo[0]}
+          userId={habitPlanInfo.userId}
+          dayNum={getDayOfWeek(habitLogsInfo[0].scheduled_at)}
+          listType={listType}
+          setMessage={setMessage}
+        />
+      )}
+      {/* <button
           className="habit-delete-button"
           onClick={() => {
             handleDelete(habitInfo.habit_id);
           }}>
           Delete
         </button> */}
-      </div>
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
       )}
@@ -52,7 +50,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
         }}>
         Delete
       </button> */}
-    </article>
+    </div>
   );
 };
 
