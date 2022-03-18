@@ -9,3 +9,62 @@
 .today-marker {
   border: 1px solid #fff994;
 }
+
+.actual-checkbox {
+  visibility: hidden;
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* checkmark styling itself  */
+.checkmark {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+/* Hide check mark when unchecked */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.actual-checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.log-checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(24deg);
+  -ms-transform: rotate(24deg);
+  transform: rotate(24deg);
+}
+/* Normal unchecked but scheduled */
+.log-checkbox .checkmark {
+  background: #91c7f4;
+}
+/* Normal checked */
+.actual-checkbox:checked + .checkmark {
+  background: #2196f3;
+}
+/* Normal + Partner Not Scheduled */
+.not-scheduled + .checkmark {
+  background: #d3d3d329;
+}
+/* Partner unchecked */
+.partner .checkmark {
+  background: rgb(215 248 215);
+}
+/* Partner checked */
+.partner .actual-checkbox:checked + .checkmark {
+  background: lightgreen;
+}
