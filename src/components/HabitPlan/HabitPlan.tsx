@@ -8,6 +8,7 @@ import {
 } from "../../utils/miscUtils";
 
 const HabitPlan: React.FC<HabitPlanProps> = ({
+  userId,
   habitPlanInfo,
   habitLogsInfo,
   handleDelete,
@@ -17,6 +18,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   let allLogs;
 
   if (listType === "all") {
+    console.log(habitPlanInfo);
     allLogs = generateHabitLogList({
       habitPlanInfo,
       habitLogsInfo,

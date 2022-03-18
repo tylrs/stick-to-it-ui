@@ -52,6 +52,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
     const groupedHabitPlans = sortedHabitPlans[habitId];
     return (
       <Habit
+        userId={userId}
         habitInfo={groupedHabitPlans[0].habit}
         habitPlans={groupedHabitPlans}
         key={groupedHabitPlans[0].habit_id}

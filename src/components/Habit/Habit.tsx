@@ -5,6 +5,7 @@ import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
 import HabitPlan from "../HabitPlan/HabitPlan";
 
 const Habit: React.FC<HabitProps> = ({
+  userId,
   habitInfo,
   habitPlans,
   handleDelete,
@@ -13,6 +14,7 @@ const Habit: React.FC<HabitProps> = ({
 }) => {
   const formattedHabitPlans = habitPlans.map(habitPlan => (
     <HabitPlan
+      userId={userId}
       habitPlanInfo={habitPlan}
       habitLogsInfo={habitPlan.habit_logs}
       handleDelete={handleDelete}
