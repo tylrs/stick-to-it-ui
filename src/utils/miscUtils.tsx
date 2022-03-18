@@ -48,6 +48,16 @@ export const getDayOfWeek = (logTimestamp: string) => {
   return new Date(logTimestamp.replaceAll("-", "/").slice(0, 10)).getDay();
 };
 
+export const formatDateTime = (dateTime: Date) => {
+  console.log(dateTime);
+  let date = new Date(dateTime);
+  return date.toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+};
+
 export const generateHabitLogList = ({
   habitPlanInfo,
   habitLogsInfo,
