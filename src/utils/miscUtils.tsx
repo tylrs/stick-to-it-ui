@@ -49,7 +49,6 @@ export const getDayOfWeek = (logTimestamp: string) => {
 };
 
 export const formatDateTime = (dateTime: Date) => {
-  console.log(dateTime);
   let date = new Date(dateTime);
   return date.toLocaleDateString("en-us", {
     year: "numeric",
