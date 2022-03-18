@@ -39,16 +39,6 @@ const HabitsList: React.FC<HabitsListProps> = ({
     }
   };
 
-  // const formattedHabits = allHabitPlans.map(habitPlan => (
-  //   <Habit
-  //     habitInfo={habitPlan}
-  //     key={habitPlan.id}
-  //     habitLogsInfo={habitPlan.habit_logs}
-  //     handleDelete={handleDelete}
-  //     listType={listType}
-  //     setMessage={setMessage}
-  //   />
-  // ));
   const sortedHabitPlans = allHabitPlans.reduce((acc, currentPlan) => {
     if (!acc[currentPlan.habit_id]) {
       acc[currentPlan.habit_id] = [currentPlan];
@@ -60,9 +50,6 @@ const HabitsList: React.FC<HabitsListProps> = ({
 
   const formattedHabits = Object.keys(sortedHabitPlans).map(habitId => {
     const groupedHabitPlans = sortedHabitPlans[habitId];
-    // console.log("all habit plans>>", allHabitPlans);
-    // console.table(sortedHabitPlans);
-    // console.log("grouped>>>", groupedHabitPlans);
     return (
       <Habit
         habitInfo={groupedHabitPlans[0].habit}
