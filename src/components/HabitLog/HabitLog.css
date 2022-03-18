@@ -66,10 +66,11 @@
 }
 /* Partner unchecked */
 .partner .checkmark {
-  /* background: rgb(215 248 215); */
-  background: #049c04;
+  background: #049c0400;
+  border: none;
 }
 /* Partner checked */
 .partner .actual-checkbox:checked + .checkmark {
-  background: #049c04;
+  background: #049c0400;
+  border: none;
 }
