@@ -1,11 +1,6 @@
 import "./Habit.css";
 import { HabitProps } from "../../utils/types";
-import HabitLog from "../HabitLog/HabitLog";
-import {
-  formatDateTime,
-  generateHabitLogList,
-  getDayOfWeek,
-} from "../../utils/miscUtils";
+import { formatDateTime } from "../../utils/miscUtils";
 import HabitPlan from "../HabitPlan/HabitPlan";
 
 const Habit: React.FC<HabitProps> = ({

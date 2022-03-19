@@ -2,7 +2,6 @@ import "./HabitPlan.css";
 import { HabitPlanProps } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
 import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
-import { useEffect, useState } from "react";
 
 const HabitPlan: React.FC<HabitPlanProps> = ({
   userId,
@@ -12,12 +11,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   listType,
   setMessage,
 }) => {
-  // const [belongsToPartner, setBelongsToPartner] = useState(false);
   let allLogs;
-
-  // useEffect(() => {
-  //   setBelongsToPartner();
-  // });
   const belongsToPartner = userId !== habitPlanInfo.user_id ? true : false;
 
   if (listType === "all") {
