@@ -55,7 +55,7 @@ const HabitLog: React.FC<HabitLogProps> = ({
     if (habitLogInfo?.completed_at) {
       setCompleted(true);
     }
-  }, []);
+  }, [habitLogInfo?.completed_at]);
 
   const partnerClass = belongsToPartner ? "partner" : "";
   const noInfoClass = !habitLogInfo ? "not-scheduled" : "";

@@ -12,8 +12,13 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   listType,
   setMessage,
 }) => {
-  const [belongsToPartner, setBelongsToPartner] = useState(false);
+  // const [belongsToPartner, setBelongsToPartner] = useState(false);
   let allLogs;
+
+  // useEffect(() => {
+  //   setBelongsToPartner();
+  // });
+  const belongsToPartner = userId !== habitPlanInfo.user_id ? true : false;
 
   if (listType === "all") {
     allLogs = generateHabitLogList({
@@ -24,10 +29,6 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
       setMessage,
     });
   }
-
-  useEffect(() => {
-    setBelongsToPartner(userId !== habitPlanInfo.user_id);
-  });
 
   return (
     <div className="habit-plan">
