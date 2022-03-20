@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   deleteHabit,
-  getWeekHabitPlans,
+  getWeekHabitAndPartnerPlans,
   getTodayHabitPlans,
 } from "../../utils/apiCalls";
 import "./HabitsList.css";
-import { HabitsType, HabitPlanType } from "../../utils/types";
+import { HabitPlanType } from "../../utils/types";
 import Habit from "../Habit/Habit";
 import { getLastSunday, getToday } from "../../utils/miscUtils";
 
@@ -23,39 +23,57 @@ const HabitsList: React.FC<HabitsListProps> = ({
   listType,
   setMessage,
 }) => {
-  const [allHabits, setAllHabits] = useState<HabitPlanType[]>([]);
+  const [allHabitPlans, setAllHabitPlans] = useState<HabitPlanType[]>([]);
   const [currentListType, setListType] = useState("");
   const [error, setError] = useState("");
 
   const handleDelete = async (habitId: number) => {
     try {
       await deleteHabit(userId, habitId);
-      let updatedHabits = allHabits.filter(habit => habit.habit_id !== habitId);
-      setAllHabits(updatedHabits);
+      let updatedHabitPlans = allHabitPlans.filter(
+        habitPlan => habitPlan.habit_id !== habitId
+      );
+      setAllHabitPlans(updatedHabitPlans);
     } catch (error) {
       setMessage("Habit Could Not Be Deleted");
     }
   };
 
-  const formattedHabits = allHabits.map(habit => (
-    <Habit
-      habitInfo={habit}
-      key={habit.id}
-      habitLogsInfo={habit.habit_logs}
-      handleDelete={handleDelete}
-      listType={listType}
-      setMessage={setMessage}
-    />
-  ));
+  const sortedHabitPlans = allHabitPlans.reduce((acc, currentPlan) => {
+    if (!acc[currentPlan.habit_id]) {
+      acc[currentPlan.habit_id] = [currentPlan];
+    } else {
+      acc[currentPlan.habit_id].push(currentPlan);
+    }
+    return acc;
+  }, {} as any);
 
-  const fetchHabits = async () => {
+  const formattedHabits = Object.keys(sortedHabitPlans).map(habitId => {
+    const groupedHabitPlans = sortedHabitPlans[habitId];
+    if (groupedHabitPlans[0].user_id !== userId) {
+      groupedHabitPlans.reverse();
+    }
+    return (
+      <Habit
+        userId={userId}
+        habitInfo={groupedHabitPlans[0].habit}
+        habitPlans={groupedHabitPlans}
+        key={groupedHabitPlans[0].habit_id}
+        handleDelete={handleDelete}
+        listType={listType}
+        setMessage={setMessage}
+      />
+    );
+  });
+
+  const fetchHabitPlans = async () => {
     try {
       const data =
         listType === "all"
-          ? await getWeekHabitPlans(userId)
+          ? await getWeekHabitAndPartnerPlans(userId)
           : await getTodayHabitPlans(userId);
       if (data.length) {
-        setAllHabits(data);
+        setAllHabitPlans(data);
       }
     } catch (err: any) {
       if (err.errors) {
@@ -67,11 +85,11 @@ const HabitsList: React.FC<HabitsListProps> = ({
   };
 
   useEffect(() => {
-    if (!allHabits.length && userId) {
-      fetchHabits();
+    if (!allHabitPlans.length && userId) {
+      fetchHabitPlans();
     } else if (listType !== currentListType) {
       setListType(listType);
-      fetchHabits();
+      fetchHabitPlans();
     }
   });
 

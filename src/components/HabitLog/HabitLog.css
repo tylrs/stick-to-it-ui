@@ -1,11 +1,76 @@
 .habit-log-container {
+  height: 2.8rem;
   padding: 0.5rem;
+  width: 1rem;
 }
 
 .day-of-week-label {
   text-transform: capitalize;
+  text-align: center;
 }
 
 .today-marker {
   border: 1px solid #fff994;
+}
+
+.actual-checkbox {
+  visibility: hidden;
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* checkmark styling itself  */
+.checkmark {
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+}
+/* Hide check mark when unchecked */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.actual-checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.log-checkbox .checkmark:after {
+  left: 6px;
+  top: 1.9px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(24deg);
+  -ms-transform: rotate(24deg);
+  transform: rotate(24deg);
+}
+/* Normal unchecked but scheduled */
+.log-checkbox .checkmark {
+  background: #2196f3;
+  border: 2px solid white;
+}
+/* Normal checked */
+.actual-checkbox:checked + .checkmark {
+  background: #2196f3;
+}
+/* Normal + Partner Not Scheduled */
+.not-scheduled + .checkmark {
+  background: #d3d3d329;
+}
+/* Partner unchecked */
+.partner .checkmark {
+  background: #049c0400;
+  border: none;
+}
+/* Partner checked */
+.partner .actual-checkbox:checked + .checkmark {
+  background: #049c0400;
+  border: none;
 }

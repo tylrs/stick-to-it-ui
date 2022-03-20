@@ -1,5 +1,5 @@
 import HabitLog from "../components/HabitLog/HabitLog";
-import { HabitProps, UserType } from "./types";
+import { HabitLogListProps, HabitProps, UserType } from "./types";
 
 export const storeToken = (token: string) => {
   localStorage.setItem("token", JSON.stringify(token));
@@ -48,17 +48,28 @@ export const getDayOfWeek = (logTimestamp: string) => {
   return new Date(logTimestamp.replaceAll("-", "/").slice(0, 10)).getDay();
 };
 
+export const formatDateTime = (dateTime: Date) => {
+  let date = new Date(dateTime);
+  return date.toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+};
+
 export const generateHabitLogList = ({
+  habitPlanInfo,
   habitLogsInfo,
-  habitInfo,
+  belongsToPartner,
   listType,
   setMessage,
-}: HabitProps) => {
+}: HabitLogListProps) => {
   const componentsOfWeek = [...Array(7)].map((item, index) => (
     <HabitLog
       habitLogInfo={null}
       userId={0}
       dayNum={index}
+      belongsToPartner={belongsToPartner}
       key={index}
       listType={listType}
       setMessage={setMessage}
@@ -69,8 +80,9 @@ export const generateHabitLogList = ({
     acc[dayNum] = (
       <HabitLog
         habitLogInfo={currentLog}
-        userId={habitInfo.userId}
+        userId={habitPlanInfo.user_id}
         dayNum={dayNum}
+        belongsToPartner={belongsToPartner}
         key={dayNum}
         listType={listType}
         setMessage={setMessage}

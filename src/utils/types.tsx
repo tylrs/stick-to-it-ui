@@ -42,17 +42,36 @@ export interface HabitsType {
 export interface HabitPlanType {
   id?: number;
   habit_id: number;
-  userId?: number;
+  user_id: number;
+  user: { name: string };
   habit: { name: string; description: string };
-  startDate: Date;
-  endDate: Date;
+  start_datetime: Date;
+  end_datetime: Date;
   habit_logs: Array<HabitLogType>;
 }
 
 export interface HabitProps {
-  habitInfo: HabitPlanType;
-  habitLogsInfo: HabitLogType[];
+  userId: number;
+  habitInfo: { name: string; description: string };
+  habitPlans: HabitPlanType[];
   handleDelete?: any;
+  listType: "all" | "today";
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface HabitPlanProps {
+  userId: number;
+  habitPlanInfo: HabitPlanType;
+  habitLogsInfo: HabitLogType[];
+  handleDelete: any;
+  listType: "all" | "today";
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface HabitLogListProps {
+  habitPlanInfo: HabitPlanType;
+  habitLogsInfo: HabitLogType[];
+  belongsToPartner: boolean;
   listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
