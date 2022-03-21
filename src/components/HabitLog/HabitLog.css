@@ -1,7 +1,9 @@
 .habit-log-container {
-  height: 2.8rem;
+  display: flex;
+  flex-direction: column;
+  height: 3.6rem;
   padding: 0.5rem;
-  width: 1rem;
+  width: 1.5rem;
 }
 
 .day-of-week-label {
@@ -25,9 +27,14 @@
 /* checkmark styling itself  */
 .checkmark {
   position: absolute;
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   background-color: #eee;
+}
+
+.log-checkbox .checkmark:hover {
+  background-color: #9dadf7c2;
+  cursor: pointer;
 }
 /* Hide check mark when unchecked */
 .checkmark:after {
@@ -42,11 +49,11 @@
 /* Style the checkmark/indicator */
 .log-checkbox .checkmark:after {
   left: 6px;
-  top: 1.9px;
+  top: 2.9px;
   width: 5px;
   height: 10px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   -webkit-transform: rotate(24deg);
   -ms-transform: rotate(24deg);
   transform: rotate(24deg);
@@ -59,6 +66,11 @@
 /* Normal checked */
 .actual-checkbox:checked + .checkmark {
   background: #133fffc2;
+}
+
+.actual-checkbox:checked + .checkmark:hover {
+  background: #7d92f2c2;
+  cursor: pointer;
 }
 /* Normal + Partner Not Scheduled */
 .not-scheduled + .checkmark {
