@@ -41,23 +41,23 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
           setMessage={setMessage}
         />
       )}
-      {/* <button
-          className="habit-delete-button"
-          onClick={() => {
-            handleDelete(habitInfo.habit_id);
-          }}>
-          Delete
-        </button> */}
+      <button
+        className="habit-plan-delete-button"
+        onClick={() => {
+          handleDelete(habitPlanInfo.id);
+        }}>
+        Delete
+      </button>
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
       )}
-      {/* <button
-        className="habit-delete-button-mobile"
+      <button
+        className="habit-plan-delete-button-mobile"
         onClick={() => {
-          handleDelete(habitInfo.habit_id);
+          handleDelete(habitPlanInfo.habit_id);
         }}>
         Delete
-      </button> */}
+      </button>
     </div>
   );
 };
