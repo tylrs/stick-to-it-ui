@@ -59,22 +59,6 @@
   justify-content: space-evenly;
 }
 
-.habit-delete-button {
-  background-color: white;
-  border-radius: 10px;
-  height: 1.5rem;
-  width: 4rem;
-}
-
-.habit-delete-button:hover {
-  background-color: #fffccc;
-  cursor: pointer;
-}
-
-.habit-delete-button-mobile {
-  display: none;
-}
-
 @media screen and (max-width: 480px) {
   .habit-container-today {
     display: block;
@@ -95,17 +79,5 @@
   .habit-description {
     padding-right: 0%;
     text-align: center;
-  }
-
-  .habit-delete-button {
-    display: none;
-  }
-
-  .habit-delete-button-mobile {
-    background-color: white;
-    border-radius: 10px;
-    display: inline-block;
-    height: 1.5rem;
-    width: 4rem;
   }
 }
