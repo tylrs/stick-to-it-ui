@@ -28,6 +28,10 @@
   text-align: center;
 }
 
+.habit-container-today .habit-log-container {
+  width: auto;
+}
+
 .habit-info-container {
   align-items: center;
   display: flex;
