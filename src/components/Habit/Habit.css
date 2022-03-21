@@ -37,9 +37,11 @@
 }
 
 .habit-plan-container {
+  border-left: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-left: 1rem;
 }
 
 .habit-name {
