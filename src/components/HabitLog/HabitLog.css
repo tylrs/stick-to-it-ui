@@ -87,7 +87,16 @@
 .partner .actual-checkbox:checked + .display-checkbox {
   background: #049c0400;
   border: none;
+  border-bottom: 1px solid white;
   width: 22px;
+}
+
+.partner .display-checkbox:hover {
+  cursor: default;
+}
+
+.partner .actual-checkbox:checked + .display-checkbox:hover {
+  cursor: default;
 }
 
 .not-scheduled {
