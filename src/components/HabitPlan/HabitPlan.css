@@ -1,16 +1,16 @@
-.habit-delete-button {
+.habit-plan-delete-button {
   background-color: white;
   border-radius: 10px;
   height: 1.5rem;
   width: 4rem;
 }
 
-.habit-delete-button:hover {
+.habit-plan-delete-button:hover {
   background-color: #fffccc;
   cursor: pointer;
 }
 
-.habit-delete-button-mobile {
+.habit-plan-delete-button-mobile {
   display: none;
 }
 
