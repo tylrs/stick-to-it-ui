@@ -33,13 +33,13 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
             : "Your Progress This Week:"}
         </p>
         {!belongsToPartner && (
-          <button
+          <span
             className="habit-plan-delete-button"
             onClick={() => {
               handleDelete(habitPlanInfo.id, habitPlanInfo.habit_id);
             }}>
-            Delete
-          </button>
+            &times;
+          </span>
         )}
       </div>
       {listType !== "all" && (

@@ -1,12 +1,9 @@
 .habit-plan-delete-button {
-  background-color: white;
-  border-radius: 10px;
-  height: 1.5rem;
-  width: 4rem;
+  font-size: 2.2rem;
 }
 
 .habit-plan-delete-button:hover {
-  background-color: #fffccc;
+  color: red;
   cursor: pointer;
 }
 
