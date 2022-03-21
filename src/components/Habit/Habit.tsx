@@ -30,7 +30,7 @@ const Habit: React.FC<HabitProps> = ({
         <p className="habit-description">{habitInfo.description}</p>
       </div>
       <div className="habit-plan-container">
-        <p>
+        <p className="habit-plan-date-range">
           Current Habit Plan:
           {` ${formatDateTime(habitPlans[0].start_datetime)}-${formatDateTime(
             habitPlans[0].end_datetime
