@@ -28,8 +28,8 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
     <div className="habit-plan">
       <p>
         {belongsToPartner
-          ? `${habitPlanInfo.user.name} Habit Plan Progress:`
-          : "Your Habit Plan Progress:"}
+          ? `${habitPlanInfo.user.name} Progress This Week:`
+          : "Your Progress This Week:"}
       </p>
       {listType !== "all" && (
         <HabitLog
