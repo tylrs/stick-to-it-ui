@@ -80,11 +80,14 @@
 .partner .display-checkbox {
   background: #049c0400;
   border: none;
+  border-bottom: 1px solid white;
+  width: 22px;
 }
 /* Partner checked */
 .partner .actual-checkbox:checked + .display-checkbox {
   background: #049c0400;
   border: none;
+  width: 22px;
 }
 
 .not-scheduled {
