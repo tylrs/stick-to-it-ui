@@ -62,6 +62,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
           Delete
         </button>
       )}
+      {!belongsToPartner && <div className="habit-plan-divider"></div>}
     </div>
   );
 };
