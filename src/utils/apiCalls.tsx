@@ -108,14 +108,14 @@ export const getWeekHabitAndPartnerPlans = async (userId: number) => {
   }
 };
 
-export const deleteHabit = async (
+export const deleteHabitPlan = async (
   userId: number,
-  habitId: number | undefined
+  habitPlanId: number | undefined
 ) => {
   const token = getToken();
   try {
     const response = await fetch(
-      `${urls.productionUsers}/${userId}/habits/${habitId}`,
+      `${urls.productionUsers}/${userId}/habit_plans/${habitPlanId}`,
       {
         method: "DELETE",
         headers: {
