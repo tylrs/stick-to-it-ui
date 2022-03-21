@@ -28,14 +28,16 @@ const Habit: React.FC<HabitProps> = ({
       <div className="habit-info-container">
         <h3 className="habit-name">{habitInfo.name}</h3>
         <p className="habit-description">{habitInfo.description}</p>
+      </div>
+      <div className="habit-plan-container">
         <p>
-          Current Habit Plan:{" "}
-          {`${formatDateTime(habitPlans[0].start_datetime)}-${formatDateTime(
+          Current Habit Plan:
+          {` ${formatDateTime(habitPlans[0].start_datetime)}-${formatDateTime(
             habitPlans[0].end_datetime
           )}`}
         </p>
+        {formattedHabitPlans}
       </div>
-      <div className="habit-plan-container">{formattedHabitPlans}</div>
     </article>
   );
 };
