@@ -86,3 +86,7 @@
   background: #049c0400;
   border: none;
 }
+
+.not-scheduled {
+  display: none;
+}
