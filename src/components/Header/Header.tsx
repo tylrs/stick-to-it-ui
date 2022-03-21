@@ -22,10 +22,10 @@ const Header: React.FC<HeaderProps> = ({
         <div className="link-container">
           <Message message={message} />
           <Link className="header-link" to="/today">
-            Today
+            Habits Today
           </Link>
           <Link className="header-link" to="/all-habits">
-            All Habits
+            Habits Week
           </Link>
           <button className="log-out-button" onClick={() => logOut()}>
             Log Out
