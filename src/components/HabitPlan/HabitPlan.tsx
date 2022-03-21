@@ -45,7 +45,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
         <button
           className="habit-plan-delete-button"
           onClick={() => {
-            handleDelete(habitPlanInfo.id);
+            handleDelete(habitPlanInfo.id, habitPlanInfo.habit_id);
           }}>
           Delete
         </button>
@@ -57,7 +57,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
         <button
           className="habit-plan-delete-button-mobile"
           onClick={() => {
-            handleDelete(habitPlanInfo.habit_id);
+            handleDelete(habitPlanInfo.habit_id, habitPlanInfo.habit_id);
           }}>
           Delete
         </button>

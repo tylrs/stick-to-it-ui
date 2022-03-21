@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  deleteHabit,
+  deleteHabitPlan,
   getWeekHabitAndPartnerPlans,
   getTodayHabitPlans,
 } from "../../utils/apiCalls";
@@ -27,11 +27,11 @@ const HabitsList: React.FC<HabitsListProps> = ({
   const [currentListType, setListType] = useState("");
   const [error, setError] = useState("");
 
-  const handleDelete = async (habitPlanId: number) => {
+  const handleDelete = async (habitPlanId: number, habit_id: number) => {
     try {
-      await deleteHabit(userId, habitPlanId);
+      await deleteHabitPlan(userId, habitPlanId);
       let updatedHabitPlans = allHabitPlans.filter(
-        habitPlan => habitPlan.id !== habitPlanId
+        habitPlan => habitPlan.habit_id !== habit_id
       );
       setAllHabitPlans(updatedHabitPlans);
     } catch (error) {
