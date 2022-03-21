@@ -76,6 +76,11 @@
   justify-content: space-evenly;
 }
 
+.habit-log-header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (max-width: 480px) {
   .habit-container-today {
     display: block;

@@ -26,11 +26,22 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
 
   return (
     <div className="habit-plan">
-      <p>
-        {belongsToPartner
-          ? `${habitPlanInfo.user.name} Progress This Week:`
-          : "Your Progress This Week:"}
-      </p>
+      <div className="habit-log-header-container">
+        <p>
+          {belongsToPartner
+            ? `${habitPlanInfo.user.name} Progress This Week:`
+            : "Your Progress This Week:"}
+        </p>
+        {!belongsToPartner && (
+          <button
+            className="habit-plan-delete-button"
+            onClick={() => {
+              handleDelete(habitPlanInfo.id, habitPlanInfo.habit_id);
+            }}>
+            Delete
+          </button>
+        )}
+      </div>
       {listType !== "all" && (
         <HabitLog
           habitLogInfo={habitLogsInfo[0]}
@@ -41,26 +52,8 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
           setMessage={setMessage}
         />
       )}
-      {!belongsToPartner && (
-        <button
-          className="habit-plan-delete-button"
-          onClick={() => {
-            handleDelete(habitPlanInfo.id, habitPlanInfo.habit_id);
-          }}>
-          Delete
-        </button>
-      )}
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
-      )}
-      {!belongsToPartner && (
-        <button
-          className="habit-plan-delete-button-mobile"
-          onClick={() => {
-            handleDelete(habitPlanInfo.habit_id, habitPlanInfo.habit_id);
-          }}>
-          Delete
-        </button>
       )}
       {!belongsToPartner && <div className="habit-plan-divider"></div>}
     </div>
