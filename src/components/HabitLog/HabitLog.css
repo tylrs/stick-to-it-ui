@@ -25,29 +25,29 @@
 }
 
 /* checkmark styling itself  */
-.checkmark {
+.display-checkbox {
   position: absolute;
   height: 20px;
   width: 20px;
   background-color: #eee;
 }
 
-.log-checkbox .checkmark:hover {
+.checkbox-container .display-checkbox:hover {
   background-color: #133fff;
   cursor: pointer;
 }
 /* Hide check mark when unchecked */
-.checkmark:after {
+.display-checkbox:after {
   content: "";
   position: absolute;
   display: none;
 }
 /* Show the checkmark when checked */
-.actual-checkbox:checked ~ .checkmark:after {
+.actual-checkbox:checked ~ .display-checkbox:after {
   display: block;
 }
 /* Style the checkmark/indicator */
-.log-checkbox .checkmark:after {
+.checkbox-container .display-checkbox:after {
   left: 6px;
   top: 2.9px;
   width: 5px;
@@ -59,30 +59,30 @@
   transform: rotate(24deg);
 }
 /* Normal unchecked but scheduled */
-.log-checkbox .checkmark {
+.checkbox-container .display-checkbox {
   background: #133fffc2;
   border: 2px solid white;
 }
 /* Normal checked */
-.actual-checkbox:checked + .checkmark {
+.actual-checkbox:checked + .display-checkbox {
   background: #133fffc2;
 }
 
-.actual-checkbox:checked + .checkmark:hover {
+.actual-checkbox:checked + .display-checkbox:hover {
   background: #133fff;
   cursor: pointer;
 }
 /* Normal + Partner Not Scheduled */
-.not-scheduled + .checkmark {
+.not-scheduled + .display-checkbox {
   background: #d3d3d329;
 }
 /* Partner unchecked */
-.partner .checkmark {
+.partner .display-checkbox {
   background: #049c0400;
   border: none;
 }
 /* Partner checked */
-.partner .actual-checkbox:checked + .checkmark {
+.partner .actual-checkbox:checked + .display-checkbox {
   background: #049c0400;
   border: none;
 }

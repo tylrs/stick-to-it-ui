@@ -59,7 +59,7 @@ const HabitLog: React.FC<HabitLogProps> = ({
 
   const partnerClass = belongsToPartner ? "partner" : "";
   const noInfoClass = !habitLogInfo ? "not-scheduled" : "";
-  const classes = `log-checkbox ${partnerClass} ${noInfoClass}`;
+  const classes = `checkbox-container ${partnerClass} ${noInfoClass}`;
 
   return (
     <div className={`habit-log-container ${isToday}`}>
@@ -72,7 +72,7 @@ const HabitLog: React.FC<HabitLogProps> = ({
           checked={completed}
           onChange={e => handleChange(e)}
         />
-        <span className="checkmark"></span>
+        <span className="display-checkbox"></span>
       </label>
     </div>
   );
