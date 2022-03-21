@@ -33,7 +33,7 @@
 }
 
 .log-checkbox .checkmark:hover {
-  background-color: #9dadf7c2;
+  background-color: #133fff;
   cursor: pointer;
 }
 /* Hide check mark when unchecked */
@@ -69,7 +69,7 @@
 }
 
 .actual-checkbox:checked + .checkmark:hover {
-  background: #7d92f2c2;
+  background: #133fff;
   cursor: pointer;
 }
 /* Normal + Partner Not Scheduled */
