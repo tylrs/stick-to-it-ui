@@ -27,15 +27,15 @@ const HabitsList: React.FC<HabitsListProps> = ({
   const [currentListType, setListType] = useState("");
   const [error, setError] = useState("");
 
-  const handleDelete = async (habitId: number) => {
+  const handleDelete = async (habitPlanId: number) => {
     try {
-      await deleteHabit(userId, habitId);
+      await deleteHabit(userId, habitPlanId);
       let updatedHabitPlans = allHabitPlans.filter(
-        habitPlan => habitPlan.habit_id !== habitId
+        habitPlan => habitPlan.id !== habitPlanId
       );
       setAllHabitPlans(updatedHabitPlans);
     } catch (error) {
-      setMessage("Habit Could Not Be Deleted");
+      setMessage("Habit Plan Could Not Be Deleted");
     }
   };
 
