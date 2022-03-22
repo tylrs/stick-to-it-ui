@@ -16,7 +16,7 @@
   align-items: center;
   background-color: #000000de;
   border: 4px solid #133fff;
-  border-radius: 20px;
+  border-radius: 55px;
   color: white;
   display: flex;
   height: 18rem;
@@ -89,9 +89,9 @@
 
 @media screen and (max-width: 480px) {
   .habit-container-today {
-    display: block;
-    height: 13rem;
-    width: 70%;
+    flex-direction: column;
+    height: 33rem;
+    width: 85%;
   }
 
   .habit-container-all {
