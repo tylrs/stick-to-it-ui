@@ -24,14 +24,23 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
     });
   }
 
+  const todayHeader = (
+    <p>{belongsToPartner ? `${habitPlanInfo.user.name}:` : "You:"}</p>
+  );
+
+  const weekHeader = (
+    <p>
+      {belongsToPartner
+        ? `${habitPlanInfo.user.name} Progress This Week:`
+        : "Your Progress This Week:"}
+    </p>
+  );
+
   return (
     <div className="habit-plan">
+      {belongsToPartner && <div className="habit-plan-divider"></div>}
       <div className="habit-log-header-container">
-        <p>
-          {belongsToPartner
-            ? `${habitPlanInfo.user.name} Progress This Week:`
-            : "Your Progress This Week:"}
-        </p>
+        {listType === "all" ? weekHeader : todayHeader}
         {!belongsToPartner && (
           <span
             className="habit-plan-delete-button"
@@ -55,7 +64,6 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
       )}
-      {!belongsToPartner && <div className="habit-plan-divider"></div>}
     </div>
   );
 };
