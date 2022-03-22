@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 3.6rem;
   padding: 0.5rem;
+  position: relative;
   width: 1.5rem;
 }
 
@@ -11,8 +12,13 @@
   text-align: center;
 }
 
-.today-marker {
-  border: 1px solid #fff994;
+.today-marker::before {
+  bottom: 4rem;
+  color: #fff994;
+  content: "Today";
+  font-size: 1rem;
+  left: 0rem;
+  position: absolute;
 }
 
 .actual-checkbox {

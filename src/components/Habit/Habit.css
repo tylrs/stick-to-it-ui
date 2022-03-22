@@ -78,6 +78,7 @@
   align-items: center;
   display: flex;
   justify-content: space-evenly;
+  margin-top: 1rem;
 }
 
 .habit-log-header-container {
