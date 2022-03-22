@@ -25,11 +25,13 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   }
 
   const todayHeader = (
-    <p>{belongsToPartner ? `${habitPlanInfo.user.name}:` : "You:"}</p>
+    <p className="habit-log-header">
+      {belongsToPartner ? `${habitPlanInfo.user.name}:` : "You:"}
+    </p>
   );
 
   const weekHeader = (
-    <p>
+    <p className="habit-log-header">
       {belongsToPartner
         ? `${habitPlanInfo.user.name} Progress This Week:`
         : "Your Progress This Week:"}

@@ -16,6 +16,10 @@
   margin-top: 1rem;
 }
 
+.habit-log-header {
+  text-transform: capitalize;
+}
+
 @media screen and (max-width: 480px) {
   /* .habit-container-today {
     display: block;
