@@ -72,7 +72,7 @@ const HabitLog: React.FC<HabitLogProps> = ({
           checked={completed}
           onChange={e => handleChange(e)}
         />
-        <span className="display-checkbox"></span>
+        <div className="display-checkbox"></div>
       </label>
     </div>
   );

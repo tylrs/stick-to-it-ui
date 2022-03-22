@@ -1,4 +1,5 @@
 .habit-log-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
   height: 3.6rem;
@@ -32,7 +33,7 @@
 
 /* checkmark styling itself  */
 .display-checkbox {
-  position: absolute;
+  position: relative;
   height: 20px;
   width: 20px;
   background-color: #eee;
