@@ -45,3 +45,9 @@
   background-color: aqua;
   cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+  .account-creation-box {
+    margin-top: 3rem;
+  }
+}
