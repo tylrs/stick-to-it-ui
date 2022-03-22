@@ -99,9 +99,22 @@
     display: flex;
     flex-direction: column;
     grid-template-columns: none;
-    height: 18rem;
-    justify-content: space-between;
-    padding: 1.5rem;
+    height: 33rem;
+    justify-content: space-evenly;
+    width: 85%;
+  }
+
+  .habit-plan-container {
+    border: none;
+  }
+
+  .habit-plan-date-range {
+    font-size: 1rem;
+  }
+
+  .habit-name {
+    margin-right: 0;
+    margin-bottom: 0;
   }
 
   .habit-description {
