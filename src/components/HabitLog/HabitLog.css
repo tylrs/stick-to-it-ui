@@ -1,7 +1,11 @@
 .habit-log-container {
-  height: 2.8rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 3.6rem;
   padding: 0.5rem;
-  width: 1rem;
+  position: relative;
+  width: 1.5rem;
 }
 
 .day-of-week-label {
@@ -9,8 +13,13 @@
   text-align: center;
 }
 
-.today-marker {
-  border: 1px solid #fff994;
+.today-marker::before {
+  bottom: 4rem;
+  color: #fff994;
+  content: "Today";
+  font-size: 1rem;
+  left: 0rem;
+  position: absolute;
 }
 
 .actual-checkbox {
@@ -23,54 +32,80 @@
 }
 
 /* checkmark styling itself  */
-.checkmark {
-  position: absolute;
-  height: 18px;
-  width: 18px;
+.display-checkbox {
+  position: relative;
+  height: 20px;
+  width: 20px;
   background-color: #eee;
 }
+
+.checkbox-container .display-checkbox:hover {
+  background-color: #133fff;
+  cursor: pointer;
+}
 /* Hide check mark when unchecked */
-.checkmark:after {
+.display-checkbox:after {
   content: "";
   position: absolute;
   display: none;
 }
 /* Show the checkmark when checked */
-.actual-checkbox:checked ~ .checkmark:after {
+.actual-checkbox:checked ~ .display-checkbox:after {
   display: block;
 }
 /* Style the checkmark/indicator */
-.log-checkbox .checkmark:after {
+.checkbox-container .display-checkbox:after {
   left: 6px;
-  top: 1.9px;
+  top: 2.9px;
   width: 5px;
   height: 10px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   -webkit-transform: rotate(24deg);
   -ms-transform: rotate(24deg);
   transform: rotate(24deg);
 }
 /* Normal unchecked but scheduled */
-.log-checkbox .checkmark {
-  background: #2196f3;
+.checkbox-container .display-checkbox {
+  background: #133fffc2;
   border: 2px solid white;
 }
 /* Normal checked */
-.actual-checkbox:checked + .checkmark {
-  background: #2196f3;
+.actual-checkbox:checked + .display-checkbox {
+  background: #133fffc2;
+}
+
+.actual-checkbox:checked + .display-checkbox:hover {
+  background: #133fff;
+  cursor: pointer;
 }
 /* Normal + Partner Not Scheduled */
-.not-scheduled + .checkmark {
+.not-scheduled + .display-checkbox {
   background: #d3d3d329;
 }
 /* Partner unchecked */
-.partner .checkmark {
+.partner .display-checkbox {
   background: #049c0400;
   border: none;
+  border-bottom: 1px solid white;
+  width: 22px;
 }
 /* Partner checked */
-.partner .actual-checkbox:checked + .checkmark {
+.partner .actual-checkbox:checked + .display-checkbox {
   background: #049c0400;
   border: none;
+  border-bottom: 1px solid white;
+  width: 22px;
+}
+
+.partner .display-checkbox:hover {
+  cursor: default;
+}
+
+.partner .actual-checkbox:checked + .display-checkbox:hover {
+  cursor: default;
+}
+
+.not-scheduled {
+  display: none;
 }

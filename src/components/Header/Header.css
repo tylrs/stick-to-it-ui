@@ -8,6 +8,7 @@
   padding-bottom: 1.5rem;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .site-header-loggedOut {
@@ -33,6 +34,10 @@
   color: black;
 }
 
+.header-link.active {
+  color: black;
+}
+
 h1 {
   font-size: 3rem;
   font-weight: 400;
@@ -51,6 +56,7 @@ h1 {
 
 .log-out-button {
   background-color: white;
+  border: 1.2px solid black;
   height: 1.5rem;
   padding: 0% 2% 0% 2%;
 }

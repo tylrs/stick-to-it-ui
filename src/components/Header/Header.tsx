@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Message from "../Message/Message";
 import "./Header.css";
 
@@ -21,12 +21,12 @@ const Header: React.FC<HeaderProps> = ({
       {headerType === "loggedIn" && (
         <div className="link-container">
           <Message message={message} />
-          <Link className="header-link" to="/today">
-            Today
-          </Link>
-          <Link className="header-link" to="/all-habits">
-            All Habits
-          </Link>
+          <NavLink className="header-link" to="/today">
+            Habits Today
+          </NavLink>
+          <NavLink className="header-link" to="/all-habits">
+            Habits Week
+          </NavLink>
           <button className="log-out-button" onClick={() => logOut()}>
             Log Out
           </button>

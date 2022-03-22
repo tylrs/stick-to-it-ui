@@ -1,17 +1,23 @@
 .habit-plan-delete-button {
-  background-color: white;
-  border-radius: 10px;
-  height: 1.5rem;
-  width: 4rem;
+  font-size: 2.2rem;
 }
 
 .habit-plan-delete-button:hover {
-  background-color: #fffccc;
+  color: red;
   cursor: pointer;
 }
 
 .habit-plan-delete-button-mobile {
   display: none;
+}
+
+.habit-plan-divider {
+  border-bottom: 1px solid white;
+  margin-top: 1rem;
+}
+
+.habit-log-header {
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 480px) {
