@@ -28,9 +28,10 @@
   border-radius: 10px;
   color: black;
   display: flex;
-  height: 2rem;
+  font-size: 1.3rem;
+  height: 4rem;
   justify-content: center;
-  width: 10rem;
+  width: 16rem;
 }
 
 .create-new-habit-button:hover {
