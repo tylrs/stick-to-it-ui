@@ -24,7 +24,7 @@
   justify-content: space-evenly;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  padding: 2.5rem;
+  padding: 1rem 1rem 1rem 1rem;
   text-align: center;
 }
 
@@ -54,7 +54,7 @@
   border-radius: 18px;
   border: 2px solid white;
   color: white;
-  font-size: 3.2rem;
+  font-size: 2.5rem;
   font-weight: 400;
   margin-bottom: 2rem;
   margin-right: 1rem;
@@ -63,7 +63,6 @@
 }
 
 .habit-description {
-  font-size: 1.3rem;
   padding-right: 7%;
   margin-top: 1rem;
   text-transform: capitalize;
