@@ -11,6 +11,7 @@
   border-radius: 13px;
   display: flex;
   flex-direction: column;
+  font-size: 1.3rem;
   height: 18rem;
   justify-content: space-around;
   margin-top: 2rem;
@@ -25,15 +26,18 @@
 
 .login-input {
   color: black;
+  height: 1.5rem;
+  width: 10rem;
 }
 
 .submit-login {
   background-color: #fff994;
   border-radius: 10px;
   color: black;
+  font-size: 1.2rem;
+  height: 2.2rem;
   margin-top: 1rem;
-  padding: 2%;
-  width: 4rem;
+  width: 6rem;
 }
 
 .submit-login:hover {
@@ -48,6 +52,7 @@
 
 .login-title {
   color: #fff994;
+  font-size: 2rem;
 }
 
 @media screen and (max-width: 480px) {
