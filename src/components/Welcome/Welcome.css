@@ -13,10 +13,11 @@
 
 .account-link-wrapper {
   background-color: white;
-  border: 1.2px solid black;
-  height: 4rem;
+  border: 1.6px solid black;
+  font-size: 1.3rem;
+  height: 8rem;
   padding: 0% 2% 0% 2%;
-  width: 6rem;
+  width: 12rem;
 }
 
 .account-link-wrapper:hover {

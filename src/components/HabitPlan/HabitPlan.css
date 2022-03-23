@@ -1,5 +1,9 @@
+.habit-plan-date-range {
+  font-size: 1.5rem;
+}
+
 .habit-plan-delete-button {
-  font-size: 2.2rem;
+  font-size: 2.7rem;
 }
 
 .habit-plan-delete-button:hover {
@@ -17,6 +21,7 @@
 }
 
 .habit-log-header {
+  font-size: 1.2rem;
   text-transform: capitalize;
 }
 
