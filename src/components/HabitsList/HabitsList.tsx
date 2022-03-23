@@ -101,7 +101,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
           <div className="greeting-wrapper">
             <h2 className="greeting-message">Welcome: {name}</h2>
           </div>
-          <h3>Week Starting On:</h3>
+          <h3 className="list-type-label">Week Starting On:</h3>
           <p className="list-date">{getLastSunday()}</p>
         </div>
       ) : (
@@ -109,7 +109,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
           <div className="greeting-wrapper">
             <h2 className="greeting-message">Welcome: {name}</h2>
           </div>
-          <h3>Habits Today:</h3>
+          <h3 className="list-type-label">Habits Today:</h3>
           <p className="list-date">{getToday()}</p>
         </div>
       )}

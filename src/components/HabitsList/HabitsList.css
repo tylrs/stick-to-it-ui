@@ -43,6 +43,11 @@
   color: red;
 }
 
+.list-type-label {
+  font-size: 1.3rem;
+}
+
 .list-date {
   color: #fff994;
+  font-size: 1.2rem;
 }
