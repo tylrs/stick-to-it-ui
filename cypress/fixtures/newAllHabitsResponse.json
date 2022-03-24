@@ -1,161 +1,169 @@
 [
   {
-    "id": 25,
+    "id": 22,
     "user_id": 1,
+    "user": { "name": "Sample Bob" },
     "habit": {
+      "creator_id": 1,
       "name": "Working Hard",
       "description": "every day"
     },
+    "habit_id": 25,
+    "start_datetime": "2022-02-14T00:00:00.000Z",
+    "end_datetime": "2022-02-19T00:00:00.000Z",
     "created_at": "2022-02-14T17:39:27.777Z",
     "updated_at": "2022-02-14T17:39:27.777Z",
     "habit_logs": [
       {
         "id": 83,
-        "habit_id": 25,
         "scheduled_at": "2022-02-18T00:00:00.000Z",
         "completed_at": null
       },
       {
         "id": 84,
-        "habit_id": 25,
         "scheduled_at": "2022-02-19T00:00:00.000Z",
         "completed_at": null
       },
       {
         "id": 79,
-        "habit_id": 25,
         "scheduled_at": "2022-02-14T00:00:00.000Z",
         "completed_at": "2022-02-14T00:00:00.000Z"
       },
       {
         "id": 82,
-        "habit_id": 25,
         "scheduled_at": "2022-02-17T00:00:00.000Z",
         "completed_at": "2022-02-17T00:00:00.000Z"
       },
       {
         "id": 81,
-        "habit_id": 25,
         "scheduled_at": "2022-02-16T00:00:00.000Z",
         "completed_at": null
       },
       {
         "id": 80,
-        "habit_id": 25,
         "scheduled_at": "2022-02-15T00:00:00.000Z",
         "completed_at": "2022-02-15T00:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "user_id": 2,
+    "user": { "name": "Sample John" },
+    "habit": {
+      "creator_id": 1,
+      "name": "Working Hard",
+      "description": "every day"
+    },
+    "habit_id": 25,
+    "start_datetime": "2022-02-14T00:00:00.000Z",
+    "end_datetime": "2022-02-19T00:00:00.000Z",
+    "created_at": "2022-02-14T17:39:27.777Z",
+    "updated_at": "2022-02-14T17:39:27.777Z",
+    "habit_logs": [
+      {
+        "id": 83,
+        "scheduled_at": "2022-02-18T00:00:00.000Z",
+        "completed_at": "2022-02-18T00:00:00.000Z"
+      },
+      {
+        "id": 84,
+        "scheduled_at": "2022-02-19T00:00:00.000Z",
+        "completed_at": null
+      },
+      {
+        "id": 79,
+        "scheduled_at": "2022-02-14T00:00:00.000Z",
+        "completed_at": "2022-02-14T00:00:00.000Z"
+      },
+      {
+        "id": 82,
+        "scheduled_at": "2022-02-17T00:00:00.000Z",
+        "completed_at": "2022-02-17T00:00:00.000Z"
+      },
+      {
+        "id": 81,
+        "scheduled_at": "2022-02-16T00:00:00.000Z",
+        "completed_at": null
+      },
+      {
+        "id": 80,
+        "scheduled_at": "2022-02-15T00:00:00.000Z",
+        "completed_at": null
       }
     ]
   },
   {
     "id": 26,
     "user_id": 1,
+    "user": { "name": "Sample Bob" },
     "habit": {
+      "creator_id": 1,
       "name": "Dancing",
       "description": "Daily in the morning"
     },
+    "habit_id": 26,
+    "start_datetime": "2022-02-17T00:00:00.000Z",
+    "end_datetime": "2022-02-18T00:00:00.000Z",
     "created_at": "2022-02-14T21:10:16.787Z",
     "updated_at": "2022-02-14T21:10:16.787Z",
     "habit_logs": [
       {
         "id": 88,
-        "habit_id": 26,
         "scheduled_at": "2022-02-17T00:00:00.000Z",
         "completed_at": "2022-02-17T00:00:00.000Z"
       },
       {
         "id": 89,
-        "habit_id": 26,
         "scheduled_at": "2022-02-18T00:00:00.000Z",
         "completed_at": "2022-02-18T00:00:00.000Z"
-      },
-      {
-        "id": 87,
-        "habit_id": 26,
-        "scheduled_at": "2022-02-16T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 85,
-        "habit_id": 26,
-        "scheduled_at": "2022-02-14T00:00:00.000Z",
-        "completed_at": "2022-02-14T00:00:00.000Z"
-      },
-      {
-        "id": 86,
-        "habit_id": 26,
-        "scheduled_at": "2022-02-15T00:00:00.000Z",
-        "completed_at": "2022-02-15T00:00:00.000Z"
       }
     ]
   },
   {
     "id": 29,
     "user_id": 1,
+    "user": { "name": "Sample Bob" },
     "habit": {
+      "creator_id": 1,
       "name": "Running",
       "description": "Most days"
     },
+    "habit_id": 29,
+    "start_datetime": "2022-02-15T00:00:00.000Z",
+    "end_datetime": "2022-02-15T00:00:00.000Z",
     "created_at": "2022-02-15T00:01:26.699Z",
     "updated_at": "2022-02-15T00:01:26.699Z",
     "habit_logs": [
       {
         "id": 102,
-        "habit_id": 29,
         "scheduled_at": "2022-02-15T00:00:00.000Z",
         "completed_at": "2022-02-15T00:00:00.000Z"
-      },
-      {
-        "id": 101,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-14T00:00:00.000Z",
-        "completed_at": "2022-02-14T00:00:00.000Z"
-      },
-      {
-        "id": 106,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-19T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 105,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-18T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 104,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-17T00:00:00.000Z",
-        "completed_at": null
-      },
-      {
-        "id": 103,
-        "habit_id": 29,
-        "scheduled_at": "2022-02-16T00:00:00.000Z",
-        "completed_at": null
       }
     ]
   },
   {
     "id": 30,
     "user_id": 1,
+    "user": { "name": "Sample Bob" },
     "habit": {
+      "creator_id": 1,
       "name": "Eat healthy",
       "description": "Weekdays"
     },
+    "habit_id": 30,
+    "start_datetime": "2022-02-16T00:00:00.000Z",
+    "end_datetime": "2022-02-17T00:00:00.000Z",
     "created_at": "2022-02-13T00:01:26.699Z",
     "updated_at": "2022-02-13T00:01:26.699Z",
     "habit_logs": [
       {
         "id": 110,
-        "habit_id": 30,
         "scheduled_at": "2022-02-16T00:00:00.000Z",
         "completed_at": null
       },
       {
         "id": 111,
-        "habit_id": 30,
         "scheduled_at": "2022-02-17T00:00:00.000Z",
         "completed_at": null
       }
