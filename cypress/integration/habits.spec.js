@@ -1,4 +1,4 @@
-describe.only("User Habit Creation, Viewing, and Deleting", () => {
+describe("User Habit Creation, Viewing, and Deleting", () => {
   beforeEach(() => {
     const today = new Date("2022/02/15");
     cy.interceptAllRequests()
@@ -111,18 +111,18 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
   });
 
   it("Should have checkboxes take different states depending on habit log info", () => {
-    cy.get(".log-checkbox")
+    cy.get(".actual-checkbox")
       .eq(0)
       .should("be.disabled")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(1)
       .should("not.be.disabled")
       .should("be.checked")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(2)
       .should("not.be.disabled")
       .should("be.checked")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(3)
       .should("not.be.disabled")
       .should("not.be.checked");
@@ -139,13 +139,13 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
       }
     ).as("Mark Habit Complete");
 
-    cy.get(".log-checkbox")
+    cy.get(".actual-checkbox")
       .eq(3)
-      .check()
+      .check({ force: true })
       .wait("@Mark Habit Complete")
       .get(".message-container")
       .should("have.text", "Habit Marked Complete")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(3)
       .should("be.checked");
   });
@@ -161,13 +161,13 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
       }
     ).as("Mark Habit Incomplete");
 
-    cy.get(".log-checkbox")
+    cy.get(".actual-checkbox")
       .eq(2)
-      .uncheck()
+      .uncheck({ force: true })
       .wait("@Mark Habit Incomplete")
       .get(".message-container")
       .should("have.text", "Habit Marked Incomplete")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(2)
       .should("not.be.checked");
   });
