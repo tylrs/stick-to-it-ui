@@ -86,7 +86,7 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
       .should("have.text", "New Habit Created");
   });
 
-  it.only("Should be able to delete a habit", () => {
+  it("Should be able to delete a habit plan", () => {
     cy.get(".habit-container-all")
       .should("have.length", 3)
       .get(".habit-name")
@@ -105,7 +105,7 @@ describe.only("User Habit Creation, Viewing, and Deleting", () => {
       .get(".habit-plan-delete-button")
       .eq(2)
       .click()
-      .wait("@Delete Habit")
+      .wait("@Delete Habit Plan")
       .get(".habit-container-all")
       .should("have.length", 2);
   });
