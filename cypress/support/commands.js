@@ -70,10 +70,10 @@ Cypress.Commands.add("interceptAllRequests", () => {
 
   cy.intercept(
     "DELETE",
-    "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habits/**",
+    "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/**",
     {
       ok: true,
       statusCode: 204,
     }
-  ).as("Delete Habit");
+  ).as("Delete Habit Plan");
 });
