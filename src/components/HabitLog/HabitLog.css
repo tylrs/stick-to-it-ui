@@ -100,6 +100,7 @@
 }
 
 .partner .display-checkbox:hover {
+  background-color: #049c0400;
   cursor: default;
 }
 
