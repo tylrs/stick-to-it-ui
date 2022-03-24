@@ -49,10 +49,10 @@ cy.intercept(
   }
 ).as("Get User Habits After Update");
 
-//Delete Habit
+//Delete Habit Plan
 cy.intercept(
   "DELETE",
-  "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habits/**",
+  "https://stick-to-it-api.herokuapp.com/api/v2/users/**/habit_plans/**",
   {
     ok: true,
     statusCode: 204,

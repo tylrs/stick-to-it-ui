@@ -11,7 +11,46 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
     cy.get(".habit-container-all").should("have.length", 3);
   });
 
-  it("Should be able to create a new habit and see it in all habits", () => {
+  it("Should show a user's current habit plan date range", () => {
+    cy.get(".habit-plan-date-range")
+      .eq(0)
+      .should("have.text", "Current Habit Plan: 2/13/2022-2/18/2022");
+  });
+
+  it("Should be able to view a partner's habit plans", () => {
+    cy.get(".habit-container-all")
+      .eq(0)
+      .within($habit => {
+        cy.get(".habit-plan").should("have.length", 2);
+      });
+    cy.get(".habit-log-header")
+      .eq(1)
+      .should("have.text", "Sample John Progress This Week:");
+  });
+
+  it("Should show the current user's habit plan above partners", () => {
+    cy.get(".habit-log-header")
+      .eq(0)
+      .should("have.text", "Your Progress This Week:");
+  });
+
+  it("Should indicate the current day correctly above habit logs", () => {
+    cy.get(".habit-log-container")
+      .eq(2)
+      .should("have.class", "today-marker")
+      .window()
+      .then(win => {
+        cy.get(".habit-log-container")
+          .eq(2)
+          .then(log => {
+            const before = win.getComputedStyle(log[0], "::before");
+            const beforeContent = before.getPropertyValue("content");
+            expect(beforeContent).to.equal('"Today"');
+          });
+      });
+  });
+
+  it("Should be able to create a new habit and see it in habits week", () => {
     cy.get(".create-new-habit-button")
       .click()
       .url()
@@ -47,7 +86,7 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       .should("have.text", "New Habit Created");
   });
 
-  it("Should be able to delete a habit", () => {
+  it("Should be able to delete a habit plan", () => {
     cy.get(".habit-container-all")
       .should("have.length", 3)
       .get(".habit-name")
@@ -63,27 +102,27 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
         }
       )
       .as("Get User Habits After Delete")
-      .get(".habit-delete-button")
+      .get(".habit-plan-delete-button")
       .eq(2)
       .click()
-      .wait("@Delete Habit")
+      .wait("@Delete Habit Plan")
       .get(".habit-container-all")
       .should("have.length", 2);
   });
 
   it("Should have checkboxes take different states depending on habit log info", () => {
-    cy.get(".log-checkbox")
+    cy.get(".actual-checkbox")
       .eq(0)
       .should("be.disabled")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(1)
       .should("not.be.disabled")
       .should("be.checked")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(2)
       .should("not.be.disabled")
       .should("be.checked")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(3)
       .should("not.be.disabled")
       .should("not.be.checked");
@@ -100,13 +139,13 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       }
     ).as("Mark Habit Complete");
 
-    cy.get(".log-checkbox")
+    cy.get(".actual-checkbox")
       .eq(3)
-      .check()
+      .check({ force: true })
       .wait("@Mark Habit Complete")
       .get(".message-container")
       .should("have.text", "Habit Marked Complete")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(3)
       .should("be.checked");
   });
@@ -122,18 +161,14 @@ describe("User Habit Creation, Viewing, and Deleting", () => {
       }
     ).as("Mark Habit Incomplete");
 
-    cy.get(".log-checkbox")
+    cy.get(".actual-checkbox")
       .eq(2)
-      .uncheck()
+      .uncheck({ force: true })
       .wait("@Mark Habit Incomplete")
       .get(".message-container")
       .should("have.text", "Habit Marked Incomplete")
-      .get(".log-checkbox")
+      .get(".actual-checkbox")
       .eq(2)
       .should("not.be.checked");
-  });
-
-  it("Should style today's checkbox differently", () => {
-    cy.get(".habit-log-container").eq(2).should("have.class", "today-marker");
   });
 });
