@@ -1,3 +1,5 @@
+import { successLoginResponse } from "../factories/successLoginResponse";
+
 Cypress.Commands.add("logIn", () => {
   cy.get(".to-log-in")
     .click()
@@ -21,11 +23,7 @@ Cypress.Commands.add("interceptAllRequests", () => {
   cy.intercept(
     "POST",
     "https://stick-to-it-api.herokuapp.com/api/v2/auth/login",
-    {
-      ok: true,
-      statusCode: 200,
-      fixture: "loginResponse1",
-    }
+    successLoginResponse
   ).as("Log In");
 
   cy.intercept(
