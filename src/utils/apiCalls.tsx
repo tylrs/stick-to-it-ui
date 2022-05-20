@@ -189,3 +189,32 @@ export const getUserByEmail = async (email: string) => {
     throw err;
   }
 };
+
+export const createInvitation = async (
+  recipientInfo: {
+    recipient_name: string;
+    recipient_email: string;
+  },
+  userId: number,
+  habitPlanId: number
+) => {
+  const token = getToken();
+  try {
+    const response = await fetch(
+      `${urls.localUsers}/${userId}/habit_plans/${habitPlanId}/invitations/create`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(recipientInfo),
+      }
+    );
+    if (!response.ok) throw await response.json();
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
