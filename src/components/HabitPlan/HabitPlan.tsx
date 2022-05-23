@@ -2,6 +2,7 @@ import "./HabitPlan.css";
 import { HabitPlanProps } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
 import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
+import { Link } from "react-router-dom";
 
 const HabitPlan: React.FC<HabitPlanProps> = ({
   userId,
@@ -65,6 +66,15 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
       )}
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
+      )}
+      {!belongsToPartner && (
+        <div className="invite-link-container">
+          <Link
+            className="invite-link"
+            to={`/invitations/create?habitPlanId=${habitPlanInfo.id}`}>
+            Invite
+          </Link>
+        </div>
       )}
     </div>
   );
