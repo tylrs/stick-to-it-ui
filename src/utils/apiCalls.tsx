@@ -241,7 +241,29 @@ export const getSentInvitations = async (userId: number) => {
     );
     if (!response.ok) throw await response.json();
     const data = await response.json();
-    console.log(data);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const acceptInvitation = async (
+  userId: number,
+  invitationId: number
+) => {
+  const token = getToken();
+  try {
+    const response = await fetch(
+      `${urls.localUsers}/${userId}/invitations/${invitationId}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) throw await response.json();
+    const data = await response.json();
     return data;
   } catch (err) {
     throw err;
