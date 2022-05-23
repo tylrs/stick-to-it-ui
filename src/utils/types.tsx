@@ -11,6 +11,7 @@ export interface AccountType {
   email: string;
   password: string;
   passwordConfirmation: string;
+  password_confirmation?: string;
 }
 
 export interface HabitType {
@@ -20,6 +21,8 @@ export interface HabitType {
   description: string;
   startDate: Date | null;
   endDate: Date | null;
+  start_datetime?: string;
+  end_datetime?: string;
 }
 
 export interface HabitLogType {
