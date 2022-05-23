@@ -3,16 +3,13 @@ import { getToken, storeCurrentUser, storeToken } from "./miscUtils";
 import { AccountType, HabitType } from "./types";
 
 export const createUser = async (accountInfo: AccountType) => {
-  const formData = new FormData();
-  formData.append("name", accountInfo.name);
-  formData.append("username", accountInfo.username);
-  formData.append("email", accountInfo.email);
-  formData.append("password", accountInfo.password);
-  formData.append("password_confirmation", accountInfo.passwordConfirmation);
+  accountInfo["password_confirmation"] = accountInfo.passwordConfirmation;
   const postInfo = {
     method: "POST",
-    headers: {},
-    body: formData,
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(accountInfo),
   };
   try {
     const response = await fetch(`${urls.localUsers}`, postInfo);
@@ -26,13 +23,12 @@ export const login = async (credentials: {
   email: string;
   password: string;
 }) => {
-  const formData = new FormData();
-  formData.append("email", credentials.email);
-  formData.append("password", credentials.password);
   const postInfo = {
     method: "POST",
-    headers: {},
-    body: formData,
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(credentials),
   };
   try {
     const response = await fetch(`${urls.localLogin}`, postInfo);
@@ -48,19 +44,15 @@ export const login = async (credentials: {
 
 export const createHabit = async (habitInfo: HabitType) => {
   const token = getToken();
-  const startDate = habitInfo.startDate!.toString();
-  const endDate = habitInfo.endDate!.toString();
-  const formData = new FormData();
-  formData.append("name", habitInfo.name);
-  formData.append("description", habitInfo.description);
-  formData.append("start_datetime", startDate);
-  formData.append("end_datetime", endDate);
+  habitInfo.start_datetime = habitInfo.startDate!.toString();
+  habitInfo.end_datetime = habitInfo.endDate!.toString();
   const postInfo = {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
+      "content-type": "application/json",
     },
-    body: formData,
+    body: JSON.stringify(habitInfo),
   };
   try {
     const response = await fetch(
@@ -159,7 +151,6 @@ export const getTodayHabitPlans = async (userId: number | undefined) => {
     const response = await fetch(
       `${urls.localUsers}/${userId}/habit_plans/today`,
       {
-        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -177,7 +168,6 @@ export const getUserByEmail = async (email: string) => {
   const token = getToken();
   try {
     const response = await fetch(`${urls.localUsers}/email?email=${email}`, {
-      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
