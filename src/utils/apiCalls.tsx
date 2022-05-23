@@ -208,3 +208,42 @@ export const createInvitation = async (
     throw err;
   }
 };
+
+export const getReceivedInvitations = async (userId: number) => {
+  const token = getToken();
+  try {
+    const response = await fetch(
+      `${urls.localUsers}/${userId}/invitations/received`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) throw await response.json();
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const getSentInvitations = async (userId: number) => {
+  const token = getToken();
+  try {
+    const response = await fetch(
+      `${urls.localUsers}/${userId}/invitations/sent`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) throw await response.json();
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
