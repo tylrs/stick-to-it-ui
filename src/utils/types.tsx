@@ -72,6 +72,7 @@ export interface HabitPlanProps {
 }
 
 export interface InviteModalProps {
+  habitPlanInfo: HabitPlanType;
   showInviteModal: boolean;
 }
 

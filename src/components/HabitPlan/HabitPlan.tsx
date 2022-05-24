@@ -69,7 +69,10 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
       )}
-      <InviteModal showInviteModal={showInviteModal} />
+      <InviteModal
+        habitPlanInfo={habitPlanInfo}
+        showInviteModal={showInviteModal}
+      />
       {!belongsToPartner && (
         <div className="invite-button-container">
           <button
