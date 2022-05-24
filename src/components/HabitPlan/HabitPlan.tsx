@@ -12,7 +12,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   listType,
   setMessage,
 }) => {
-  let [showModal, setShowModal] = useState(false);
+  let [showInviteModal, setShowInviteModal] = useState(false);
   let allLogs;
   const belongsToPartner = userId !== habitPlanInfo.user_id ? true : false;
 
@@ -73,7 +73,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
           <button
             className="invite-button"
             onClick={() => {
-              setShowModal(true);
+              setShowInviteModal(true);
             }}>
             Invite
           </button>
