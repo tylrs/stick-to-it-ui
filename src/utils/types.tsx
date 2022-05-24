@@ -71,6 +71,10 @@ export interface HabitPlanProps {
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
+export interface InviteModalProps {
+  showInviteModal: boolean;
+}
+
 export interface HabitLogListProps {
   habitPlanInfo: HabitPlanType;
   habitLogsInfo: HabitLogType[];

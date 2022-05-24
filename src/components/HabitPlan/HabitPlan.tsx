@@ -3,6 +3,7 @@ import { HabitPlanProps } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
 import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
 import { useState } from "react";
+import InviteModal from "../InviteModal/InviteModal";
 
 const HabitPlan: React.FC<HabitPlanProps> = ({
   userId,
@@ -68,6 +69,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
       {listType === "all" && (
         <div className="habit-logs-container">{allLogs}</div>
       )}
+      <InviteModal showInviteModal={showInviteModal} />
       {!belongsToPartner && (
         <div className="invite-button-container">
           <button
