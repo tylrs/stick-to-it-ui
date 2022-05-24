@@ -77,6 +77,7 @@ export interface InviteModalProps {
   habitPlanInfo: HabitPlanType;
   userId: number;
   showInviteModal: boolean;
+  setShowInviteModal: React.Dispatch<React.SetStateAction<boolean>>;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 

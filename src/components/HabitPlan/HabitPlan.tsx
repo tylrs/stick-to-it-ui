@@ -73,9 +73,10 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
         habitPlanInfo={habitPlanInfo}
         userId={userId}
         showInviteModal={showInviteModal}
+        setShowInviteModal={setShowInviteModal}
         setMessage={setMessage}
       />
-      {!belongsToPartner && (
+      {!belongsToPartner && !showInviteModal && (
         <div className="invite-button-container">
           <button
             className="invite-button"

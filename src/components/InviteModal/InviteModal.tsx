@@ -7,6 +7,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
   habitPlanInfo,
   userId,
   showInviteModal,
+  setShowInviteModal,
   setMessage,
 }) => {
   const [formStep, setFormStep] = useState(1);
@@ -177,6 +178,11 @@ const InviteModal: React.FC<InviteModalProps> = ({
     <div>
       {error && <p className="invitation-error">{error}</p>}
       <h2>Invitation for:</h2>
+      <span
+        className="close-invite-modal-button"
+        onClick={() => setShowInviteModal(false)}>
+        &times;
+      </span>
       <h3>{habitPlanInfo.habit.name}</h3>
       <p className="habit-plan-invite-date-range">
         {`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
