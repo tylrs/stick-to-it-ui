@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface UserType {
   id: number;
   name: string;
@@ -73,7 +75,9 @@ export interface HabitPlanProps {
 
 export interface InviteModalProps {
   habitPlanInfo: HabitPlanType;
+  userId: number;
   showInviteModal: boolean;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface HabitLogListProps {

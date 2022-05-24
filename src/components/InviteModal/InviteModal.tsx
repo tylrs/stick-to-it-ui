@@ -1,17 +1,20 @@
-import { stringify } from "querystring";
 import React, { useState } from "react";
 import { formatDateTime } from "../../utils/miscUtils";
 import { InviteModalProps } from "../../utils/types";
+import { createInvitation } from "../../utils/apiCalls";
 
 const InviteModal: React.FC<InviteModalProps> = ({
   habitPlanInfo,
+  userId,
   showInviteModal,
+  setMessage,
 }) => {
   const [formStep, setFormStep] = useState(1);
   const [recipientInfo, setRecipientInfo] = useState({
     recipient_name: "",
     recipient_email: "",
   });
+  const [error, setError] = useState("");
 
   if (!showInviteModal) return null;
   // const invitationHeader = (
@@ -34,8 +37,19 @@ const InviteModal: React.FC<InviteModalProps> = ({
     });
   };
 
-  const submitUserInvite = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e);
+  const submitUserInvite = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await createInvitation(recipientInfo, userId, habitPlanInfo.id);
+      setMessage("Invitation Sent");
+      setFormStep(1);
+    } catch (err: any) {
+      if (err.errors) {
+        setError(err.errors);
+      } else {
+        setError(err);
+      }
+    }
   };
 
   let invitationBody;
@@ -91,6 +105,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
 
   return (
     <div>
+      {error && <p className="invitation-error">{error}</p>}
       <h2>Invitation for:</h2>
       <h3>{habitPlanInfo.habit.name}</h3>
       <p className="habit-plan-invite-date-range">

@@ -186,7 +186,7 @@ export const createInvitation = async (
     recipient_email: string;
   },
   userId: number,
-  habitPlanId: number
+  habitPlanId: number | undefined
 ) => {
   const token = getToken();
   try {
