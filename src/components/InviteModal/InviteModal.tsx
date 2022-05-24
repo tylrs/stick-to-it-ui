@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { stringify } from "querystring";
+import React, { useState } from "react";
 import { formatDateTime } from "../../utils/miscUtils";
 import { InviteModalProps } from "../../utils/types";
 
@@ -7,10 +8,89 @@ const InviteModal: React.FC<InviteModalProps> = ({
   showInviteModal,
 }) => {
   const [formStep, setFormStep] = useState(1);
+  const [recipientInfo, setRecipientInfo] = useState({
+    recipient_name: "",
+    recipient_email: "",
+  });
 
   if (!showInviteModal) return null;
-  const invitationHeader = (
-    <>
+  // const invitationHeader = (
+  //   <>
+  //     <h2>Invitation for:</h2>
+  //     <h3>{habitPlanInfo.habit.name}</h3>
+  //     <p className="habit-plan-invite-date-range">
+  //       {`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
+  //         habitPlanInfo.end_datetime
+  //       )}`}
+  //     </p>
+  //   </>
+  // );
+  const handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRecipientInfo(prevState => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const submitUserInvite = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e);
+  };
+
+  let invitationBody;
+  switch (formStep) {
+    case 1:
+      invitationBody = (
+        <div>
+          <button onClick={() => setFormStep(2)}>Find user by email</button>
+          <button onClick={() => setFormStep(3)}>
+            Invite someone without account
+          </button>
+        </div>
+      );
+      break;
+    case 2:
+      invitationBody = <div></div>;
+      break;
+    case 3:
+      invitationBody = (
+        <form onSubmit={e => submitUserInvite(e)}>
+          <h4>Invite unregistered user:</h4>
+          <label htmlFor="invite-name">Name: </label>
+          <input
+            required
+            id="invite-name"
+            className="invite-input"
+            type="text"
+            name="recipient_name"
+            placeholder="Recipient Name"
+            maxLength={20}
+            value={recipientInfo.recipient_name}
+            onChange={e => handleUserInput(e)}
+          />
+          <label htmlFor="invite-email">Email: </label>
+          <input
+            required
+            id="invite-email"
+            className="invite-input"
+            type="text"
+            name="recipient_email"
+            placeholder="Recipient Email"
+            maxLength={20}
+            value={recipientInfo.recipient_email}
+            onChange={e => handleUserInput(e)}
+          />
+          <button>Submit</button>
+        </form>
+      );
+      break;
+    default:
+      invitationBody = <p></p>;
+  }
+
+  return (
+    <div>
       <h2>Invitation for:</h2>
       <h3>{habitPlanInfo.habit.name}</h3>
       <p className="habit-plan-invite-date-range">
@@ -18,20 +98,9 @@ const InviteModal: React.FC<InviteModalProps> = ({
           habitPlanInfo.end_datetime
         )}`}
       </p>
-    </>
+      {invitationBody}
+    </div>
   );
-  switch (formStep) {
-    case 1:
-      return (
-        <div>
-          {invitationHeader}
-          <button>Find user by email</button>
-          <button>Invite someone without account</button>
-        </div>
-      );
-    default:
-      return <></>;
-  }
 };
 
 export default InviteModal;
