@@ -2,7 +2,7 @@ import "./HabitPlan.css";
 import { HabitPlanProps } from "../../utils/types";
 import HabitLog from "../HabitLog/HabitLog";
 import { generateHabitLogList, getDayOfWeek } from "../../utils/miscUtils";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const HabitPlan: React.FC<HabitPlanProps> = ({
   userId,
@@ -12,6 +12,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   listType,
   setMessage,
 }) => {
+  let [showModal, setShowModal] = useState(false);
   let allLogs;
   const belongsToPartner = userId !== habitPlanInfo.user_id ? true : false;
 
@@ -68,12 +69,14 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
         <div className="habit-logs-container">{allLogs}</div>
       )}
       {!belongsToPartner && (
-        <div className="invite-link-container">
-          <Link
-            className="invite-link"
-            to={`/invitations/create?habitPlanId=${habitPlanInfo.id}`}>
+        <div className="invite-button-container">
+          <button
+            className="invite-button"
+            onClick={() => {
+              setShowModal(true);
+            }}>
             Invite
-          </Link>
+          </button>
         </div>
       )}
     </div>
