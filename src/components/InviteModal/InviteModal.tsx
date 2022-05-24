@@ -92,54 +92,60 @@ const InviteModal: React.FC<InviteModalProps> = ({
       break;
     case 2:
       invitationBody = (
-        <form onSubmit={e => submitUserLookup(e)}>
-          <h4>Lookup registered user:</h4>
-          <label htmlFor="lookup-recipient-email">Email: </label>
-          <input
-            required
-            id="lookup-recipient-email"
-            className="invite-input"
-            type="text"
-            name="recipient_email"
-            placeholder="Recipient Email"
-            maxLength={40}
-            value={recipientEmailLookup}
-            onChange={e => handleUserLookupInput(e)}
-          />
-          <button>Submit</button>
-        </form>
+        <>
+          <form onSubmit={e => submitUserLookup(e)}>
+            <h4>Lookup registered user:</h4>
+            <label htmlFor="lookup-recipient-email">Email: </label>
+            <input
+              required
+              id="lookup-recipient-email"
+              className="invite-input"
+              type="text"
+              name="recipient_email"
+              placeholder="Recipient Email"
+              maxLength={40}
+              value={recipientEmailLookup}
+              onChange={e => handleUserLookupInput(e)}
+            />
+            <button>Submit</button>
+          </form>
+          <button onClick={() => setFormStep(1)}>Go Back</button>
+        </>
       );
       break;
     case 3:
       invitationBody = (
-        <form onSubmit={e => submitUserInvite(e)}>
-          <h4>Invite unregistered user:</h4>
-          <label htmlFor="invite-name">Name: </label>
-          <input
-            required
-            id="invite-name"
-            className="invite-input"
-            type="text"
-            name="recipient_name"
-            placeholder="Recipient Name"
-            maxLength={20}
-            value={recipientInfo.recipient_name}
-            onChange={e => handleUserInvitationInput(e)}
-          />
-          <label htmlFor="invite-email">Email: </label>
-          <input
-            required
-            id="invite-email"
-            className="invite-input"
-            type="text"
-            name="recipient_email"
-            placeholder="Recipient Email"
-            maxLength={20}
-            value={recipientInfo.recipient_email}
-            onChange={e => handleUserInvitationInput(e)}
-          />
-          <button>Submit</button>
-        </form>
+        <>
+          <form onSubmit={e => submitUserInvite(e)}>
+            <h4>Invite unregistered user:</h4>
+            <label htmlFor="invite-name">Name: </label>
+            <input
+              required
+              id="invite-name"
+              className="invite-input"
+              type="text"
+              name="recipient_name"
+              placeholder="Recipient Name"
+              maxLength={20}
+              value={recipientInfo.recipient_name}
+              onChange={e => handleUserInvitationInput(e)}
+            />
+            <label htmlFor="invite-email">Email: </label>
+            <input
+              required
+              id="invite-email"
+              className="invite-input"
+              type="text"
+              name="recipient_email"
+              placeholder="Recipient Email"
+              maxLength={20}
+              value={recipientInfo.recipient_email}
+              onChange={e => handleUserInvitationInput(e)}
+            />
+            <button>Submit</button>
+          </form>
+          <button onClick={() => setFormStep(1)}>Go Back</button>
+        </>
       );
       break;
     case 4:
