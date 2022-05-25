@@ -84,12 +84,18 @@ const InviteModal: React.FC<InviteModalProps> = ({
   switch (formStep) {
     case 1:
       invitationBody = (
-        <div>
-          <button onClick={() => setFormStep(2)}>Find user by email</button>
-          <button onClick={() => setFormStep(3)}>
+        <>
+          <button
+            className="step1-button find-email-button"
+            onClick={() => setFormStep(2)}>
+            Find user by email
+          </button>
+          <button
+            className="step1-button no-account-button"
+            onClick={() => setFormStep(3)}>
             Invite someone without account
           </button>
-        </div>
+        </>
       );
       break;
     case 2:
@@ -178,18 +184,20 @@ const InviteModal: React.FC<InviteModalProps> = ({
   return (
     <div className="invitation-modal-container">
       {error && <p className="invitation-error">{error}</p>}
-      <h2>Invitation for:</h2>
+      <h2 className="invitation-modal-header-title">Invitation for:</h2>
       <span
         className="close-invite-modal-button"
         onClick={() => setShowInviteModal(false)}>
         &times;
       </span>
-      <h3>{habitPlanInfo.habit.name}</h3>
-      <p className="habit-plan-invite-date-range">
-        {`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
-          habitPlanInfo.end_datetime
-        )}`}
-      </p>
+      <div className="invitation-habit-info-container">
+        <h3>{habitPlanInfo.habit.name}</h3>
+        <p className="habit-plan-invite-date-range">
+          {`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
+            habitPlanInfo.end_datetime
+          )}`}
+        </p>
+      </div>
       {invitationBody}
     </div>
   );

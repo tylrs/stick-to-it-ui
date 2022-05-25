@@ -1,20 +1,55 @@
-.close-invite-modal-button {
-  cursor: pointer;
-}
-
 .invitation-modal-container {
-  align-items: center;
   background-color: #000000f0;
   border: 4px solid #133fff;
   border-radius: 55px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
   height: 34rem;
-  justify-content: center;
   left: 23%;
   position: absolute;
-  width: 57rem;
+  width: 37rem;
   top: 29%;
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+
+.invitation-modal-header-title {
+  grid-column: 5 / span 4;
+  grid-row: 2;
+  text-align: center;
+}
+
+.invitation-habit-info-container {
+  grid-column: 5 / span 4;
+  grid-row: 4;
+  text-align: center;
+}
+
+.close-invite-modal-button {
+  cursor: pointer;
+  font-size: 2.7rem;
+  grid-column: 11;
+}
+
+.step1-button {
+  background-color: #133fff;
+  border-radius: 15px;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.step1-button:hover {
+  background-color: #133eff96;
+  cursor: pointer;
+}
+
+.find-email-button {
+  grid-column: 4 / span 2;
+  grid-row: 9 / span 2;
+}
+
+.no-account-button {
+  grid-column: 8 / span 2;
+  grid-row: 9 / span 2;
 }
