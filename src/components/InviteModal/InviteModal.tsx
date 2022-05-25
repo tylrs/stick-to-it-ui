@@ -169,23 +169,43 @@ const InviteModal: React.FC<InviteModalProps> = ({
       break;
     case 4:
       invitationBody = (
-        <div>
+        <div className="invite-form">
           <p>Would you like to invite this user:</p>
           <p>{recipientInfo.recipient_name}</p>
           <p>{recipientInfo.recipient_email}</p>
-          <button onClick={e => submitUserInvite(e)}>Yes</button>
-          <button onClick={() => setFormStep(1)}>No</button>
+          <div className="invite-form-button-container">
+            <button
+              className=".invite-form-button"
+              onClick={e => submitUserInvite(e)}>
+              Yes
+            </button>
+            <button
+              className="invite-form-button"
+              onClick={() => setFormStep(1)}>
+              No
+            </button>
+          </div>
         </div>
       );
       break;
     case 5:
       invitationBody = (
-        <div>
+        <div className="invite-form">
           <p>User could not be found!</p>
           <p>Would you like to send an invite to this email anyway:</p>
           <p>{recipientEmailLookup}</p>
-          <button onClick={() => handleFailedLookupContinue()}>Yes</button>
-          <button onClick={() => setFormStep(1)}>No</button>
+          <div className="invite-form-button-container">
+            <button
+              className="invite-form-button"
+              onClick={() => handleFailedLookupContinue()}>
+              Yes
+            </button>
+            <button
+              className="invite-form-button"
+              onClick={() => setFormStep(1)}>
+              No
+            </button>
+          </div>
         </div>
       );
       break;
