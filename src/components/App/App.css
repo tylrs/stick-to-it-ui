@@ -5,6 +5,10 @@ main {
   width: 100vw;
 }
 
+.hidden {
+  display: none;
+}
+
 .greeting-wrapper {
   align-items: center;
   display: flex;

@@ -80,6 +80,11 @@ const InviteModal: React.FC<InviteModalProps> = ({
     }
   };
 
+  const handleModalExit = () => {
+    setShowInviteModal(false);
+    document.querySelector(".overlay")?.classList.add("hidden");
+  };
+
   let invitationBody;
   switch (formStep) {
     case 1:
@@ -187,7 +192,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
       <h2 className="invitation-modal-header-title">Invitation for:</h2>
       <span
         className="close-invite-modal-button"
-        onClick={() => setShowInviteModal(false)}>
+        onClick={() => handleModalExit()}>
         &times;
       </span>
       <div className="invitation-habit-info-container">

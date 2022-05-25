@@ -41,6 +41,11 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
     </p>
   );
 
+  const handleShowModal = () => {
+    setShowInviteModal(true);
+    document.querySelector(".overlay")?.classList.remove("hidden");
+  };
+
   return (
     <div className="habit-plan-container">
       {belongsToPartner && <div className="habit-plan-divider"></div>}
@@ -78,11 +83,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
       />
       {!belongsToPartner && !showInviteModal && (
         <div className="invite-button-container">
-          <button
-            className="invite-button"
-            onClick={() => {
-              setShowInviteModal(true);
-            }}>
+          <button className="invite-button" onClick={() => handleShowModal()}>
             Invite
           </button>
         </div>
