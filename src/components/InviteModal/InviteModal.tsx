@@ -129,8 +129,12 @@ const InviteModal: React.FC<InviteModalProps> = ({
     case 3:
       invitationBody = (
         <>
-          <form onSubmit={e => submitUserInvite(e)}>
-            <h4>Invite unregistered user:</h4>
+          <form
+            className="unregistered-user-form"
+            onSubmit={e => submitUserInvite(e)}>
+            <h4 className="unregistered-user-form-title">
+              Invite unregistered user:
+            </h4>
             <label htmlFor="invite-name">Name: </label>
             <input
               required
@@ -155,9 +159,11 @@ const InviteModal: React.FC<InviteModalProps> = ({
               value={recipientInfo.recipient_email}
               onChange={e => handleUserInvitationInput(e)}
             />
-            <button>Submit</button>
+            <button className="unregistered-user-submit">Submit</button>
           </form>
-          <button onClick={() => setFormStep(1)}>Go Back</button>
+          <button className="go-back-button" onClick={() => setFormStep(1)}>
+            &larr;
+          </button>
         </>
       );
       break;
