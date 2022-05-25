@@ -7,10 +7,10 @@
   grid-template-rows: repeat(12, 1fr);
   height: 34rem;
   left: 23%;
-  position: fixed;
+  position: absolute;
   width: 37rem;
   top: 29%;
-  transform: translate(-6%, -5%);
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
@@ -45,6 +45,7 @@
 
 .step1-button {
   background-color: #133fff;
+  border: solid 1px black;
   border-radius: 15px;
   color: white;
   font-size: 1.1rem;
