@@ -1,0 +1,18 @@
+.close-invite-modal-button {
+  cursor: pointer;
+}
+
+.invitation-modal-container {
+  align-items: center;
+  background-color: #667efffa;
+  display: flex;
+  flex-direction: column;
+  height: 39rem;
+  justify-content: center;
+  left: 23%;
+  position: absolute;
+  width: 62rem;
+  top: 29%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}

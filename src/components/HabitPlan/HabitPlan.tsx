@@ -42,7 +42,7 @@ const HabitPlan: React.FC<HabitPlanProps> = ({
   );
 
   return (
-    <div className="habit-plan">
+    <div className="habit-plan-container">
       {belongsToPartner && <div className="habit-plan-divider"></div>}
       <div className="habit-log-header-container">
         {listType === "all" ? weekHeader : todayHeader}

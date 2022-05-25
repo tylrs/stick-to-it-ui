@@ -6,10 +6,10 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: 21rem;
-  width: 89%;
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding: 1rem 1rem 1rem 1rem;
+  width: 89%;
 }
 
 .habit-container-today {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./InviteModal.css";
 import { formatDateTime } from "../../utils/miscUtils";
 import { InviteModalProps } from "../../utils/types";
 import { createInvitation, getUserByEmail } from "../../utils/apiCalls";
@@ -175,7 +176,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
   }
 
   return (
-    <div>
+    <div className="invitation-modal-container">
       {error && <p className="invitation-error">{error}</p>}
       <h2>Invitation for:</h2>
       <span

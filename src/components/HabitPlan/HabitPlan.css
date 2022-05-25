@@ -1,3 +1,7 @@
+.habit-plan-container {
+  position: relative;
+}
+
 .habit-plan-date-range {
   font-size: 1.5rem;
 }
@@ -45,22 +49,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  /* .habit-container-today {
-    display: block;
-    height: 13rem;
-    width: 70%;
-  }
-
-  .habit-container-all {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    grid-template-columns: none;
-    height: 18rem;
-    justify-content: space-between;
-    padding: 1.5rem;
-  } */
-
   .habit-description {
     padding-right: 0%;
     text-align: center;
