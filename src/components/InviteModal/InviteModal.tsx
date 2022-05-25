@@ -106,7 +106,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
     case 2:
       invitationBody = (
         <>
-          <form onSubmit={e => submitUserLookup(e)}>
+          <form className="invite-form" onSubmit={e => submitUserLookup(e)}>
             <h4>Lookup registered user:</h4>
             <label htmlFor="lookup-recipient-email">Email: </label>
             <input
@@ -120,18 +120,18 @@ const InviteModal: React.FC<InviteModalProps> = ({
               value={recipientEmailLookup}
               onChange={e => handleUserLookupInput(e)}
             />
-            <button>Submit</button>
+            <button className="invite-submit">Submit</button>
           </form>
-          <button onClick={() => setFormStep(1)}>Go Back</button>
+          <button className="go-back-button" onClick={() => setFormStep(1)}>
+            &larr;
+          </button>
         </>
       );
       break;
     case 3:
       invitationBody = (
         <>
-          <form
-            className="unregistered-user-form"
-            onSubmit={e => submitUserInvite(e)}>
+          <form className="invite-form" onSubmit={e => submitUserInvite(e)}>
             <h4 className="unregistered-user-form-title">
               Invite unregistered user:
             </h4>
@@ -159,7 +159,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
               value={recipientInfo.recipient_email}
               onChange={e => handleUserInvitationInput(e)}
             />
-            <button className="unregistered-user-submit">Submit</button>
+            <button className="invite-submit">Submit</button>
           </form>
           <button className="go-back-button" onClick={() => setFormStep(1)}>
             &larr;

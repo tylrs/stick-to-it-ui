@@ -65,7 +65,7 @@
   grid-row: 9 / span 2;
 }
 
-.unregistered-user-form {
+.invite-form {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@
   text-align: center;
 }
 
-.unregistered-user-submit {
+.invite-submit {
   background-color: #fff994;
   border-radius: 10px;
   color: black;
