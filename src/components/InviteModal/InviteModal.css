@@ -7,10 +7,10 @@
   grid-template-rows: repeat(12, 1fr);
   height: 34rem;
   left: 23%;
-  position: absolute;
+  position: fixed;
   width: 37rem;
   top: 29%;
-  transform: translate(-50%, -50%);
+  transform: translate(-6%, -5%);
   z-index: 2;
 }
 
