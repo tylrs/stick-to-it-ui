@@ -51,6 +51,10 @@
   grid-row: 1;
 }
 
+.go-back-button:hover {
+  color: #fff994;
+}
+
 .step1-button {
   background-color: #133fff;
   border: solid 1px black;
@@ -112,6 +116,11 @@
   height: 2.3rem;
   margin-top: 1.5rem;
   width: 7.2rem;
+}
+
+.invite-submit:hover {
+  background-color: #fffa94a9;
+  cursor: pointer;
 }
 
 .unregistered-user-submit:hover {
