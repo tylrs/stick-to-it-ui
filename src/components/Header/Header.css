@@ -32,10 +32,12 @@
 }
 
 .header-link:hover {
+  border-bottom: 1px solid black;
   color: black;
 }
 
 .header-link.active {
+  border-bottom: 1px solid black;
   color: black;
 }
 
@@ -57,15 +59,29 @@ h1 {
 
 .log-out-button {
   background-color: white;
-  border: 1.2px solid black;
+  border: 1.2px solid gray;
+  color: gray;
   font-size: 1.1rem;
   height: 2rem;
   padding: 0% 2% 0% 2%;
 }
 
 .log-out-button:hover {
+  color: black;
   cursor: pointer;
-  background-color: aqua;
+}
+
+.notifications-button {
+  background-color: transparent;
+  border: none;
+  color: gray;
+  font-size: 3rem;
+  transform: translateY(-5px);
+}
+
+.notifications-button:hover {
+  color: black;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {

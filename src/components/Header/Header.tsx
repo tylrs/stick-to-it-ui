@@ -27,6 +27,7 @@ const Header: React.FC<HeaderProps> = ({
           <NavLink className="header-link" to="/all-habits">
             Habits Week
           </NavLink>
+          <button className="notifications-button">&#x2709;</button>
           <button className="log-out-button" onClick={() => logOut()}>
             Log Out
           </button>
