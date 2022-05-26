@@ -12,6 +12,7 @@
   background-color: #000000de;
   border: 1px solid black;
   border-radius: 10px;
+  box-shadow: 12px 12px 8px 0px #00000087;
   color: white;
   display: flex;
   flex-direction: column;
