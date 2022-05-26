@@ -222,8 +222,8 @@ const InviteModal: React.FC<InviteModalProps> = ({
         &times;
       </span>
       <div className="invitation-habit-info-container">
-        <h3>{habitPlanInfo.habit.name}</h3>
-        <p className="habit-plan-invite-date-range">
+        <h3 className="invitation-habit-name">{habitPlanInfo.habit.name}</h3>
+        <p className="invitation-habit-plan-date-range">
           {`${formatDateTime(habitPlanInfo.start_datetime)}-${formatDateTime(
             habitPlanInfo.end_datetime
           )}`}

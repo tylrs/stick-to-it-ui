@@ -21,9 +21,17 @@
 }
 
 .invitation-habit-info-container {
-  grid-column: 5 / span 4;
+  grid-column: 4 / span 6;
   grid-row: 4;
   text-align: center;
+}
+
+.invitation-habit-name {
+  font-size: 2rem;
+}
+
+.invitation-habit-plan-date-range {
+  font-size: 1.3rem;
 }
 
 .close-invite-modal-button {
@@ -49,6 +57,7 @@
   border-radius: 15px;
   color: white;
   font-size: 1.1rem;
+  padding: 1%;
 }
 
 .step1-button:hover {
