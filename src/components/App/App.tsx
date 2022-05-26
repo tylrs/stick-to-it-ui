@@ -46,6 +46,7 @@ const App = () => {
       ) : (
         <Header headerType={"loggedOut"} />
       )}
+      <div className="overlay hidden"></div>
       {!user.id ? (
         <Routes>
           <Route path="/" element={<Welcome />} />

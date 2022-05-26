@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface UserType {
   id: number;
   name: string;
@@ -68,6 +70,14 @@ export interface HabitPlanProps {
   habitLogsInfo: HabitLogType[];
   handleDelete: any;
   listType: "all" | "today";
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface InviteModalProps {
+  habitPlanInfo: HabitPlanType;
+  userId: number;
+  showInviteModal: boolean;
+  setShowInviteModal: React.Dispatch<React.SetStateAction<boolean>>;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
