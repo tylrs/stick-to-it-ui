@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Message from "../Message/Message";
+import NotificationModal from "../NotificationModal/NotificationModal";
 import "./Header.css";
 
 interface HeaderProps {
@@ -13,6 +15,13 @@ const Header: React.FC<HeaderProps> = ({
   logOut,
   message = "",
 }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+    document.querySelector(".overlay")?.classList.remove("hidden");
+  };
+
   return (
     <header className={`site-header-${headerType}`}>
       <Link className="site-title" to="/">
@@ -27,10 +36,15 @@ const Header: React.FC<HeaderProps> = ({
           <NavLink className="header-link" to="/all-habits">
             Habits Week
           </NavLink>
-          <button className="notifications-button">&#x2709;</button>
+          <button
+            className="notifications-button"
+            onClick={() => handleShowModal()}>
+            &#x2709;
+          </button>
           <button className="log-out-button" onClick={() => logOut()}>
             Log Out
           </button>
+          <NotificationModal />
         </div>
       )}
     </header>
