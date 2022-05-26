@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./InviteModal.css";
 import { formatDateTime } from "../../utils/miscUtils";
 import { InviteModalProps } from "../../utils/types";
@@ -18,6 +18,17 @@ const InviteModal: React.FC<InviteModalProps> = ({
   });
   const [recipientEmailLookup, setRecipientEmailLookup] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (error) {
+      let timer = setTimeout(() => {
+        setError("");
+      }, 3000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  });
 
   if (!showInviteModal) return null;
 
