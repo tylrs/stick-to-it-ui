@@ -127,3 +127,12 @@
   background-color: #fffa94a9;
   cursor: pointer;
 }
+
+.invitation-error {
+  grid-column: 4 / span 6;
+  grid-row: 1;
+  text-align: center;
+  color: red;
+  margin-top: 0.9rem;
+  margin-bottom: 0.5rem;
+}
