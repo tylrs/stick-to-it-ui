@@ -96,6 +96,12 @@ const InviteModal: React.FC<InviteModalProps> = ({
     document.querySelector(".overlay")?.classList.add("hidden");
   };
 
+  const handleStartFormOver = () => {
+    setRecipientInfo({ recipient_name: "", recipient_email: "" });
+    setRecipientEmailLookup("");
+    setFormStep(1);
+  };
+
   let invitationBody;
   switch (formStep) {
     case 1:
@@ -133,7 +139,9 @@ const InviteModal: React.FC<InviteModalProps> = ({
             />
             <button className="invite-submit">Submit</button>
           </form>
-          <button className="go-back-button" onClick={() => setFormStep(1)}>
+          <button
+            className="go-back-button"
+            onClick={() => handleStartFormOver()}>
             &larr;
           </button>
         </>
@@ -172,7 +180,9 @@ const InviteModal: React.FC<InviteModalProps> = ({
             />
             <button className="invite-submit">Submit</button>
           </form>
-          <button className="go-back-button" onClick={() => setFormStep(1)}>
+          <button
+            className="go-back-button"
+            onClick={() => handleStartFormOver()}>
             &larr;
           </button>
         </>
@@ -192,7 +202,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
             </button>
             <button
               className="invite-form-button"
-              onClick={() => setFormStep(1)}>
+              onClick={() => handleStartFormOver()}>
               No
             </button>
           </div>
@@ -213,7 +223,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
             </button>
             <button
               className="invite-form-button"
-              onClick={() => setFormStep(1)}>
+              onClick={() => handleStartFormOver()}>
               No
             </button>
           </div>
