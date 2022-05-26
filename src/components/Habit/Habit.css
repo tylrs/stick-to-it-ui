@@ -5,7 +5,7 @@
   color: white;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  height: 21rem;
+  height: 25rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding: 1rem 1rem 1rem 1rem;
@@ -19,7 +19,7 @@
   border-radius: 55px;
   color: white;
   display: flex;
-  height: 18rem;
+  height: 25rem;
   width: 55%;
   justify-content: space-evenly;
   margin-top: 2rem;
