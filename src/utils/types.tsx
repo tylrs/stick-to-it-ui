@@ -55,6 +55,19 @@ export interface HabitPlanType {
   habit_logs: Array<HabitLogType>;
 }
 
+export interface InvitationType {
+  id: number;
+  recipient_email: string;
+  habit_plan_id: number;
+  status: "accepted" | "pending" | "declined";
+  sender: { name: "string"; username: "string" };
+  habit_plan: {
+    start_datetime: Date;
+    end_datetime: Date;
+    habit: { name: string; description: string };
+  };
+}
+
 export interface HabitProps {
   userId: number;
   habitInfo: { name: string; description: string };
@@ -93,4 +106,9 @@ export interface HabitLogListProps {
   belongsToPartner: boolean;
   listType: "all" | "today";
   setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface InvitationProps {
+  type: "received" | "sent";
+  invitationInfo: InvitationType;
 }

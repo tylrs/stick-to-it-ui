@@ -1,17 +1,23 @@
 import "./NotificationModal.css";
-import { NotificationModalProps } from "../../utils/types";
+import { NotificationModalProps, InvitationType } from "../../utils/types";
 import { useEffect, useState } from "react";
 import {
   getReceivedInvitations,
   getSentInvitations,
 } from "../../utils/apiCalls";
+import Invitation from "../Invitation/Invitation";
+
+interface NotificationState {
+  received: InvitationType[];
+  sent: InvitationType[];
+}
 
 const NotificationModal: React.FC<NotificationModalProps> = ({
   setShowModal,
   showModal,
   userId,
 }) => {
-  const [invitationsInfo, setInvitationsInfo] = useState({
+  const [invitationsInfo, setInvitationsInfo] = useState<NotificationState>({
     received: [],
     sent: [],
   });
@@ -23,7 +29,12 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
     try {
       const receivedResponse = await getReceivedInvitations(userId);
       const sentResponse = await getSentInvitations(userId);
-      console.log(receivedResponse, sentResponse);
+      setInvitationsInfo(() => {
+        return {
+          received: receivedResponse,
+          sent: sentResponse,
+        };
+      });
     } catch (err) {
       console.log(err);
     }
@@ -31,16 +42,21 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
 
   useEffect(() => {
     if (showModal) {
+      console.log("component did mount");
       getInvitations();
     }
-  }, [displayedInvitation]);
+  }, [displayedInvitation, showModal]);
 
   if (!showModal) return null;
 
   const invitations = invitationsInfo[displayedInvitation].map(
-    invitationInfo => {
-      <Invitation type="displayedInvitation" invitationInfo={invitationInfo} />;
-    }
+    invitationInfo => (
+      <Invitation
+        key={invitationInfo.id}
+        type={displayedInvitation}
+        invitationInfo={invitationInfo}
+      />
+    )
   );
 
   return (
@@ -52,7 +68,7 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
         </button>
         <button onClick={() => setDisplayedInvitation("sent")}>Sent</button>
       </div>
-      <div className="invitation-container"></div>
+      <div className="invitation-container">{invitations}</div>
     </div>
   );
 };
