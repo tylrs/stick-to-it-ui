@@ -100,7 +100,11 @@ const HabitsList: React.FC<HabitsListProps> = ({
 
   return (
     <section className="habits-list-page-container">
-      <NotificationModal setShowModal={setShowModal} showModal={showModal} />
+      <NotificationModal
+        setShowModal={setShowModal}
+        userId={userId}
+        showModal={showModal}
+      />
       {error && <p className="habits-list-error">{error}</p>}
       {listType === "all" ? (
         <div className="habits-list-title">

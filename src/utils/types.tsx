@@ -84,6 +84,7 @@ export interface InviteModalProps {
 export interface NotificationModalProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  userId: number;
 }
 
 export interface HabitLogListProps {
