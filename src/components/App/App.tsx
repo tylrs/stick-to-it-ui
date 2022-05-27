@@ -14,6 +14,7 @@ import Header from "../Header/Header";
 const App = () => {
   const [user, setUser] = useState<UserType>(emptyUser);
   const [message, setMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const logOut = () => {
@@ -42,7 +43,12 @@ const App = () => {
   return (
     <main>
       {!!user.id ? (
-        <Header headerType={"loggedIn"} logOut={logOut} message={message} />
+        <Header
+          headerType={"loggedIn"}
+          logOut={logOut}
+          message={message}
+          setShowModal={setShowModal}
+        />
       ) : (
         <Header headerType={"loggedOut"} />
       )}
@@ -67,6 +73,8 @@ const App = () => {
                 name={user.name}
                 listType={"all"}
                 setMessage={setMessage}
+                showModal={showModal}
+                setShowModal={setShowModal}
               />
             }
           />
@@ -78,6 +86,8 @@ const App = () => {
                 name={user.name}
                 listType={"all"}
                 setMessage={setMessage}
+                showModal={showModal}
+                setShowModal={setShowModal}
               />
             }
           />
@@ -89,6 +99,8 @@ const App = () => {
                 name={user.name}
                 listType={"today"}
                 setMessage={setMessage}
+                showModal={showModal}
+                setShowModal={setShowModal}
               />
             }
           />
@@ -104,6 +116,8 @@ const App = () => {
                 name={user.name}
                 listType={"all"}
                 setMessage={setMessage}
+                showModal={showModal}
+                setShowModal={setShowModal}
               />
             }
           />

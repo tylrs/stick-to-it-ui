@@ -1,3 +1,4 @@
+import { set } from "cypress/types/lodash";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Message from "../Message/Message";
@@ -8,15 +9,15 @@ interface HeaderProps {
   headerType: "loggedIn" | "loggedOut";
   logOut?: any;
   message?: string;
+  setShowModal?: any;
 }
 
 const Header: React.FC<HeaderProps> = ({
   headerType,
   logOut,
   message = "",
+  setShowModal,
 }) => {
-  const [showModal, setShowModal] = useState(false);
-
   const handleShowModal = () => {
     setShowModal(true);
     document.querySelector(".overlay")?.classList.remove("hidden");
@@ -44,7 +45,6 @@ const Header: React.FC<HeaderProps> = ({
           <button className="log-out-button" onClick={() => logOut()}>
             Log Out
           </button>
-          <NotificationModal />
         </div>
       )}
     </header>

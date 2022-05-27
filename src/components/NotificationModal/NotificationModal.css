@@ -1,0 +1,10 @@
+.notification-modal-container {
+  background-color: #000000f0;
+  border: 4px solid #133fff;
+  border-radius: 20%;
+  height: 25rem;
+  position: absolute;
+  transform: translate(65%, -165%);
+  width: 23rem;
+  z-index: 3;
+}
