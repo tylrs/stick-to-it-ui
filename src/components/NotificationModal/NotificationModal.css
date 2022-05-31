@@ -48,6 +48,10 @@
   overflow-y: scroll;
 }
 
+.no-invitation-message {
+  color: white;
+}
+
 ::-webkit-scrollbar {
   background: transparent;
 }

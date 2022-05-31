@@ -77,7 +77,15 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
           Sent
         </button>
       </div>
-      <div className="invitation-container">{invitations}</div>
+      <div className="invitation-container">
+        {invitations.length ? (
+          invitations
+        ) : (
+          <p className="no-invitation-message">
+            No {displayedInvitation} invitations
+          </p>
+        )}
+      </div>
     </div>
   );
 };
