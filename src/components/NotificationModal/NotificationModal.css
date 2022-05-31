@@ -24,8 +24,7 @@
   border: none;
   color: white;
   font-size: 1.3rem;
-  padding: 0.2rem;
-  width: 30%;
+  padding: 0.4rem;
 }
 
 .notification-nav-button:hover {
@@ -74,6 +73,25 @@
 
 .active-nav-button {
   border: 1px solid #133fff;
+}
+
+.counter-sent {
+  right: 11%;
+}
+
+.counter-received {
+  right: 55%;
+}
+
+.notification-counter {
+  color: white;
+  background-color: red;
+  position: absolute;
+  top: 13.5%;
+  border: 1px solid;
+  padding: 0rem 0.4rem 0rem 0.4rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
 }
 
 ::-webkit-scrollbar {

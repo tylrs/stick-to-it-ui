@@ -79,20 +79,34 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
         </span>
       </div>
       <div className="notification-nav-button-container">
-        <button
-          className={`notification-nav-button ${
-            displayedInvitation === "received" ? "active-nav-button" : ""
-          }`}
-          onClick={() => setDisplayedInvitation("received")}>
-          Received
-        </button>
-        <button
-          className={`notification-nav-button ${
-            displayedInvitation === "sent" ? "active-nav-button" : ""
-          }`}
-          onClick={() => setDisplayedInvitation("sent")}>
-          Sent
-        </button>
+        <span>
+          <button
+            className={`notification-nav-button ${
+              displayedInvitation === "received" ? "active-nav-button" : ""
+            }`}
+            onClick={() => setDisplayedInvitation("received")}>
+            Received
+          </button>
+          {invitationsInfo.received.length && (
+            <span className="notification-counter counter-received">
+              {invitationsInfo.received.length}
+            </span>
+          )}
+        </span>
+        <span>
+          <button
+            className={`notification-nav-button ${
+              displayedInvitation === "sent" ? "active-nav-button" : ""
+            }`}
+            onClick={() => setDisplayedInvitation("sent")}>
+            Sent
+          </button>
+          {invitationsInfo.sent.length && (
+            <span className="notification-counter counter-sent">
+              {invitationsInfo.sent.length}
+            </span>
+          )}
+        </span>
       </div>
       <div className="invitation-container">
         {invitations.length ? (
