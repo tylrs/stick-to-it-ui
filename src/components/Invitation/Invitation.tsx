@@ -18,7 +18,9 @@ const Invitation: React.FC<InvitationProps> = ({ type, invitationInfo }) => {
       {type === "received" ? (
         <>
           <p>{sender.name}</p>
-          <button>Accept Invitation</button>
+          <button className="accept-invitation-button">
+            Accept Invitation
+          </button>
         </>
       ) : (
         <p>{recipient_email}</p>

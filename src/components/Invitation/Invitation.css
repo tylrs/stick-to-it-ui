@@ -5,7 +5,23 @@
   color: white;
   display: flex;
   flex-direction: column;
-  height: 15rem;
+  height: 16rem;
   justify-content: space-evenly;
   width: 80%;
+}
+
+.accept-invitation-button {
+  background-color: #133fffc2;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 2.5rem;
+  margin-top: 1rem;
+  padding: 0.4rem;
+  width: 7.5rem;
+}
+
+.accept-invitation-button:hover {
+  background-color: #133fff;
+  cursor: pointer;
 }
