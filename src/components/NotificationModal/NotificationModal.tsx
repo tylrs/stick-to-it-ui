@@ -61,12 +61,18 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
 
   return (
     <div className="notification-modal-container">
-      <h2>Invitations</h2>
-      <div className="invitations-header-container">
-        <button onClick={() => setDisplayedInvitation("received")}>
+      <h2 className="notification-header-title">Invitations</h2>
+      <div className="notification-nav-button-container">
+        <button
+          className="notification-nav-button"
+          onClick={() => setDisplayedInvitation("received")}>
           Received
         </button>
-        <button onClick={() => setDisplayedInvitation("sent")}>Sent</button>
+        <button
+          className="notification-nav-button"
+          onClick={() => setDisplayedInvitation("sent")}>
+          Sent
+        </button>
       </div>
       <div className="invitation-container">{invitations}</div>
     </div>
