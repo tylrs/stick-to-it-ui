@@ -4,10 +4,9 @@
   border-radius: 20%;
   display: grid;
   grid-template-rows: 1fr 1fr 5fr;
-  height: 25rem;
+  height: 27rem;
   position: absolute;
   right: 2%;
-  /* transform: translate(65%, 0%); */
   width: 23rem;
   z-index: 3;
 }
@@ -45,4 +44,5 @@
   flex-direction: column;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  overflow-y: scroll;
 }
