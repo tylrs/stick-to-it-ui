@@ -80,12 +80,16 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
       </div>
       <div className="notification-nav-button-container">
         <button
-          className="notification-nav-button"
+          className={`notification-nav-button ${
+            displayedInvitation === "received" ? "active-nav-button" : ""
+          }`}
           onClick={() => setDisplayedInvitation("received")}>
           Received
         </button>
         <button
-          className="notification-nav-button"
+          className={`notification-nav-button ${
+            displayedInvitation === "sent" ? "active-nav-button" : ""
+          }`}
           onClick={() => setDisplayedInvitation("sent")}>
           Sent
         </button>

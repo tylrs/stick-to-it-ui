@@ -72,6 +72,10 @@
   cursor: pointer;
 }
 
+.active-nav-button {
+  border: 1px solid #133fff;
+}
+
 ::-webkit-scrollbar {
   background: transparent;
 }
