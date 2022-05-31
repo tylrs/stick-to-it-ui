@@ -5,6 +5,7 @@
   display: grid;
   grid-template-rows: 1fr 1fr 5fr;
   height: 27rem;
+  overflow-y: hidden;
   position: absolute;
   right: 2%;
   width: 23rem;
@@ -45,4 +46,16 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  border: 4px solid transparent;
+  border-left-width: 6px;
+  border-radius: 10px;
+  background-clip: content-box;
 }
