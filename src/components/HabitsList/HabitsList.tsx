@@ -104,6 +104,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
         setShowModal={setShowModal}
         userId={userId}
         showModal={showModal}
+        setMessage={setMessage}
       />
       {error && <p className="habits-list-error">{error}</p>}
       {listType === "all" ? (

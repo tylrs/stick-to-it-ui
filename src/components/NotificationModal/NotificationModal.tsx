@@ -16,6 +16,7 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
   setShowModal,
   showModal,
   userId,
+  setMessage,
 }) => {
   const [invitationsInfo, setInvitationsInfo] = useState<NotificationState>({
     received: [],
@@ -54,6 +55,9 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
         key={invitationInfo.id}
         type={displayedInvitation}
         invitationInfo={invitationInfo}
+        userId={userId}
+        setShowModal={setShowModal}
+        setMessage={setMessage}
       />
     )
   );

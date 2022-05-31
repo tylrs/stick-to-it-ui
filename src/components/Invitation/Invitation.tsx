@@ -1,10 +1,28 @@
+import { acceptInvitation } from "../../utils/apiCalls";
 import { formatDateTime } from "../../utils/miscUtils";
 import { InvitationProps } from "../../utils/types";
 import "./Invitation.css";
 
-const Invitation: React.FC<InvitationProps> = ({ type, invitationInfo }) => {
-  const { habit_plan, sender, recipient_email } = invitationInfo;
-  console.log(type, invitationInfo);
+const Invitation: React.FC<InvitationProps> = ({
+  type,
+  invitationInfo,
+  userId,
+  setShowModal,
+  setMessage,
+}) => {
+  const { id, habit_plan, sender, recipient_email } = invitationInfo;
+
+  const handleAcceptInvitation = async () => {
+    try {
+      await acceptInvitation(userId, id);
+      setMessage("Invitation Accepted");
+      setShowModal(false);
+      document.querySelector(".overlay")?.classList.add("hidden");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <article className="invitation-card">
       <h3>{habit_plan.habit.name}</h3>
@@ -18,7 +36,9 @@ const Invitation: React.FC<InvitationProps> = ({ type, invitationInfo }) => {
       {type === "received" ? (
         <>
           <p>{sender.name}</p>
-          <button className="accept-invitation-button">
+          <button
+            className="accept-invitation-button"
+            onClick={() => handleAcceptInvitation()}>
             Accept Invitation
           </button>
         </>
