@@ -41,6 +41,11 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
     }
   };
 
+  const handleModalExit = () => {
+    setShowModal(false);
+    document.querySelector(".overlay")?.classList.add("hidden");
+  };
+
   useEffect(() => {
     if (showModal) {
       getInvitations();
@@ -64,7 +69,15 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
 
   return (
     <div className="notification-modal-container">
-      <h2 className="notification-header-title">Invitations</h2>
+      <div className="notification-modal-header-container">
+        <span className="notification-header-divider"></span>
+        <h2 className="notification-header-title">Invitations</h2>
+        <span
+          className="close-notifications-modal-button"
+          onClick={() => handleModalExit()}>
+          &times;
+        </span>
+      </div>
       <div className="notification-nav-button-container">
         <button
           className="notification-nav-button"

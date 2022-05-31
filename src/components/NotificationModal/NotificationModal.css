@@ -39,6 +39,16 @@
   text-align: center;
 }
 
+.notification-header-divider {
+  width: 1rem;
+}
+
+.notification-modal-header-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .invitation-container {
   align-items: center;
   display: flex;
@@ -50,6 +60,16 @@
 
 .no-invitation-message {
   color: white;
+}
+
+.close-notifications-modal-button {
+  color: white;
+  font-size: 2rem;
+  width: 1rem;
+}
+
+.close-notifications-modal-button:hover {
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
