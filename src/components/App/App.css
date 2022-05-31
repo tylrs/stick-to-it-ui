@@ -34,6 +34,10 @@ main {
   z-index: 2;
 }
 
+::-webkit-scrollbar {
+  background: auto;
+}
+
 @media screen and (max-width: 480px) {
   .greeting-message {
     font-size: 1.1rem;
