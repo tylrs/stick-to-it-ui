@@ -5,7 +5,7 @@
   color: white;
   display: flex;
   flex-direction: column;
-  height: 10rem;
+  height: 15rem;
   justify-content: space-evenly;
   width: 80%;
 }

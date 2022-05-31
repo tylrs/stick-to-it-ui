@@ -42,7 +42,6 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
 
   useEffect(() => {
     if (showModal) {
-      console.log("component did mount");
       getInvitations();
     }
   }, [displayedInvitation, showModal]);
