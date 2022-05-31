@@ -6,7 +6,8 @@
   grid-template-rows: 1fr 1fr 5fr;
   height: 25rem;
   position: absolute;
-  transform: translate(65%, 17%);
+  right: 2%;
+  /* transform: translate(65%, 0%); */
   width: 23rem;
   z-index: 3;
 }
