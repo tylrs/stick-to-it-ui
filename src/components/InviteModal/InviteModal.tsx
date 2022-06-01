@@ -196,7 +196,7 @@ const InviteModal: React.FC<InviteModalProps> = ({
           <p>{recipientInfo.recipient_email}</p>
           <div className="invite-form-button-container">
             <button
-              className=".invite-form-button"
+              className="invite-form-button"
               onClick={e => submitUserInvite(e)}>
               Yes
             </button>

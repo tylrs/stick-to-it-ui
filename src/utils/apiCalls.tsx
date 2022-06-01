@@ -223,8 +223,12 @@ export const getReceivedInvitations = async (userId: number) => {
     if (!response.ok) throw await response.json();
     const data = await response.json();
     return data;
-  } catch (err) {
-    throw err;
+  } catch (err: any) {
+    if (err?.errors !== "No received invites found") {
+      throw err;
+    } else {
+      return [];
+    }
   }
 };
 
@@ -242,8 +246,12 @@ export const getSentInvitations = async (userId: number) => {
     if (!response.ok) throw await response.json();
     const data = await response.json();
     return data;
-  } catch (err) {
-    throw err;
+  } catch (err: any) {
+    if (err?.errors !== "No sent invites found") {
+      throw err;
+    } else {
+      return [];
+    }
   }
 };
 

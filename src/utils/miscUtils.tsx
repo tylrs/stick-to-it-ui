@@ -1,5 +1,10 @@
 import HabitLog from "../components/HabitLog/HabitLog";
-import { HabitLogListProps, HabitProps, UserType } from "./types";
+import {
+  HabitLogListProps,
+  HabitProps,
+  NotificationState,
+  UserType,
+} from "./types";
 
 export const storeToken = (token: string) => {
   localStorage.setItem("token", JSON.stringify(token));
@@ -90,4 +95,8 @@ export const generateHabitLogList = ({
     );
     return acc;
   }, componentsOfWeek);
+};
+
+export const calculateNumInvitations = (invitationsInfo: NotificationState) => {
+  return invitationsInfo.received.length + invitationsInfo.sent.length;
 };
