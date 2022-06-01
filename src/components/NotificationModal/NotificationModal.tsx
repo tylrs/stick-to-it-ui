@@ -25,6 +25,7 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
   const [displayedInvitation, setDisplayedInvitation] = useState<
     "received" | "sent"
   >("received");
+  const [error, setError] = useState("");
 
   const getInvitations = async () => {
     try {
@@ -36,8 +37,8 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
           sent: sentResponse,
         };
       });
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      setError(err.errors);
     }
   };
 
@@ -52,6 +53,17 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
     }
   }, [displayedInvitation, showModal]);
 
+  useEffect(() => {
+    if (error) {
+      let timer = setTimeout(() => {
+        setError("");
+      }, 3000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  });
+
   if (!showModal) return null;
 
   const invitations = invitationsInfo[displayedInvitation].map(
@@ -63,12 +75,14 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
         userId={userId}
         setShowModal={setShowModal}
         setMessage={setMessage}
+        setError={setError}
       />
     )
   );
 
   return (
     <div className="notification-modal-container">
+      {error && <p className="notification-error">{error}</p>}
       <div className="notification-modal-header-container">
         <span className="notification-header-divider"></span>
         <h2 className="notification-header-title">Invitations</h2>

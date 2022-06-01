@@ -115,4 +115,5 @@ export interface InvitationProps {
   userId: number;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 }

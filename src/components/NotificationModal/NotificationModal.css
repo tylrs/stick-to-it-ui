@@ -94,6 +94,13 @@
   font-size: 0.8rem;
 }
 
+.notification-error {
+  text-align: center;
+  color: red;
+  position: absolute;
+  left: 7.5rem;
+}
+
 ::-webkit-scrollbar {
   background: transparent;
 }

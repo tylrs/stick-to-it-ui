@@ -9,6 +9,7 @@ const Invitation: React.FC<InvitationProps> = ({
   userId,
   setShowModal,
   setMessage,
+  setError,
 }) => {
   const { id, habit_plan, sender, recipient_email } = invitationInfo;
 
@@ -18,8 +19,8 @@ const Invitation: React.FC<InvitationProps> = ({
       setMessage("Invitation Accepted");
       setShowModal(false);
       document.querySelector(".overlay")?.classList.add("hidden");
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      setError(err.errors);
     }
   };
 
