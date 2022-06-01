@@ -84,12 +84,16 @@ h1 {
   cursor: pointer;
 }
 
+.notifications-button-container {
+  position: relative;
+}
+
 .header-notification-counter {
   color: white;
   background-color: #cd2828;
   position: absolute;
-  top: 32.2%;
-  right: 12.3%;
+  top: 1.2%;
+  left: 59%;
   border: 1px solid;
   padding: 0rem 0.38rem 0rem 0.38rem;
   border-radius: 15px;

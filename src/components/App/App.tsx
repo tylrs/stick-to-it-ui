@@ -32,7 +32,6 @@ const App = () => {
   };
 
   const getInvitations = async () => {
-    console.log("getting invitations");
     try {
       const receivedResponse = await getReceivedInvitations(user.id);
       const sentResponse = await getSentInvitations(user.id);

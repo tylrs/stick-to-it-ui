@@ -36,13 +36,13 @@ const Header: React.FC<HeaderProps> = ({
           <NavLink className="header-link" to="/all-habits">
             Habits Week
           </NavLink>
-          <span>
+          <span className="notifications-button-container">
             <button
               className="notifications-button"
               onClick={() => handleShowModal()}>
               &#x2709;
             </button>
-            {invitationsInfoCount && (
+            {!!invitationsInfoCount && (
               <span className="header-notification-counter">
                 {invitationsInfoCount}
               </span>
