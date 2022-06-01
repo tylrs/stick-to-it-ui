@@ -84,6 +84,18 @@ h1 {
   cursor: pointer;
 }
 
+.header-notification-counter {
+  color: white;
+  background-color: #cd2828;
+  position: absolute;
+  top: 32.2%;
+  right: 12.3%;
+  border: 1px solid;
+  padding: 0rem 0.38rem 0rem 0.38rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+}
+
 @media screen and (max-width: 480px) {
   h1 {
     font-size: 1.75rem;

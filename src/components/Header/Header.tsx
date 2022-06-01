@@ -1,8 +1,5 @@
-import { set } from "cypress/types/lodash";
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Message from "../Message/Message";
-import NotificationModal from "../NotificationModal/NotificationModal";
 import "./Header.css";
 
 interface HeaderProps {
@@ -10,6 +7,7 @@ interface HeaderProps {
   logOut?: any;
   message?: string;
   setShowModal?: any;
+  invitationsInfoCount?: number;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -17,6 +15,7 @@ const Header: React.FC<HeaderProps> = ({
   logOut,
   message = "",
   setShowModal,
+  invitationsInfoCount,
 }) => {
   const handleShowModal = () => {
     setShowModal(true);
@@ -37,11 +36,18 @@ const Header: React.FC<HeaderProps> = ({
           <NavLink className="header-link" to="/all-habits">
             Habits Week
           </NavLink>
-          <button
-            className="notifications-button"
-            onClick={() => handleShowModal()}>
-            &#x2709;
-          </button>
+          <span>
+            <button
+              className="notifications-button"
+              onClick={() => handleShowModal()}>
+              &#x2709;
+            </button>
+            {invitationsInfoCount && (
+              <span className="header-notification-counter">
+                {invitationsInfoCount}
+              </span>
+            )}
+          </span>
           <button className="log-out-button" onClick={() => logOut()}>
             Log Out
           </button>

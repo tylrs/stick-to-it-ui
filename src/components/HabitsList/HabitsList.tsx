@@ -6,7 +6,7 @@ import {
   getTodayHabitPlans,
 } from "../../utils/apiCalls";
 import "./HabitsList.css";
-import { HabitPlanType } from "../../utils/types";
+import { HabitPlanType, NotificationState } from "../../utils/types";
 import Habit from "../Habit/Habit";
 import { getLastSunday, getToday } from "../../utils/miscUtils";
 import NotificationModal from "../NotificationModal/NotificationModal";
@@ -18,6 +18,7 @@ interface HabitsListProps {
   setMessage: React.Dispatch<React.SetStateAction<string>>;
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  invitationsInfo: NotificationState;
 }
 
 const HabitsList: React.FC<HabitsListProps> = ({
@@ -27,6 +28,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
   setMessage,
   showModal,
   setShowModal,
+  invitationsInfo,
 }) => {
   const [allHabitPlans, setAllHabitPlans] = useState<HabitPlanType[]>([]);
   const [currentListType, setListType] = useState("");
@@ -105,6 +107,7 @@ const HabitsList: React.FC<HabitsListProps> = ({
         userId={userId}
         showModal={showModal}
         setMessage={setMessage}
+        invitationsInfo={invitationsInfo}
       />
       {error && <p className="habits-list-error">{error}</p>}
       {listType === "all" ? (

@@ -1,57 +1,24 @@
 import "./NotificationModal.css";
 import { NotificationModalProps, InvitationType } from "../../utils/types";
 import { useEffect, useState } from "react";
-import {
-  getReceivedInvitations,
-  getSentInvitations,
-} from "../../utils/apiCalls";
 import Invitation from "../Invitation/Invitation";
-
-interface NotificationState {
-  received: InvitationType[];
-  sent: InvitationType[];
-}
 
 const NotificationModal: React.FC<NotificationModalProps> = ({
   setShowModal,
   showModal,
   userId,
   setMessage,
+  invitationsInfo,
 }) => {
-  const [invitationsInfo, setInvitationsInfo] = useState<NotificationState>({
-    received: [],
-    sent: [],
-  });
   const [displayedInvitation, setDisplayedInvitation] = useState<
     "received" | "sent"
   >("received");
   const [error, setError] = useState("");
 
-  const getInvitations = async () => {
-    try {
-      const receivedResponse = await getReceivedInvitations(userId);
-      const sentResponse = await getSentInvitations(userId);
-      setInvitationsInfo(() => {
-        return {
-          received: receivedResponse,
-          sent: sentResponse,
-        };
-      });
-    } catch (err: any) {
-      setError(err.errors);
-    }
-  };
-
   const handleModalExit = () => {
     setShowModal(false);
     document.querySelector(".overlay")?.classList.add("hidden");
   };
-
-  useEffect(() => {
-    if (showModal) {
-      getInvitations();
-    }
-  }, [displayedInvitation, showModal]);
 
   useEffect(() => {
     if (error) {

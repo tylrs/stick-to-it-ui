@@ -99,6 +99,15 @@ export interface NotificationModalProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   userId: number;
   setMessage: React.Dispatch<React.SetStateAction<string>>;
+  invitationsInfo: {
+    received: InvitationType[];
+    sent: InvitationType[];
+  };
+}
+
+export interface NotificationState {
+  received: InvitationType[];
+  sent: InvitationType[];
 }
 
 export interface HabitLogListProps {

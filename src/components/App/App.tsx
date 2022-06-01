@@ -1,26 +1,51 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { UserType } from "../../utils/types";
+import { NotificationState, UserType } from "../../utils/types";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Welcome from "../Welcome/Welcome";
 import Login from "../Login/Login";
 import AccountCreation from "../AccountCreation/AccountCreation";
-import { getCurrentUser } from "../../utils/miscUtils";
+import { calculateNumInvitations, getCurrentUser } from "../../utils/miscUtils";
 import HabitsList from "../HabitsList/HabitsList";
 import { emptyUser } from "../../utils/miscConstants";
 import HabitCreation from "../HabitCreation/HabitCreation";
 import Header from "../Header/Header";
+import {
+  getReceivedInvitations,
+  getSentInvitations,
+} from "../../utils/apiCalls";
 
 const App = () => {
   const [user, setUser] = useState<UserType>(emptyUser);
   const [message, setMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const [invitationsInfo, setInvitationsInfo] = useState<NotificationState>({
+    received: [],
+    sent: [],
+  });
 
   const logOut = () => {
     localStorage.clear();
     setUser(emptyUser);
     navigate("/login");
+  };
+
+  const getInvitations = async () => {
+    console.log("getting invitations");
+    try {
+      const receivedResponse = await getReceivedInvitations(user.id);
+      const sentResponse = await getSentInvitations(user.id);
+      setInvitationsInfo(() => {
+        return {
+          received: receivedResponse,
+          sent: sentResponse,
+        };
+      });
+    } catch (err: any) {
+      console.log(err);
+      // setError(err.errors);
+    }
   };
 
   useEffect(() => {
@@ -40,6 +65,12 @@ const App = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (user.id) {
+      getInvitations();
+    }
+  }, [user.id, invitationsInfo.received.length, invitationsInfo.sent.length]);
+
   return (
     <main>
       {!!user.id ? (
@@ -48,6 +79,7 @@ const App = () => {
           logOut={logOut}
           message={message}
           setShowModal={setShowModal}
+          invitationsInfoCount={calculateNumInvitations(invitationsInfo)}
         />
       ) : (
         <Header headerType={"loggedOut"} />
@@ -75,6 +107,7 @@ const App = () => {
                 setMessage={setMessage}
                 showModal={showModal}
                 setShowModal={setShowModal}
+                invitationsInfo={invitationsInfo}
               />
             }
           />
@@ -88,6 +121,7 @@ const App = () => {
                 setMessage={setMessage}
                 showModal={showModal}
                 setShowModal={setShowModal}
+                invitationsInfo={invitationsInfo}
               />
             }
           />
@@ -101,6 +135,7 @@ const App = () => {
                 setMessage={setMessage}
                 showModal={showModal}
                 setShowModal={setShowModal}
+                invitationsInfo={invitationsInfo}
               />
             }
           />
@@ -118,6 +153,7 @@ const App = () => {
                 setMessage={setMessage}
                 showModal={showModal}
                 setShowModal={setShowModal}
+                invitationsInfo={invitationsInfo}
               />
             }
           />
