@@ -1,7 +1,5 @@
 # Stick To It
 
-#### View App: [https://stick-to-it-ui.herokuapp.com/](https://stick-to-it-ui.herokuapp.com/)
-
 #### Back-End Repo: [https://github.com/tylrs/stick_to_it_api](https://github.com/tylrs/stick_to_it_api)
 
 ### Table of Contents
@@ -19,8 +17,6 @@
 - Stick To It is a web application for users to keep track of their habits.
 
 ## Installation and Viewing
-
-This application is deployed to Heroku. You may view the live application [here](https://stick-to-it-ui.herokuapp.com/)
 
 To view this application on your local device:
 
